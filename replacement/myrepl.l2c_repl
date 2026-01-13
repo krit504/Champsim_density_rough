@@ -1,0 +1,366 @@
+#include "cache.h"
+#include "uncore.h"
+#include "ooo_cpu.h"
+
+#define maxRRPV 3
+#define SAMPLER_SET 32
+#define CYCLE_WINDOW 100000
+#define SAMPLER_SIZE 256
+
+uint64_t cnt = 0, cnt_run_ahead =0, prev_num_retire = 0, cycle_count =0;
+double avg_live_score = 0, no_of_block = 0, total_occupancy = 0;
+int THRESHOLD = WRITE_BYPASS;	//writeback Bypass
+int LS_GT = 0;	//Average no of blocks having live sccore > threshold
+uint32_t rrpv[LLC_SET][LLC_WAY];
+
+// sampler structure
+/*class SAMPLER_class
+{
+  public:
+
+    uint64_t tag;
+	uint8_t counter;
+
+    SAMPLER_class() {
+        
+        tag = 0;
+		counter = 0;
+    };
+};*/
+
+
+uint32_t rand_sets[SAMPLER_SET];//copy this
+ 
+map<uint64_t, vector<int>> sampler;	//Have three entry. 0) counter for setting live score, 1) counter for setting run ahead bit, 2) counter to decide L2C write merge.
+
+
+
+// initialize replacement state
+void CACHE::l2c_initialize_replacement()
+{
+
+	cout<<"THRESHOLD "<<THRESHOLD<<endl;
+	cout<<"WRITE THRESHOLD "<<WRITE_THR<<endl;
+   /// randomly selected sampler sets
+	//copy from here
+    srand(time(NULL));
+    unsigned long rand_seed = 1;
+    unsigned long max_rand = 1048576;
+    uint32_t my_set = LLC_SET;
+    int do_again = 0;
+    for (int i=0; i<SAMPLER_SET; i++)
+    {
+        do 
+        {
+            do_again = 0;
+            rand_seed = rand_seed * 1103515245 + 12345;
+            rand_sets[i] = ((unsigned) ((rand_seed/65536) % max_rand)) % my_set;
+            // printf("Assign rand_sets[%d]: %u  LLC: %u\n", i, rand_sets[i], my_set);
+            for (int j=0; j<i; j++) 
+            {
+                if (rand_sets[i] == rand_sets[j]) 
+                {
+                    do_again = 1;
+                    break;
+                }
+            }
+        } while (do_again);
+        // printf("rand_sets[%d]: %d\n", i, rand_sets[i]);
+    }//upto here
+    
+    
+}
+
+// check if this set is sampled
+//from here
+bool is_it_sampled(uint32_t set)
+{
+    for (int i=0; i<SAMPLER_SET; i++)
+        if (rand_sets[i] == set)
+            return true;
+
+    return false;
+}
+//copy upto here
+
+
+//update live score
+void set_live_score(uint64_t ip, PACKET *blk){
+	if(sampler.find(ip)->second[0]<=256) blk->live_score = 0;
+	else if(sampler.find(ip)->second[0]<=512) blk->live_score = 1;
+	else if(sampler.find(ip)->second[0]<=768) blk->live_score = 2;
+	else blk->live_score = 3;
+	if(blk->live_score<=THRESHOLD) blk->is_bypass=1;
+	else blk->is_bypass=0;
+
+}
+
+void set_live_score(uint64_t ip, BLOCK *blk){
+	if(sampler.find(ip)->second[0]<=10) blk->live_score = 0;
+	else if(sampler.find(ip)->second[0]<=50) blk->live_score = 1;
+	else if(sampler.find(ip)->second[0]<=150) blk->live_score = 2;
+	else blk->live_score = 3;
+	if(blk->live_score<=THRESHOLD) blk->is_bypass=1;
+	else blk->is_bypass=0;
+
+
+}
+
+void find_live_score(){
+	cycle_count++;
+	int rq_occupancy = 0, mshr_occupancy = 0;
+	double tmp_live_score =0;
+	for(int i=0;i<uncore.LLC.MSHR.occupancy;i++){
+		tmp_live_score += uncore.LLC.MSHR.entry[i].live_score;
+		mshr_occupancy++;
+		if(uncore.LLC.MSHR.entry[i].type==LOAD){
+			total_occupancy++;
+			if(uncore.LLC.MSHR.entry[i].live_score>THRESHOLD) rq_occupancy++;
+		}
+	}
+	
+	int wq_occupancy = 0;
+	for(int i=0;i<uncore.LLC.WQ.occupancy;i++){
+		tmp_live_score += uncore.LLC.WQ.entry[i].live_score;
+		if(uncore.LLC.WQ.entry[i].live_score>THRESHOLD) wq_occupancy++; //TODO motivation count of ls > threshold
+	}
+	no_of_block += (rq_occupancy + wq_occupancy);
+	total_occupancy += uncore.LLC.WQ.occupancy;
+	//cout<<tmp_live_score<<"\t"<<(uncore.LLC.WQ.occupancy+mshr_occupancy)<<endl;
+	if(tmp_live_score && (uncore.LLC.WQ.occupancy+mshr_occupancy)) tmp_live_score /= (uncore.LLC.WQ.occupancy+mshr_occupancy);
+	//cout<<tmp_live_score<<endl;
+	avg_live_score += tmp_live_score;
+}
+
+
+
+bool write_congestion(int thr){
+	int rq_occupancy = 0;
+	for(int i=0;i<uncore.LLC.MSHR.occupancy;i++){
+		if(uncore.LLC.MSHR.entry[i].type==LOAD){
+			if(uncore.LLC.MSHR.entry[i].live_score>THRESHOLD) rq_occupancy++;
+		}
+	}
+	
+	int wq_occupancy = 0;
+	for(int i=0;i<uncore.LLC.WQ.occupancy;i++){
+		if(uncore.LLC.WQ.entry[i].live_score>THRESHOLD) wq_occupancy++; //TODO motivation count of ls > threshold
+	}
+	
+	if((rq_occupancy + wq_occupancy) < LIVE_WRITE_THR) return true;
+	
+	return false;
+}
+
+
+bool l2c_write_congestion(){
+	int rq_occupancy = 0;
+	for(int i=0;i<uncore.LLC.MSHR.occupancy;i++){
+		if(uncore.LLC.MSHR.entry[i].type==LOAD) rq_occupancy++;
+	}
+	int wq_occupancy = uncore.LLC.WQ.occupancy;
+	if((rq_occupancy + wq_occupancy) < WRITE_THR) return true;
+	
+	return false;
+}
+
+
+//update run ahead bit
+void set_run_ahead_bit(uint64_t ip, PACKET *blk){
+	/*cnt++;
+	if(cnt % 100 == 0)
+	cout << "cnt: "<<cnt <<" ";*/
+	if(l2c_write_congestion() &&  write_congestion(1) && sampler.find(ip)->second[1] > 512) blk->run_ahead = 1;
+	else 
+	 blk->run_ahead = 0;
+
+
+}
+
+
+bool get_lru(uint64_t ip){
+	/*cnt++;
+	if(cnt % 100 == 0)
+	cout << "cnt: "<<cnt <<" ";*/
+	if(sampler.find(ip)->second[2] > 10) {
+		//sampler.find(ip)->second[2] = 0;
+		return true;
+	}
+	return false;
+}
+
+
+// find replacement victim
+uint32_t CACHE::l2c_find_victim(uint32_t cpu, uint64_t instr_id, uint32_t set, const BLOCK *current_set, uint64_t ip, uint64_t full_addr, uint32_t type)
+{
+    
+    int way = lru_victim(cpu, instr_id, set, current_set, ip, full_addr, type); 
+    if (L2C_WRITE_MERGE && sampler.find(block[set][way].ip)!=sampler.end()){
+	    while(block[set][way].valid && get_lru(block[set][way].ip)){
+			lru_update(set, way);
+	    	way = lru_victim(cpu, instr_id, set, current_set, ip, full_addr, type);
+	    }
+    }
+    return way;
+    
+    
+    // baseline LRU
+    
+    
+    //return lru_victim(cpu, instr_id, set, current_set, ip, full_addr, type); 
+}
+
+void set_threshold(uint32_t cpu, PACKET *blk){
+	if(warmup_complete[cpu]) find_live_score();
+	int numretire = 0;
+	for(int i=0;i<NUM_CPUS;i++){
+		numretire+= ooo_cpu[i].num_retired;
+	}
+	if(warmup_complete[cpu] && (numretire - prev_num_retire) >= CYCLE_WINDOW){
+		double avg_cycle_livescore = avg_live_score/cycle_count;
+		double avg_total_occupancy = total_occupancy/(numretire - prev_num_retire);
+		double avg_no_of_block = no_of_block/(numretire - prev_num_retire);
+		
+		THRESHOLD = avg_cycle_livescore;
+		//cout<<"avg_cycle_livescore: "<<avg_cycle_livescore<<"\tPercentage of blocks with LS greater than THreshold: "<<(avg_no_of_block*100)/avg_total_occupancy<<endl;
+		
+		LS_GT = (avg_no_of_block*100)/(avg_total_occupancy*LLC_BANK);
+		
+		prev_num_retire = numretire;
+		avg_live_score = 0;
+		no_of_block = 0;
+		total_occupancy = 0;
+		cycle_count=0;
+	}
+}
+
+// called on every cache hit and cache fill
+void CACHE::l2c_update_replacement_state(uint32_t cpu, uint32_t set, uint32_t way, uint64_t full_addr, PACKET *blk, uint64_t victim_addr, uint32_t type, uint8_t hit)
+{
+
+	if(WRITE_BYPASS) set_threshold(cpu, blk);	
+	blk->ls_gt = LS_GT;
+	
+    string TYPE_NAME;
+    if (type == LOAD)
+        TYPE_NAME = "LOAD";
+    else if (type == RFO)
+        TYPE_NAME = "RFO";
+    else if (type == PREFETCH)
+        TYPE_NAME = "PF";
+    else if (type == WRITEBACK)
+        TYPE_NAME = "WB";
+    else
+        assert(0);
+
+    if (hit)
+        TYPE_NAME += "_HIT";
+    else
+        TYPE_NAME += "_MISS";
+
+    if ((type == WRITEBACK) && blk->ip)
+        assert(0);
+
+    // uncomment this line to see the LLC accesses
+    // cout << "CPU: " << cpu << "  LLC " << setw(9) << TYPE_NAME << " set: " << setw(5) << set << " way: " << setw(2) << way;
+    // cout << hex << " paddr: " << setw(12) << paddr << " ip: " << setw(8) << ip << " victim_addr: " << victim_addr << dec << endl;
+
+    // baseline LRU
+    if (hit && (type == WRITEBACK)) // writeback hit does not update LRU state
+        return;
+
+    //sampler update for victim block
+    
+    if (way != L2C_WAY && sampler.find(block[set][way].ip)!=sampler.end()){		//block[set][way].ip = victim ip;
+    
+    // update sampler in hit only
+	if(is_it_sampled(set)){
+	
+		set_live_score(block[set][way].ip, &block[set][way]);
+		
+		(sampler.find(block[set][way].ip)->second[0])-=2;
+	}
+	
+    }
+    
+    
+    //sampler update for upcoming block
+    if (sampler.find(blk->ip)!=sampler.end()){	
+    	
+    // update sampler in hit only
+	if(is_it_sampled(set)){
+	
+		(sampler.find(blk->ip)->second[0])+=10;
+		
+		if(sampler.find(blk->ip)->second[0]>1024) sampler.find(blk->ip)->second[0]=1024;
+		
+		if(blk->carry_indicator) {
+			/*cnt++;
+			if(cnt%100==0) cout<<cnt<<" ";*/
+			(sampler.find(blk->ip)->second[1])+=10;
+			if(sampler.find(blk->ip)->second[1]>1024) sampler.find(blk->ip)->second[1]=1024;
+			blk->carry_indicator = 0;
+		}
+		else
+		{
+			sampler.find(blk->ip)->second[1]-=2;
+			/*cnt++;
+			if(cnt%100==0) cout<<cnt<<" ";*/
+			
+		}
+		
+		if(blk->l2c_wm) {
+			/*cnt++;
+			if(cnt%100==0) cout<<cnt<<" ";*/
+			(sampler.find(blk->ip)->second[2])+=10;
+			if(sampler.find(blk->ip)->second[2]>100) sampler.find(blk->ip)->second[2]=100;
+			blk->l2c_wm=0;
+		}
+		else
+		{
+			sampler.find(blk->ip)->second[2]-=2;
+			/*cnt++;
+			if(cnt%100==0) cout<<cnt<<" ";*/
+			
+		}	
+	}
+	else{
+		set_live_score(blk->ip, blk);
+		
+		if(RUN_AHEAD) set_run_ahead_bit(blk->ip, blk);
+	}
+	
+    }
+    else {
+    
+    	if(is_it_sampled(set)) {
+    		vector<int> arr;
+    		arr.push_back(0);
+    		//arr.push_back(blk->carry_indicator);
+    		arr.push_back(0);
+    		arr.push_back(0);
+    		if(sampler.size()==SAMPLER_SIZE) sampler.erase(sampler.begin());
+    		
+    		sampler.insert(pair<uint64_t, vector<int>>(blk->ip, arr));
+    		
+    	}
+        // sanity check
+		//check if the set is in rand_set or not , if yes update_sampler else do nothing//decrement
+	
+    }
+    /*if(!full_addr && blk->run_ahead && warmup_complete[cpu]) {
+    	cnt++;
+    	if(uncore.LLC.lower_level->RQ.occupancy < uncore.LLC.lower_level->RQ.SIZE) cnt_run_ahead++;
+    }*/
+    
+    if(way == L2C_WAY) return;
+    else return lru_update(set, way);
+    
+
+}
+
+void CACHE::l2c_replacement_final_stats()
+{
+	//cout<<"\nRun Ahead: "<<cnt<<"\tRun Ahead done: "<<cnt_run_ahead<<endl<<endl;
+}
+ 

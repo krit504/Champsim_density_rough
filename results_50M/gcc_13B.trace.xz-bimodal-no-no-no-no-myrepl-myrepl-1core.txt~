@@ -1,0 +1,11 @@
+
+*** ChampSim Multicore Out-of-Order Simulator ***
+
+Warmup Instructions: 1000000
+Simulation Instructions: 50000000
+Number of CPUs: 2
+LLC sets: 16384
+LLC ways: 16
+Off-chip DRAM Size: 4096 MB Channels: 1 Width: 64-bit Data Rate: 3200 MT/s
+
+bimodal-no-no-no-no-myrepl-myrepl-1core: src/main.cc:679: int main(int, char**): Assertion `0' failed.cc

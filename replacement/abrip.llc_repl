@@ -1,0 +1,108 @@
+#include "cache.h"
+#include<algorithm>
+#define maxRRPV 3 // because we use 2 bit counter so max 2^m - 1
+#define MAX_ABR 9 // because formulla MAX_ABR = MAX_BR + ALPHA * MAX_CR
+#define ALPHA 2 // we run our simulation for best value of ALPHA as 2
+
+uint32_t rrpv[LLC_SET][LLC_WAY], rrpv_core[LLC_SET][NUM_CPUS], core[LLC_SET][LLC_WAY], r_pointer=-1; // here r_pointer is basically used in Round Robin fashion to maintain fairness
+// initialize replacement state
+void CACHE::llc_initialize_replacement()
+{
+    cout << "Initialize AbRip state" << endl;
+    for(int i=0; i<LLC_SET; i++) {
+	
+    	rrpv_core[i][0] = rrpv_core[i][1] = maxRRPV; // Initialize core RRPV as max_RRPV to identify empty block
+        for(int j=0; j<LLC_WAY; j++) {
+            rrpv[i][j] = maxRRPV; // setting block level RRPV as max_RRPV
+	    core[i][j] = -1; // Because initially no blocks are there in the core.
+	}
+    }
+
+}
+
+// find replacement victim
+uint32_t CACHE::llc_find_victim(uint32_t cpu, uint64_t instr_id, uint32_t set, const BLOCK *current_set, uint64_t ip, uint64_t full_addr, uint32_t type)
+{
+	if(r_pointer<LLC_WAY) r_pointer++; // Increment Round Robin pointer
+	else r_pointer = 0; // Reset pointer when it reaches maximum value
+    // look for the maxRRPV line
+    while (1)
+    {
+        for (int j=0; j<LLC_WAY; j++){
+		int i = (j + r_pointer)%LLC_WAY;        // Start iteration from round robin pointer to maintain cyclic function.
+		int rrpvCore;                           // Variable to check core_RRPV when cache is empty
+		if(core[set][i]==-1) rrpvCore = maxRRPV; // set core_RRPV to max_RRPV for empty cache block
+		else rrpvCore = rrpv_core[set][core[set][i]]; // set core_RRPV to core_RRPV of the set block
+		int max_abr = rrpv[set][i] + ALPHA*rrpvCore; // formulla as mentioned in paper to calculate MAX_ABR of each block. This is used to remove any potential dead blocks.
+            if (max_abr>=MAX_ABR)
+                return i;   // Victim find
+        }
+	
+	int selected=-1;           // Check if any core_RRPV reach MAX value
+	for(int i=0;i<NUM_CPUS;i++){
+		if(rrpv_core[set][i] == maxRRPV){	
+			selected = i;
+			break;
+		}
+	}
+	if(selected>=0){       // At least one core RRPV reached MAX value
+		for(int i=0;i<LLC_WAY;i++){ // only increment the block RRPV
+			rrpv[set][i]++;	
+		}
+	}
+	else{                 // None of the core RRPV reached the MAX value
+		for(int i=0;i<NUM_CPUS;i++){
+			rrpv_core[set][i]++;	// increment all core RRPV
+		}
+		for(int i=0;i<LLC_WAY;i++){
+			rrpv[set][i]++;	        // Increment all block RRPV
+		}
+	}
+    }
+
+    // WE SHOULD NOT REACH HERE
+    assert(0);
+    return 0;
+}
+
+// called on every cache hit and cache fill
+void CACHE::llc_update_replacement_state(uint32_t cpu, uint32_t set, uint32_t way, uint64_t full_addr, uint64_t ip, uint64_t victim_addr, uint32_t type, uint8_t hit)
+{
+    string TYPE_NAME;
+    if (type == LOAD)
+        TYPE_NAME = "LOAD";
+    else if (type == RFO)
+        TYPE_NAME = "RFO";
+    else if (type == PREFETCH)
+        TYPE_NAME = "PF";
+    else if (type == WRITEBACK)
+        TYPE_NAME = "WB";
+    else
+        assert(0);
+
+    if (hit)
+        TYPE_NAME += "_HIT";
+    else
+        TYPE_NAME += "_MISS";
+
+    if ((type == WRITEBACK) && ip)
+        assert(0);
+
+    // uncomment this line to see the LLC accesses
+    //cout << "CPU: " << cpu << "  LLC " << setw(9) << TYPE_NAME << " set: " << setw(5) << set << " way: " << setw(2) << way;
+    //cout << hex << " paddr: " << setw(12) << full_addr << " ip: " << setw(8) << ip << " victim_addr: " << victim_addr << dec << endl;
+    
+    if (hit){               // Set both core RRPV and block RRPV as 0
+        rrpv[set][way] = 0;
+	rrpv_core[set][cpu] =0;
+    }
+    else{
+        rrpv[set][way] = maxRRPV-1;    // Set block RRPV as 2^m - 2;
+	core[set][way] = cpu;             // Assign core of the block
+    }
+}
+
+void CACHE::llc_replacement_final_stats()
+{
+
+}

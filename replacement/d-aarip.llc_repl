@@ -1,0 +1,244 @@
+#include "cache.h"
+#include "ooo_cpu.h"
+#include<algorithm>
+
+//shared cache
+//tag of packet class
+#define maxRRPV 3
+
+#define NUM_POLICY 2
+#define SDM_SIZE 32
+#define TOTAL_SDM_SETS NUM_CPUS*NUM_POLICY*SDM_SIZE
+#define PSEL_WIDTH 10
+#define PSEL_MAX ((1<<PSEL_WIDTH)-1)
+#define PSEL_THRS PSEL_MAX/2
+
+//Evicted Tag Storage
+#define EBIS_SIZE LLC_WAY*NUM_CPUS*16
+
+uint32_t rrpv[LLC_SET][LLC_WAY], application_type[LLC_SET][LLC_WAY],   ebis_cpu=-1, ebis_application_type[EBIS_SIZE],
+         PSEL[NUM_CPUS], num_retire = 0, flag =1;
+unsigned rand_sets[TOTAL_SDM_SETS];
+
+uint64_t ebis[EBIS_SIZE];
+
+
+void CACHE::llc_initialize_replacement()
+{
+    cout << "Initialize AARIP state" << endl<<endl;
+
+    for(int i=0; i<LLC_SET; i++) {
+        for(int j=0; j<LLC_WAY; j++) {
+            rrpv[i][j] = maxRRPV;
+	    application_type[i][j] = -1;
+	}
+    }
+	srand(time(NULL));
+	    unsigned long rand_seed = 1;
+	    unsigned long max_rand = 1048576;
+	    uint32_t my_set = LLC_SET;
+	    int do_again = 0;
+	    for (int i=0; i<TOTAL_SDM_SETS; i++) {
+		do {
+		    do_again = 0;
+		    rand_seed = rand_seed * 1103515245 + 12345;
+		    rand_sets[i] = ((unsigned) ((rand_seed/65536) % max_rand)) % my_set;
+		    printf("Assign rand_sets[%d]: %u  LLC: %u\n", i, rand_sets[i], my_set);
+		    for (int j=0; j<i; j++) {
+		        if (rand_sets[i] == rand_sets[j]) {
+		            do_again = 1;
+		            break;
+		        }
+		    }
+		} while (do_again);
+		printf("rand_sets[%d]: %d\n", i, rand_sets[i]);
+	    }
+
+	    for (int i=0; i<NUM_CPUS; i++)
+		PSEL[i] = 0;
+	cout<<"EbIS size: "<<EBIS_SIZE<<endl<<"Initialize EbIS state"<<endl;
+	for(int i=0;i<EBIS_SIZE; i++) {
+		ebis[i] = -1;
+		ebis_application_type[i] = -1;
+	}
+}
+
+
+int is_it_leader(uint32_t cpu, uint32_t set)
+{
+    uint32_t start = cpu * NUM_POLICY * SDM_SIZE,
+             end = start + NUM_POLICY * SDM_SIZE;
+
+    for (uint32_t i=start; i<end; i++)
+        if (rand_sets[i] == set)
+            return ((i - start) / SDM_SIZE);
+
+    return -1;
+}
+
+//check for ebis hit
+int check_in_ebis(uint64_t addr)
+{
+	for(int i=0;i<EBIS_SIZE; i++) {
+		if(ebis[i] == addr) return i;
+	}
+	return -1;
+}
+
+//update EBIS
+void ebis_update_state(uint32_t cpu, uint64_t addr)
+{
+	if(ebis[EBIS_SIZE-1] ==-1) {
+		int i=0;
+		while(ebis[i] !=-1) i++;
+		ebis[i] = addr;
+		ebis_application_type[i] = cpu;
+	}
+
+	else {
+                int c[] = {0, 0};
+                int d[] = {-1, -1};
+                for(int k=0;k<EBIS_SIZE;k++){
+                      c[ebis_application_type[k]]++;
+		      if(d[ebis_application_type[k]] == -1) d[ebis_application_type[k]] = k;
+		      
+                }
+		int a[NUM_CPUS];
+		for(int k=0;k<NUM_CPUS;k++) {
+			a[k] = c[k] - d[k];
+		}
+		int A = *max_element(a, a+NUM_CPUS);
+                int tmp;
+		if(d[0] == -1) tmp = d[1];
+		else if(d[1] == -1) tmp = d[0];
+		else{
+		        if(a[cpu] == A) tmp=d[cpu];
+		        else tmp=d[distance(a, find(a, a+NUM_CPUS, A))];
+		}
+
+                for(int k=tmp;k<EBIS_SIZE-1;k++) {
+			ebis[k]=ebis[k+1];
+			ebis_application_type[k] = ebis_application_type[k+1];
+		}
+
+                ebis[EBIS_SIZE-1] = addr;
+		ebis_application_type[EBIS_SIZE-1] = cpu;
+	}
+}
+
+// called on every cache hit and cache fill
+void CACHE::llc_update_replacement_state(uint32_t cpu, uint32_t set, uint32_t way, uint64_t full_addr, uint64_t ip, uint64_t victim_addr, uint32_t type, uint8_t hit)
+{
+	if(ooo_cpu[0].num_retired+ooo_cpu[1].num_retired >= num_retire){ 
+	num_retire +=  1000000;
+	int leader = is_it_leader(cpu, set);
+
+	    if (leader == -1) { // follower sets
+		if (PSEL[cpu] > PSEL_THRS) { // follow BIP
+		    flag =1;
+		} else // follow SRRIP
+		   flag =0;
+
+	    } else if (leader == 0) { // leader 0: BIP
+		if (PSEL[cpu] > 0) PSEL[cpu]--;
+		flag =1;
+
+		} else if (leader == 1) { // leader 1: SRRIP 
+		if (PSEL[cpu] < PSEL_MAX) PSEL[cpu]++;
+		flag =0;
+
+	    } else // WE SHOULD NOT REACH HERE
+		assert(0);
+    }
+
+    if ((type == WRITEBACK) && ip){
+        assert(0);
+    }
+
+    // uncomment this line to see the LLC accesses
+    // cout << "CPU: " << cpu << "  LLC " << setw(9) << TYPE_NAME << " set: " << setw(5) << set << " way: " << setw(2) << way;
+    // cout << hex << " paddr: " << setw(12) << paddr << " ip: " << setw(8) << ip << " victim_addr: " << victim_addr << dec << endl;
+    
+	// cache hit
+	if (hit) { 
+		rrpv[set][way] = 0; // for cache hit, always promotes a cache line to the MRU position
+	}
+
+	// cache miss follow SRRIP
+	else {
+	    application_type[set][way] = cpu;
+	    int ebis_index = check_in_ebis(full_addr);//tag to be found
+	    if (ebis_index>-1 and flag) {
+		rrpv[set][way] = 0;
+		for(int i= ebis_index; i<EBIS_SIZE-1;i++) {
+			ebis[i] = ebis[i+1];
+			ebis_application_type[i] = ebis_application_type[i+1];
+		}
+		ebis[EBIS_SIZE-1] =-1;
+		ebis_application_type[EBIS_SIZE-1] = -1;
+		if(victim_addr) ebis_update_state(ebis_cpu, victim_addr);
+	    }
+	    else {
+            	rrpv[set][way] = maxRRPV-1;
+		if(victim_addr) ebis_update_state(ebis_cpu, victim_addr);
+	    }
+	}
+}
+
+// find replacement victim
+uint32_t CACHE::llc_find_victim(uint32_t cpu, uint64_t instr_id, uint32_t set, const BLOCK *current_set, uint64_t ip, uint64_t full_addr, uint32_t type)
+{
+    // look for the maxRRPV line
+    
+    while (1)
+    {
+	if(flag){
+		for (int i=0; i<LLC_WAY; i++) {
+			if ((rrpv[set][i] == maxRRPV) && (application_type[set][i] == cpu || application_type[set][i]==-1)) {
+				ebis_cpu = current_set[i].cpu;
+			    	return i;
+			}
+	    	}
+		for (int i=0; i<LLC_WAY; i++) {
+		    if (rrpv[set][i] == maxRRPV) {
+			ebis_cpu = current_set[i].cpu;
+		        return i;
+		    }
+		}
+
+		int temp =0;
+		for (int i=0; i<LLC_WAY; i++) {
+		    if (application_type[set][i] == cpu) {
+			rrpv[set][i]++;
+			temp++;
+		    }
+		}
+		if(temp ==0) {
+			for (int i=0; i<LLC_WAY; i++) {
+				rrpv[set][i]++;
+			}
+		}
+	}
+	else{
+		for (int i=0; i<LLC_WAY; i++) {
+		    if (rrpv[set][i] == maxRRPV) {
+			ebis_cpu = current_set[i].cpu;
+		        return i;
+		    }
+		}
+		for (int i=0; i<LLC_WAY; i++) {
+			rrpv[set][i]++;
+		}
+	}
+    }
+
+    // WE SHOULD NOT REACH HERE
+    assert(0);
+    return 0;
+}
+
+// use this function to print out your own stats at the end of simulation
+void CACHE::llc_replacement_final_stats()
+{
+	
+}

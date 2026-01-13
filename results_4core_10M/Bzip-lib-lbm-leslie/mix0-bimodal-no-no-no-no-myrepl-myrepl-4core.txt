@@ -1,0 +1,1597 @@
+
+*** ChampSim Multicore Out-of-Order Simulator ***
+
+Warmup Instructions: 1000000
+Simulation Instructions: 10000000
+Number of CPUs: 4
+LLC sets: 8192
+LLC ways: 16
+Off-chip DRAM Size: 4096 MB Channels: 1 Width: 64-bit Data Rate: 3200 MT/s
+
+CPU 0 runs /home/tanky/Desktop/Champsim_MTP/Orignal_sttt-ram_champsim/dpc3_traces/bzip2_281B.trace.xz
+CPU 1 runs /home/tanky/Desktop/Champsim_MTP/Orignal_sttt-ram_champsim/dpc3_traces/libquantum_1735B.trace.xz
+CPU 2 runs /home/tanky/Desktop/Champsim_MTP/Orignal_sttt-ram_champsim/dpc3_traces/lbm_1004B.trace.xz
+CPU 3 runs /home/tanky/Desktop/Champsim_MTP/Orignal_sttt-ram_champsim/dpc3_traces/leslie3d_1186B.trace.xz
+CPU 0 Bimodal branch predictor
+THRESHOLD 1
+WRITE THRESHOLD 48
+CPU 1 Bimodal branch predictor
+THRESHOLD 1
+WRITE THRESHOLD 48
+CPU 2 Bimodal branch predictor
+THRESHOLD 1
+WRITE THRESHOLD 48
+CPU 3 Bimodal branch predictor
+THRESHOLD 1
+WRITE THRESHOLD 48
+avg_cycle_livescore: 1.4	Percentage of blocks with LS greater than THreshold: 60
+avg_cycle_livescore: 0.923884	Percentage of blocks with LS greater than THreshold: 38.28
+avg_cycle_livescore: 0.934848	Percentage of blocks with LS greater than THreshold: 42.1012
+avg_cycle_livescore: 1.00842	Percentage of blocks with LS greater than THreshold: 43.4163
+avg_cycle_livescore: 0.99608	Percentage of blocks with LS greater than THreshold: 34.7131
+avg_cycle_livescore: 1.11888	Percentage of blocks with LS greater than THreshold: 44.523
+avg_cycle_livescore: 1.1055	Percentage of blocks with LS greater than THreshold: 38.707
+avg_cycle_livescore: 1.154	Percentage of blocks with LS greater than THreshold: 37.5614
+avg_cycle_livescore: 1.16202	Percentage of blocks with LS greater than THreshold: 38.5024
+avg_cycle_livescore: 0.94974	Percentage of blocks with LS greater than THreshold: 27.303
+avg_cycle_livescore: 0.833959	Percentage of blocks with LS greater than THreshold: 29.6731
+avg_cycle_livescore: 0.847238	Percentage of blocks with LS greater than THreshold: 30.2812
+avg_cycle_livescore: 0.905445	Percentage of blocks with LS greater than THreshold: 33.7438
+avg_cycle_livescore: 0.864746	Percentage of blocks with LS greater than THreshold: 33.8018
+avg_cycle_livescore: 0.829688	Percentage of blocks with LS greater than THreshold: 30.9235
+avg_cycle_livescore: 0.876283	Percentage of blocks with LS greater than THreshold: 31.8675
+
+Warmup complete CPU 0 instructions: 1325034 cycles: 597932 (Simulation time: 0 hr 0 min 10 sec) 
+Warmup complete CPU 1 instructions: 1301668 cycles: 597932 (Simulation time: 0 hr 0 min 10 sec) 
+Warmup complete CPU 2 instructions: 1482068 cycles: 597932 (Simulation time: 0 hr 0 min 10 sec) 
+Warmup complete CPU 3 instructions: 1000003 cycles: 597932 (Simulation time: 0 hr 0 min 10 sec) 
+
+avg_cycle_livescore: 0.856423	Percentage of blocks with LS greater than THreshold: 30.3583
+avg_cycle_livescore: 0.701746	Percentage of blocks with LS greater than THreshold: 25.8864
+avg_cycle_livescore: 0.695748	Percentage of blocks with LS greater than THreshold: 25.2302
+avg_cycle_livescore: 0.697306	Percentage of blocks with LS greater than THreshold: 24.1882
+avg_cycle_livescore: 0.662383	Percentage of blocks with LS greater than THreshold: 23.2049
+avg_cycle_livescore: 0.694626	Percentage of blocks with LS greater than THreshold: 27.8884
+avg_cycle_livescore: 0.759535	Percentage of blocks with LS greater than THreshold: 29.0802
+avg_cycle_livescore: 0.770084	Percentage of blocks with LS greater than THreshold: 27.3726
+avg_cycle_livescore: 0.803548	Percentage of blocks with LS greater than THreshold: 29.2757
+avg_cycle_livescore: 0.814415	Percentage of blocks with LS greater than THreshold: 29.4365
+avg_cycle_livescore: 0.800193	Percentage of blocks with LS greater than THreshold: 29.2151
+avg_cycle_livescore: 0.963347	Percentage of blocks with LS greater than THreshold: 31.6415
+avg_cycle_livescore: 0.846376	Percentage of blocks with LS greater than THreshold: 26.2778
+avg_cycle_livescore: 0.898585	Percentage of blocks with LS greater than THreshold: 30.0271
+avg_cycle_livescore: 0.921746	Percentage of blocks with LS greater than THreshold: 34.4431
+avg_cycle_livescore: 0.924168	Percentage of blocks with LS greater than THreshold: 28.534
+avg_cycle_livescore: 0.914626	Percentage of blocks with LS greater than THreshold: 28.6535
+avg_cycle_livescore: 0.925664	Percentage of blocks with LS greater than THreshold: 33.2135
+avg_cycle_livescore: 1.01123	Percentage of blocks with LS greater than THreshold: 35.9098
+avg_cycle_livescore: 0.979726	Percentage of blocks with LS greater than THreshold: 26.6514
+avg_cycle_livescore: 0.905817	Percentage of blocks with LS greater than THreshold: 31.8679
+avg_cycle_livescore: 0.942083	Percentage of blocks with LS greater than THreshold: 30.8708
+avg_cycle_livescore: 0.974217	Percentage of blocks with LS greater than THreshold: 32.2466
+avg_cycle_livescore: 0.971145	Percentage of blocks with LS greater than THreshold: 34.1031
+avg_cycle_livescore: 1.0059	Percentage of blocks with LS greater than THreshold: 37.0076
+avg_cycle_livescore: 1.00256	Percentage of blocks with LS greater than THreshold: 26.6602
+avg_cycle_livescore: 0.965387	Percentage of blocks with LS greater than THreshold: 24.9625
+avg_cycle_livescore: 0.978121	Percentage of blocks with LS greater than THreshold: 35.4282
+avg_cycle_livescore: 1.01221	Percentage of blocks with LS greater than THreshold: 35.0956
+avg_cycle_livescore: 1.03111	Percentage of blocks with LS greater than THreshold: 26.6125
+avg_cycle_livescore: 0.993211	Percentage of blocks with LS greater than THreshold: 23.6221
+avg_cycle_livescore: 1.03861	Percentage of blocks with LS greater than THreshold: 36.0069
+avg_cycle_livescore: 1.01611	Percentage of blocks with LS greater than THreshold: 23.0881
+avg_cycle_livescore: 0.934254	Percentage of blocks with LS greater than THreshold: 22.6463
+avg_cycle_livescore: 0.857262	Percentage of blocks with LS greater than THreshold: 26.2805
+avg_cycle_livescore: 0.952127	Percentage of blocks with LS greater than THreshold: 26.9462
+avg_cycle_livescore: 0.922063	Percentage of blocks with LS greater than THreshold: 27.086
+avg_cycle_livescore: 0.933996	Percentage of blocks with LS greater than THreshold: 28.0881
+avg_cycle_livescore: 1.01804	Percentage of blocks with LS greater than THreshold: 34.7902
+avg_cycle_livescore: 1.03361	Percentage of blocks with LS greater than THreshold: 20.6472
+avg_cycle_livescore: 1.11503	Percentage of blocks with LS greater than THreshold: 22.6853
+avg_cycle_livescore: 1.05786	Percentage of blocks with LS greater than THreshold: 22.4872
+avg_cycle_livescore: 1.12898	Percentage of blocks with LS greater than THreshold: 27.784
+avg_cycle_livescore: 1.22984	Percentage of blocks with LS greater than THreshold: 38.7983
+avg_cycle_livescore: 1.1866	Percentage of blocks with LS greater than THreshold: 37.3547
+avg_cycle_livescore: 1.19591	Percentage of blocks with LS greater than THreshold: 35.8776
+avg_cycle_livescore: 1.21945	Percentage of blocks with LS greater than THreshold: 37.3105
+avg_cycle_livescore: 1.22594	Percentage of blocks with LS greater than THreshold: 38.2218
+avg_cycle_livescore: 1.33356	Percentage of blocks with LS greater than THreshold: 36.8124
+avg_cycle_livescore: 1.01704	Percentage of blocks with LS greater than THreshold: 34.6923
+avg_cycle_livescore: 0.954843	Percentage of blocks with LS greater than THreshold: 33.3235
+avg_cycle_livescore: 1.26109	Percentage of blocks with LS greater than THreshold: 37.1193
+avg_cycle_livescore: 1.36284	Percentage of blocks with LS greater than THreshold: 34.1607
+avg_cycle_livescore: 1.35517	Percentage of blocks with LS greater than THreshold: 35.179
+avg_cycle_livescore: 1.38816	Percentage of blocks with LS greater than THreshold: 35.9342
+avg_cycle_livescore: 1.36682	Percentage of blocks with LS greater than THreshold: 35.2945
+avg_cycle_livescore: 1.36727	Percentage of blocks with LS greater than THreshold: 32.9874
+avg_cycle_livescore: 1.3646	Percentage of blocks with LS greater than THreshold: 32.4803
+avg_cycle_livescore: 1.36832	Percentage of blocks with LS greater than THreshold: 35.3335
+avg_cycle_livescore: 1.29764	Percentage of blocks with LS greater than THreshold: 33.6413
+avg_cycle_livescore: 1.38521	Percentage of blocks with LS greater than THreshold: 34.05
+avg_cycle_livescore: 1.27939	Percentage of blocks with LS greater than THreshold: 30.4055
+avg_cycle_livescore: 1.236	Percentage of blocks with LS greater than THreshold: 30.1132
+avg_cycle_livescore: 1.30163	Percentage of blocks with LS greater than THreshold: 31.7123
+avg_cycle_livescore: 1.18666	Percentage of blocks with LS greater than THreshold: 29.0232
+avg_cycle_livescore: 0.735803	Percentage of blocks with LS greater than THreshold: 32.3922
+avg_cycle_livescore: 1.19166	Percentage of blocks with LS greater than THreshold: 34.8511
+avg_cycle_livescore: 1.55099	Percentage of blocks with LS greater than THreshold: 28.4203
+avg_cycle_livescore: 1.75468	Percentage of blocks with LS greater than THreshold: 26.3466
+avg_cycle_livescore: 1.97517	Percentage of blocks with LS greater than THreshold: 26.0285
+avg_cycle_livescore: 1.95781	Percentage of blocks with LS greater than THreshold: 23.6815
+avg_cycle_livescore: 1.85757	Percentage of blocks with LS greater than THreshold: 24.4716
+avg_cycle_livescore: 1.91603	Percentage of blocks with LS greater than THreshold: 27.4029
+avg_cycle_livescore: 1.88276	Percentage of blocks with LS greater than THreshold: 29.3491
+avg_cycle_livescore: 1.21514	Percentage of blocks with LS greater than THreshold: 26.6863
+avg_cycle_livescore: 1.30314	Percentage of blocks with LS greater than THreshold: 30.2935
+avg_cycle_livescore: 1.48364	Percentage of blocks with LS greater than THreshold: 38.4399
+avg_cycle_livescore: 1.34935	Percentage of blocks with LS greater than THreshold: 31.9623
+avg_cycle_livescore: 1.25027	Percentage of blocks with LS greater than THreshold: 31.4195
+avg_cycle_livescore: 1.36091	Percentage of blocks with LS greater than THreshold: 33.0278
+avg_cycle_livescore: 1.4159	Percentage of blocks with LS greater than THreshold: 38.0145
+avg_cycle_livescore: 1.26012	Percentage of blocks with LS greater than THreshold: 29.0191
+avg_cycle_livescore: 1.37892	Percentage of blocks with LS greater than THreshold: 34.9817
+avg_cycle_livescore: 1.4092	Percentage of blocks with LS greater than THreshold: 35.3589
+avg_cycle_livescore: 1.33365	Percentage of blocks with LS greater than THreshold: 31.7311
+avg_cycle_livescore: 1.40503	Percentage of blocks with LS greater than THreshold: 35.3215
+avg_cycle_livescore: 1.19763	Percentage of blocks with LS greater than THreshold: 29.3554
+avg_cycle_livescore: 1.18959	Percentage of blocks with LS greater than THreshold: 25.1685
+avg_cycle_livescore: 1.18082	Percentage of blocks with LS greater than THreshold: 26.0315
+avg_cycle_livescore: 1.12838	Percentage of blocks with LS greater than THreshold: 25.3192
+avg_cycle_livescore: 1.21255	Percentage of blocks with LS greater than THreshold: 25.9167
+avg_cycle_livescore: 1.25589	Percentage of blocks with LS greater than THreshold: 26.3792
+avg_cycle_livescore: 1.22321	Percentage of blocks with LS greater than THreshold: 25.35
+avg_cycle_livescore: 1.10645	Percentage of blocks with LS greater than THreshold: 21.0515
+avg_cycle_livescore: 1.24002	Percentage of blocks with LS greater than THreshold: 24.6407
+avg_cycle_livescore: 1.37067	Percentage of blocks with LS greater than THreshold: 29.9443
+avg_cycle_livescore: 1.19045	Percentage of blocks with LS greater than THreshold: 25.5583
+avg_cycle_livescore: 1.12218	Percentage of blocks with LS greater than THreshold: 22.0093
+avg_cycle_livescore: 1.27874	Percentage of blocks with LS greater than THreshold: 25.4334
+avg_cycle_livescore: 1.17765	Percentage of blocks with LS greater than THreshold: 23.6095
+avg_cycle_livescore: 1.16455	Percentage of blocks with LS greater than THreshold: 23.9042
+avg_cycle_livescore: 1.20577	Percentage of blocks with LS greater than THreshold: 24.6252
+avg_cycle_livescore: 1.36536	Percentage of blocks with LS greater than THreshold: 29.103
+avg_cycle_livescore: 1.22938	Percentage of blocks with LS greater than THreshold: 22.9163
+avg_cycle_livescore: 1.21723	Percentage of blocks with LS greater than THreshold: 24.2804
+avg_cycle_livescore: 1.56285	Percentage of blocks with LS greater than THreshold: 36.0635
+avg_cycle_livescore: 1.23959	Percentage of blocks with LS greater than THreshold: 23.2509
+avg_cycle_livescore: 1.27701	Percentage of blocks with LS greater than THreshold: 26.5928
+avg_cycle_livescore: 1.47663	Percentage of blocks with LS greater than THreshold: 32.6847
+avg_cycle_livescore: 1.25524	Percentage of blocks with LS greater than THreshold: 26.7917
+avg_cycle_livescore: 1.07928	Percentage of blocks with LS greater than THreshold: 19.315
+avg_cycle_livescore: 1.11754	Percentage of blocks with LS greater than THreshold: 20.0566
+avg_cycle_livescore: 1.36589	Percentage of blocks with LS greater than THreshold: 28.5761
+avg_cycle_livescore: 1.10815	Percentage of blocks with LS greater than THreshold: 21.9563
+avg_cycle_livescore: 1.55961	Percentage of blocks with LS greater than THreshold: 36.2434
+avg_cycle_livescore: 1.26951	Percentage of blocks with LS greater than THreshold: 27.3621
+avg_cycle_livescore: 1.29188	Percentage of blocks with LS greater than THreshold: 24.3093
+avg_cycle_livescore: 1.49244	Percentage of blocks with LS greater than THreshold: 33.5357
+avg_cycle_livescore: 1.20619	Percentage of blocks with LS greater than THreshold: 22.2951
+avg_cycle_livescore: 1.10469	Percentage of blocks with LS greater than THreshold: 21.5909
+avg_cycle_livescore: 1.25781	Percentage of blocks with LS greater than THreshold: 26.5979
+avg_cycle_livescore: 1.29788	Percentage of blocks with LS greater than THreshold: 27.5981
+avg_cycle_livescore: 1.3128	Percentage of blocks with LS greater than THreshold: 27.2727
+avg_cycle_livescore: 1.41589	Percentage of blocks with LS greater than THreshold: 30.6343
+avg_cycle_livescore: 1.23063	Percentage of blocks with LS greater than THreshold: 23.8302
+avg_cycle_livescore: 1.28472	Percentage of blocks with LS greater than THreshold: 25.667
+avg_cycle_livescore: 1.16404	Percentage of blocks with LS greater than THreshold: 20.1283
+avg_cycle_livescore: 1.16042	Percentage of blocks with LS greater than THreshold: 21.6733
+avg_cycle_livescore: 1.40947	Percentage of blocks with LS greater than THreshold: 28.7392
+avg_cycle_livescore: 1.32564	Percentage of blocks with LS greater than THreshold: 27.4244
+avg_cycle_livescore: 1.33506	Percentage of blocks with LS greater than THreshold: 25.894
+avg_cycle_livescore: 1.21018	Percentage of blocks with LS greater than THreshold: 21.5455
+avg_cycle_livescore: 1.30491	Percentage of blocks with LS greater than THreshold: 26.7537
+avg_cycle_livescore: 1.37478	Percentage of blocks with LS greater than THreshold: 29.1431
+avg_cycle_livescore: 1.26513	Percentage of blocks with LS greater than THreshold: 23.6425
+avg_cycle_livescore: 1.21311	Percentage of blocks with LS greater than THreshold: 25.9275
+avg_cycle_livescore: 1.60563	Percentage of blocks with LS greater than THreshold: 42.7818
+avg_cycle_livescore: 1.6507	Percentage of blocks with LS greater than THreshold: 45.5449
+avg_cycle_livescore: 1.53706	Percentage of blocks with LS greater than THreshold: 41.3995
+avg_cycle_livescore: 1.59688	Percentage of blocks with LS greater than THreshold: 42.6717
+avg_cycle_livescore: 1.60351	Percentage of blocks with LS greater than THreshold: 40.6139
+avg_cycle_livescore: 1.57253	Percentage of blocks with LS greater than THreshold: 38.116
+avg_cycle_livescore: 1.46939	Percentage of blocks with LS greater than THreshold: 35.7959
+avg_cycle_livescore: 1.54524	Percentage of blocks with LS greater than THreshold: 41.7011
+avg_cycle_livescore: 1.61266	Percentage of blocks with LS greater than THreshold: 42.1868
+avg_cycle_livescore: 1.57823	Percentage of blocks with LS greater than THreshold: 44.7243
+avg_cycle_livescore: 1.6116	Percentage of blocks with LS greater than THreshold: 44.896
+avg_cycle_livescore: 1.53305	Percentage of blocks with LS greater than THreshold: 39.3445
+avg_cycle_livescore: 1.51771	Percentage of blocks with LS greater than THreshold: 37.175
+avg_cycle_livescore: 1.54475	Percentage of blocks with LS greater than THreshold: 38.7806
+avg_cycle_livescore: 1.58077	Percentage of blocks with LS greater than THreshold: 42.4127
+avg_cycle_livescore: 1.04129	Percentage of blocks with LS greater than THreshold: 32.2771
+avg_cycle_livescore: 0.695984	Percentage of blocks with LS greater than THreshold: 31.8756
+avg_cycle_livescore: 1.54476	Percentage of blocks with LS greater than THreshold: 42.5847
+avg_cycle_livescore: 1.48074	Percentage of blocks with LS greater than THreshold: 38.2741
+avg_cycle_livescore: 1.56219	Percentage of blocks with LS greater than THreshold: 39.8943
+avg_cycle_livescore: 1.53994	Percentage of blocks with LS greater than THreshold: 38.4124
+avg_cycle_livescore: 1.49884	Percentage of blocks with LS greater than THreshold: 34.1369
+avg_cycle_livescore: 1.41883	Percentage of blocks with LS greater than THreshold: 36.5055
+avg_cycle_livescore: 1.57334	Percentage of blocks with LS greater than THreshold: 41.6754
+avg_cycle_livescore: 1.65099	Percentage of blocks with LS greater than THreshold: 43.0425
+avg_cycle_livescore: 1.51613	Percentage of blocks with LS greater than THreshold: 40.4898
+avg_cycle_livescore: 1.52925	Percentage of blocks with LS greater than THreshold: 40.6517
+avg_cycle_livescore: 1.54916	Percentage of blocks with LS greater than THreshold: 39.6124
+avg_cycle_livescore: 1.47681	Percentage of blocks with LS greater than THreshold: 37.4419
+avg_cycle_livescore: 1.49254	Percentage of blocks with LS greater than THreshold: 36.3823
+avg_cycle_livescore: 1.48136	Percentage of blocks with LS greater than THreshold: 35.8929
+avg_cycle_livescore: 1.63537	Percentage of blocks with LS greater than THreshold: 44.1346
+avg_cycle_livescore: 1.58845	Percentage of blocks with LS greater than THreshold: 43.3036
+avg_cycle_livescore: 1.61215	Percentage of blocks with LS greater than THreshold: 42.8431
+avg_cycle_livescore: 1.54596	Percentage of blocks with LS greater than THreshold: 40.7574
+avg_cycle_livescore: 1.58233	Percentage of blocks with LS greater than THreshold: 40.7645
+avg_cycle_livescore: 1.5718	Percentage of blocks with LS greater than THreshold: 39.9955
+avg_cycle_livescore: 1.40914	Percentage of blocks with LS greater than THreshold: 35.5012
+avg_cycle_livescore: 1.43177	Percentage of blocks with LS greater than THreshold: 33.4661
+avg_cycle_livescore: 1.40893	Percentage of blocks with LS greater than THreshold: 31.1786
+avg_cycle_livescore: 1.03689	Percentage of blocks with LS greater than THreshold: 17.0444
+avg_cycle_livescore: 1.16269	Percentage of blocks with LS greater than THreshold: 22.2174
+avg_cycle_livescore: 1.18968	Percentage of blocks with LS greater than THreshold: 24.386
+avg_cycle_livescore: 1.20593	Percentage of blocks with LS greater than THreshold: 22.5374
+avg_cycle_livescore: 1.32758	Percentage of blocks with LS greater than THreshold: 25.4533
+avg_cycle_livescore: 1.19513	Percentage of blocks with LS greater than THreshold: 25.1741
+avg_cycle_livescore: 1.05941	Percentage of blocks with LS greater than THreshold: 18.7447
+avg_cycle_livescore: 1.22367	Percentage of blocks with LS greater than THreshold: 26.6518
+avg_cycle_livescore: 1.39483	Percentage of blocks with LS greater than THreshold: 29.6259
+avg_cycle_livescore: 1.12856	Percentage of blocks with LS greater than THreshold: 21.1292
+avg_cycle_livescore: 1.20492	Percentage of blocks with LS greater than THreshold: 22.1352
+avg_cycle_livescore: 1.24497	Percentage of blocks with LS greater than THreshold: 27.089
+avg_cycle_livescore: 1.17934	Percentage of blocks with LS greater than THreshold: 22.616
+avg_cycle_livescore: 1.25224	Percentage of blocks with LS greater than THreshold: 26.9113
+avg_cycle_livescore: 1.22616	Percentage of blocks with LS greater than THreshold: 24.814
+avg_cycle_livescore: 1.16558	Percentage of blocks with LS greater than THreshold: 24.8331
+avg_cycle_livescore: 1.31456	Percentage of blocks with LS greater than THreshold: 35.0786
+avg_cycle_livescore: 1.19527	Percentage of blocks with LS greater than THreshold: 29.1166
+avg_cycle_livescore: 1.34458	Percentage of blocks with LS greater than THreshold: 32.9454
+avg_cycle_livescore: 1.42005	Percentage of blocks with LS greater than THreshold: 34.487
+avg_cycle_livescore: 1.36198	Percentage of blocks with LS greater than THreshold: 32.0605
+avg_cycle_livescore: 1.3947	Percentage of blocks with LS greater than THreshold: 31.0805
+avg_cycle_livescore: 1.17008	Percentage of blocks with LS greater than THreshold: 25.1438
+avg_cycle_livescore: 1.26229	Percentage of blocks with LS greater than THreshold: 26.0104
+avg_cycle_livescore: 1.24624	Percentage of blocks with LS greater than THreshold: 23.5181
+avg_cycle_livescore: 1.24683	Percentage of blocks with LS greater than THreshold: 23.4574
+avg_cycle_livescore: 1.26753	Percentage of blocks with LS greater than THreshold: 25.4631
+avg_cycle_livescore: 1.37986	Percentage of blocks with LS greater than THreshold: 32.1305
+avg_cycle_livescore: 1.25215	Percentage of blocks with LS greater than THreshold: 27.2712
+avg_cycle_livescore: 1.08028	Percentage of blocks with LS greater than THreshold: 18.6131
+avg_cycle_livescore: 1.25278	Percentage of blocks with LS greater than THreshold: 26.2579
+avg_cycle_livescore: 1.34089	Percentage of blocks with LS greater than THreshold: 29.5685
+avg_cycle_livescore: 1.234	Percentage of blocks with LS greater than THreshold: 22.7331
+avg_cycle_livescore: 1.13741	Percentage of blocks with LS greater than THreshold: 23.8429
+avg_cycle_livescore: 1.14365	Percentage of blocks with LS greater than THreshold: 23.4714
+avg_cycle_livescore: 1.4311	Percentage of blocks with LS greater than THreshold: 30.2428
+avg_cycle_livescore: 1.21991	Percentage of blocks with LS greater than THreshold: 24.7818
+avg_cycle_livescore: 1.28954	Percentage of blocks with LS greater than THreshold: 25.0351
+avg_cycle_livescore: 1.16211	Percentage of blocks with LS greater than THreshold: 23.3785
+avg_cycle_livescore: 1.33239	Percentage of blocks with LS greater than THreshold: 28.0736
+avg_cycle_livescore: 1.33141	Percentage of blocks with LS greater than THreshold: 26.1058
+avg_cycle_livescore: 1.24721	Percentage of blocks with LS greater than THreshold: 25.8242
+avg_cycle_livescore: 1.19474	Percentage of blocks with LS greater than THreshold: 22.8623
+avg_cycle_livescore: 1.37769	Percentage of blocks with LS greater than THreshold: 30.6558
+avg_cycle_livescore: 1.20801	Percentage of blocks with LS greater than THreshold: 24.5335
+avg_cycle_livescore: 1.28185	Percentage of blocks with LS greater than THreshold: 23.7996
+avg_cycle_livescore: 1.26566	Percentage of blocks with LS greater than THreshold: 25.8762
+Heartbeat CPU 0 instructions: 10000003 cycles: 15783634 heartbeat IPC: 0.633568 cumulative IPC: 0.571259 (Simulation time: 0 hr 1 min 7 sec) 
+avg_cycle_livescore: 1.34852	Percentage of blocks with LS greater than THreshold: 28.7101
+avg_cycle_livescore: 1.32338	Percentage of blocks with LS greater than THreshold: 22.9563
+avg_cycle_livescore: 1.19206	Percentage of blocks with LS greater than THreshold: 21.3919
+avg_cycle_livescore: 1.35013	Percentage of blocks with LS greater than THreshold: 25.5227
+avg_cycle_livescore: 1.32019	Percentage of blocks with LS greater than THreshold: 25.8051
+avg_cycle_livescore: 1.18706	Percentage of blocks with LS greater than THreshold: 24.0428
+avg_cycle_livescore: 1.32259	Percentage of blocks with LS greater than THreshold: 28.4957
+avg_cycle_livescore: 1.40065	Percentage of blocks with LS greater than THreshold: 31.5598
+avg_cycle_livescore: 1.36377	Percentage of blocks with LS greater than THreshold: 29.7093
+avg_cycle_livescore: 1.48016	Percentage of blocks with LS greater than THreshold: 35.5081
+avg_cycle_livescore: 1.41192	Percentage of blocks with LS greater than THreshold: 32.5678
+avg_cycle_livescore: 1.36751	Percentage of blocks with LS greater than THreshold: 32.5695
+avg_cycle_livescore: 1.28092	Percentage of blocks with LS greater than THreshold: 24.9658
+avg_cycle_livescore: 1.26174	Percentage of blocks with LS greater than THreshold: 25.6288
+avg_cycle_livescore: 1.21458	Percentage of blocks with LS greater than THreshold: 24.1238
+avg_cycle_livescore: 1.34172	Percentage of blocks with LS greater than THreshold: 24.1613
+avg_cycle_livescore: 1.26198	Percentage of blocks with LS greater than THreshold: 24.7999
+avg_cycle_livescore: 1.41226	Percentage of blocks with LS greater than THreshold: 27.2768
+avg_cycle_livescore: 1.29861	Percentage of blocks with LS greater than THreshold: 24.4319
+avg_cycle_livescore: 1.36453	Percentage of blocks with LS greater than THreshold: 25.5835
+avg_cycle_livescore: 1.28525	Percentage of blocks with LS greater than THreshold: 24.62
+avg_cycle_livescore: 1.44301	Percentage of blocks with LS greater than THreshold: 28.1173
+avg_cycle_livescore: 1.34108	Percentage of blocks with LS greater than THreshold: 28.2505
+avg_cycle_livescore: 1.15977	Percentage of blocks with LS greater than THreshold: 21.1015
+avg_cycle_livescore: 1.30404	Percentage of blocks with LS greater than THreshold: 24.6663
+avg_cycle_livescore: 1.30609	Percentage of blocks with LS greater than THreshold: 28.2446
+avg_cycle_livescore: 1.34122	Percentage of blocks with LS greater than THreshold: 28.5009
+avg_cycle_livescore: 1.32578	Percentage of blocks with LS greater than THreshold: 25.5553
+avg_cycle_livescore: 1.09681	Percentage of blocks with LS greater than THreshold: 19.8891
+avg_cycle_livescore: 1.36813	Percentage of blocks with LS greater than THreshold: 27.6788
+avg_cycle_livescore: 1.24118	Percentage of blocks with LS greater than THreshold: 24.531
+Heartbeat CPU 2 instructions: 10000002 cycles: 18184352 heartbeat IPC: 0.549923 cumulative IPC: 0.484347 (Simulation time: 0 hr 1 min 15 sec) 
+avg_cycle_livescore: 1.36009	Percentage of blocks with LS greater than THreshold: 28.1337
+avg_cycle_livescore: 1.26245	Percentage of blocks with LS greater than THreshold: 27.6615
+Finished CPU 0 instructions: 10000000 cycles: 17761654 cumulative IPC: 0.563011 (Simulation time: 0 hr 1 min 16 sec) 
+avg_cycle_livescore: 1.34735	Percentage of blocks with LS greater than THreshold: 28.5022
+avg_cycle_livescore: 0.856155	Percentage of blocks with LS greater than THreshold: 24.1096
+avg_cycle_livescore: 0.577799	Percentage of blocks with LS greater than THreshold: 26.8876
+avg_cycle_livescore: 1.45578	Percentage of blocks with LS greater than THreshold: 41.2503
+avg_cycle_livescore: 1.31866	Percentage of blocks with LS greater than THreshold: 27.1745
+avg_cycle_livescore: 1.26952	Percentage of blocks with LS greater than THreshold: 22.3733
+avg_cycle_livescore: 1.35984	Percentage of blocks with LS greater than THreshold: 25.8087
+avg_cycle_livescore: 1.20207	Percentage of blocks with LS greater than THreshold: 24.6629
+avg_cycle_livescore: 1.24339	Percentage of blocks with LS greater than THreshold: 23.3644
+avg_cycle_livescore: 1.2367	Percentage of blocks with LS greater than THreshold: 22.5169
+avg_cycle_livescore: 1.30423	Percentage of blocks with LS greater than THreshold: 27.7301
+avg_cycle_livescore: 1.41594	Percentage of blocks with LS greater than THreshold: 31.8201
+avg_cycle_livescore: 1.46287	Percentage of blocks with LS greater than THreshold: 34.1468
+avg_cycle_livescore: 1.44851	Percentage of blocks with LS greater than THreshold: 34.5061
+avg_cycle_livescore: 1.46227	Percentage of blocks with LS greater than THreshold: 37.3001
+avg_cycle_livescore: 1.46543	Percentage of blocks with LS greater than THreshold: 36.0393
+avg_cycle_livescore: 1.53295	Percentage of blocks with LS greater than THreshold: 39.2965
+avg_cycle_livescore: 1.60797	Percentage of blocks with LS greater than THreshold: 39.652
+avg_cycle_livescore: 1.39283	Percentage of blocks with LS greater than THreshold: 32.9154
+avg_cycle_livescore: 1.47453	Percentage of blocks with LS greater than THreshold: 35.3135
+avg_cycle_livescore: 1.44134	Percentage of blocks with LS greater than THreshold: 34.3169
+avg_cycle_livescore: 1.39711	Percentage of blocks with LS greater than THreshold: 32.1518
+avg_cycle_livescore: 1.40839	Percentage of blocks with LS greater than THreshold: 31.0578
+avg_cycle_livescore: 1.36979	Percentage of blocks with LS greater than THreshold: 29.2581
+avg_cycle_livescore: 1.40612	Percentage of blocks with LS greater than THreshold: 30.2661
+avg_cycle_livescore: 1.42669	Percentage of blocks with LS greater than THreshold: 30.569
+avg_cycle_livescore: 1.28018	Percentage of blocks with LS greater than THreshold: 27.4922
+avg_cycle_livescore: 1.40588	Percentage of blocks with LS greater than THreshold: 32.2722
+avg_cycle_livescore: 1.32042	Percentage of blocks with LS greater than THreshold: 26.7045
+avg_cycle_livescore: 1.37228	Percentage of blocks with LS greater than THreshold: 28.8767
+avg_cycle_livescore: 1.39675	Percentage of blocks with LS greater than THreshold: 29.0165
+avg_cycle_livescore: 1.3693	Percentage of blocks with LS greater than THreshold: 27.0234
+avg_cycle_livescore: 1.27316	Percentage of blocks with LS greater than THreshold: 23.4238
+avg_cycle_livescore: 1.42669	Percentage of blocks with LS greater than THreshold: 21.9819
+Finished CPU 2 instructions: 10000000 cycles: 21472523 cumulative IPC: 0.465711 (Simulation time: 0 hr 1 min 27 sec) 
+avg_cycle_livescore: 2.16875	Percentage of blocks with LS greater than THreshold: 20.7328
+avg_cycle_livescore: 2.15772	Percentage of blocks with LS greater than THreshold: 24.9686
+avg_cycle_livescore: 2.14745	Percentage of blocks with LS greater than THreshold: 22.3689
+avg_cycle_livescore: 2.03613	Percentage of blocks with LS greater than THreshold: 18.0584
+avg_cycle_livescore: 1.8993	Percentage of blocks with LS greater than THreshold: 18.5759
+avg_cycle_livescore: 1.82553	Percentage of blocks with LS greater than THreshold: 17.0379
+avg_cycle_livescore: 1.92199	Percentage of blocks with LS greater than THreshold: 21.1835
+avg_cycle_livescore: 1.29243	Percentage of blocks with LS greater than THreshold: 23.022
+avg_cycle_livescore: 1.31673	Percentage of blocks with LS greater than THreshold: 24.6955
+avg_cycle_livescore: 1.29382	Percentage of blocks with LS greater than THreshold: 24.9141
+avg_cycle_livescore: 1.19073	Percentage of blocks with LS greater than THreshold: 18.6386
+avg_cycle_livescore: 1.34269	Percentage of blocks with LS greater than THreshold: 28.8603
+avg_cycle_livescore: 1.24367	Percentage of blocks with LS greater than THreshold: 19.6229
+avg_cycle_livescore: 1.33658	Percentage of blocks with LS greater than THreshold: 27.3113
+avg_cycle_livescore: 1.44517	Percentage of blocks with LS greater than THreshold: 24.8197
+avg_cycle_livescore: 1.33929	Percentage of blocks with LS greater than THreshold: 25.8929
+avg_cycle_livescore: 1.2932	Percentage of blocks with LS greater than THreshold: 26.2354
+avg_cycle_livescore: 1.36256	Percentage of blocks with LS greater than THreshold: 25.7829
+avg_cycle_livescore: 1.28899	Percentage of blocks with LS greater than THreshold: 25.7473
+avg_cycle_livescore: 1.39428	Percentage of blocks with LS greater than THreshold: 29.2529
+avg_cycle_livescore: 1.31293	Percentage of blocks with LS greater than THreshold: 24.8281
+avg_cycle_livescore: 1.54926	Percentage of blocks with LS greater than THreshold: 38.7983
+avg_cycle_livescore: 1.68628	Percentage of blocks with LS greater than THreshold: 46.0364
+avg_cycle_livescore: 1.58391	Percentage of blocks with LS greater than THreshold: 41.4145
+avg_cycle_livescore: 1.56915	Percentage of blocks with LS greater than THreshold: 42.3559
+avg_cycle_livescore: 1.65488	Percentage of blocks with LS greater than THreshold: 45.7428
+avg_cycle_livescore: 1.52293	Percentage of blocks with LS greater than THreshold: 37.8895
+avg_cycle_livescore: 1.37113	Percentage of blocks with LS greater than THreshold: 33.9782
+avg_cycle_livescore: 1.52386	Percentage of blocks with LS greater than THreshold: 37.2342
+avg_cycle_livescore: 1.60078	Percentage of blocks with LS greater than THreshold: 42.9415
+avg_cycle_livescore: 1.62294	Percentage of blocks with LS greater than THreshold: 41.1365
+avg_cycle_livescore: 1.55444	Percentage of blocks with LS greater than THreshold: 42.1728
+avg_cycle_livescore: 1.56941	Percentage of blocks with LS greater than THreshold: 41.7668
+avg_cycle_livescore: 1.61479	Percentage of blocks with LS greater than THreshold: 42.4687
+avg_cycle_livescore: 1.52752	Percentage of blocks with LS greater than THreshold: 40.0878
+avg_cycle_livescore: 1.67379	Percentage of blocks with LS greater than THreshold: 43.1226
+avg_cycle_livescore: 1.57942	Percentage of blocks with LS greater than THreshold: 40.5989
+avg_cycle_livescore: 1.61583	Percentage of blocks with LS greater than THreshold: 42.3263
+avg_cycle_livescore: 1.54133	Percentage of blocks with LS greater than THreshold: 40.4974
+avg_cycle_livescore: 1.56355	Percentage of blocks with LS greater than THreshold: 41.1388
+avg_cycle_livescore: 1.6167	Percentage of blocks with LS greater than THreshold: 43.1168
+avg_cycle_livescore: 1.56495	Percentage of blocks with LS greater than THreshold: 39.9478
+avg_cycle_livescore: 1.62497	Percentage of blocks with LS greater than THreshold: 43.9961
+avg_cycle_livescore: 1.50269	Percentage of blocks with LS greater than THreshold: 38.9501
+avg_cycle_livescore: 1.48775	Percentage of blocks with LS greater than THreshold: 36.7816
+avg_cycle_livescore: 1.57063	Percentage of blocks with LS greater than THreshold: 40.7697
+avg_cycle_livescore: 1.59289	Percentage of blocks with LS greater than THreshold: 43.7314
+avg_cycle_livescore: 1.50067	Percentage of blocks with LS greater than THreshold: 38.4004
+avg_cycle_livescore: 1.61769	Percentage of blocks with LS greater than THreshold: 41.1821
+avg_cycle_livescore: 1.52558	Percentage of blocks with LS greater than THreshold: 40.8686
+avg_cycle_livescore: 1.46158	Percentage of blocks with LS greater than THreshold: 37.6018
+avg_cycle_livescore: 1.53353	Percentage of blocks with LS greater than THreshold: 39.1631
+avg_cycle_livescore: 1.28857	Percentage of blocks with LS greater than THreshold: 30.0051
+avg_cycle_livescore: 1.5437	Percentage of blocks with LS greater than THreshold: 39.8391
+avg_cycle_livescore: 1.5964	Percentage of blocks with LS greater than THreshold: 40.4648
+avg_cycle_livescore: 1.54139	Percentage of blocks with LS greater than THreshold: 44.6631
+avg_cycle_livescore: 1.54118	Percentage of blocks with LS greater than THreshold: 45.4408
+avg_cycle_livescore: 1.47874	Percentage of blocks with LS greater than THreshold: 39.016
+avg_cycle_livescore: 0.762418	Percentage of blocks with LS greater than THreshold: 26.0574
+avg_cycle_livescore: 1.24165	Percentage of blocks with LS greater than THreshold: 37.9253
+avg_cycle_livescore: 1.36891	Percentage of blocks with LS greater than THreshold: 30.3549
+avg_cycle_livescore: 1.39139	Percentage of blocks with LS greater than THreshold: 32.5215
+avg_cycle_livescore: 1.48403	Percentage of blocks with LS greater than THreshold: 35.345
+avg_cycle_livescore: 1.40051	Percentage of blocks with LS greater than THreshold: 34.7085
+avg_cycle_livescore: 1.43864	Percentage of blocks with LS greater than THreshold: 33.4439
+avg_cycle_livescore: 1.29071	Percentage of blocks with LS greater than THreshold: 27.8285
+avg_cycle_livescore: 1.38488	Percentage of blocks with LS greater than THreshold: 32.1324
+avg_cycle_livescore: 1.39162	Percentage of blocks with LS greater than THreshold: 31.749
+avg_cycle_livescore: 1.3203	Percentage of blocks with LS greater than THreshold: 29.6242
+avg_cycle_livescore: 1.40687	Percentage of blocks with LS greater than THreshold: 32.6006
+avg_cycle_livescore: 1.27158	Percentage of blocks with LS greater than THreshold: 27.4125
+avg_cycle_livescore: 1.35077	Percentage of blocks with LS greater than THreshold: 31.2724
+avg_cycle_livescore: 1.42661	Percentage of blocks with LS greater than THreshold: 31.8577
+avg_cycle_livescore: 1.87342	Percentage of blocks with LS greater than THreshold: 28.1266
+avg_cycle_livescore: 2.11042	Percentage of blocks with LS greater than THreshold: 25.1753
+avg_cycle_livescore: 2.08566	Percentage of blocks with LS greater than THreshold: 22.1439
+avg_cycle_livescore: 2.02091	Percentage of blocks with LS greater than THreshold: 17.7768
+avg_cycle_livescore: 2.00802	Percentage of blocks with LS greater than THreshold: 18.7173
+avg_cycle_livescore: 1.97114	Percentage of blocks with LS greater than THreshold: 22.9339
+avg_cycle_livescore: 1.9672	Percentage of blocks with LS greater than THreshold: 20.4117
+avg_cycle_livescore: 1.69171	Percentage of blocks with LS greater than THreshold: 19.1345
+avg_cycle_livescore: 1.34187	Percentage of blocks with LS greater than THreshold: 28.9921
+avg_cycle_livescore: 1.31962	Percentage of blocks with LS greater than THreshold: 23.9761
+avg_cycle_livescore: 1.23494	Percentage of blocks with LS greater than THreshold: 22.5604
+avg_cycle_livescore: 1.32045	Percentage of blocks with LS greater than THreshold: 28.4953
+avg_cycle_livescore: 1.40846	Percentage of blocks with LS greater than THreshold: 24.2577
+avg_cycle_livescore: 1.38928	Percentage of blocks with LS greater than THreshold: 27.6776
+avg_cycle_livescore: 1.10448	Percentage of blocks with LS greater than THreshold: 18.8398
+avg_cycle_livescore: 1.29682	Percentage of blocks with LS greater than THreshold: 28.0477
+avg_cycle_livescore: 1.39785	Percentage of blocks with LS greater than THreshold: 30.0348
+avg_cycle_livescore: 1.36444	Percentage of blocks with LS greater than THreshold: 31.7067
+avg_cycle_livescore: 1.38053	Percentage of blocks with LS greater than THreshold: 30.933
+avg_cycle_livescore: 1.37588	Percentage of blocks with LS greater than THreshold: 32.488
+avg_cycle_livescore: 1.29038	Percentage of blocks with LS greater than THreshold: 29.0541
+avg_cycle_livescore: 1.37376	Percentage of blocks with LS greater than THreshold: 32.8249
+avg_cycle_livescore: 1.27171	Percentage of blocks with LS greater than THreshold: 26.0096
+avg_cycle_livescore: 1.30433	Percentage of blocks with LS greater than THreshold: 26.702
+avg_cycle_livescore: 1.36978	Percentage of blocks with LS greater than THreshold: 30.101
+avg_cycle_livescore: 1.27502	Percentage of blocks with LS greater than THreshold: 26.2014
+avg_cycle_livescore: 1.33425	Percentage of blocks with LS greater than THreshold: 30.8776
+avg_cycle_livescore: 1.3769	Percentage of blocks with LS greater than THreshold: 29.7791
+avg_cycle_livescore: 1.2603	Percentage of blocks with LS greater than THreshold: 26.671
+avg_cycle_livescore: 1.39695	Percentage of blocks with LS greater than THreshold: 29.8818
+avg_cycle_livescore: 1.69615	Percentage of blocks with LS greater than THreshold: 39.5894
+avg_cycle_livescore: 1.99659	Percentage of blocks with LS greater than THreshold: 28.1676
+avg_cycle_livescore: 2.12036	Percentage of blocks with LS greater than THreshold: 25.7499
+avg_cycle_livescore: 1.953	Percentage of blocks with LS greater than THreshold: 18.6955
+avg_cycle_livescore: 1.80736	Percentage of blocks with LS greater than THreshold: 28.2975
+avg_cycle_livescore: 1.48721	Percentage of blocks with LS greater than THreshold: 27.3076
+avg_cycle_livescore: 1.59669	Percentage of blocks with LS greater than THreshold: 35.791
+avg_cycle_livescore: 1.41776	Percentage of blocks with LS greater than THreshold: 34.2817
+avg_cycle_livescore: 1.49605	Percentage of blocks with LS greater than THreshold: 35.5639
+avg_cycle_livescore: 1.42119	Percentage of blocks with LS greater than THreshold: 35.7696
+avg_cycle_livescore: 1.42715	Percentage of blocks with LS greater than THreshold: 32.3563
+avg_cycle_livescore: 1.33002	Percentage of blocks with LS greater than THreshold: 28.1264
+avg_cycle_livescore: 1.39809	Percentage of blocks with LS greater than THreshold: 31.729
+avg_cycle_livescore: 1.44418	Percentage of blocks with LS greater than THreshold: 32.2415
+avg_cycle_livescore: 1.32064	Percentage of blocks with LS greater than THreshold: 30.9574
+avg_cycle_livescore: 1.30434	Percentage of blocks with LS greater than THreshold: 28.8287
+avg_cycle_livescore: 1.46406	Percentage of blocks with LS greater than THreshold: 33.426
+avg_cycle_livescore: 1.44626	Percentage of blocks with LS greater than THreshold: 31.9383
+avg_cycle_livescore: 1.35801	Percentage of blocks with LS greater than THreshold: 30.4746
+avg_cycle_livescore: 1.4466	Percentage of blocks with LS greater than THreshold: 30.0213
+avg_cycle_livescore: 1.29715	Percentage of blocks with LS greater than THreshold: 29.9275
+avg_cycle_livescore: 1.40196	Percentage of blocks with LS greater than THreshold: 29.6965
+avg_cycle_livescore: 1.35187	Percentage of blocks with LS greater than THreshold: 29.4398
+avg_cycle_livescore: 1.52807	Percentage of blocks with LS greater than THreshold: 34.258
+avg_cycle_livescore: 1.43268	Percentage of blocks with LS greater than THreshold: 30.1619
+avg_cycle_livescore: 1.48587	Percentage of blocks with LS greater than THreshold: 32.2155
+avg_cycle_livescore: 1.3191	Percentage of blocks with LS greater than THreshold: 27.2013
+avg_cycle_livescore: 1.43846	Percentage of blocks with LS greater than THreshold: 30.8155
+avg_cycle_livescore: 1.35377	Percentage of blocks with LS greater than THreshold: 30.2402
+avg_cycle_livescore: 1.40743	Percentage of blocks with LS greater than THreshold: 30.6885
+avg_cycle_livescore: 1.42692	Percentage of blocks with LS greater than THreshold: 30.946
+avg_cycle_livescore: 1.39297	Percentage of blocks with LS greater than THreshold: 30.8219
+avg_cycle_livescore: 1.38781	Percentage of blocks with LS greater than THreshold: 32.4709
+avg_cycle_livescore: 1.35813	Percentage of blocks with LS greater than THreshold: 31.1834
+avg_cycle_livescore: 1.43226	Percentage of blocks with LS greater than THreshold: 34.7294
+avg_cycle_livescore: 1.39494	Percentage of blocks with LS greater than THreshold: 31.6103
+avg_cycle_livescore: 1.41161	Percentage of blocks with LS greater than THreshold: 33.3403
+avg_cycle_livescore: 1.52676	Percentage of blocks with LS greater than THreshold: 34.6641
+avg_cycle_livescore: 1.36316	Percentage of blocks with LS greater than THreshold: 29.6348
+avg_cycle_livescore: 1.38028	Percentage of blocks with LS greater than THreshold: 29.5788
+avg_cycle_livescore: 1.38693	Percentage of blocks with LS greater than THreshold: 32.7844
+avg_cycle_livescore: 1.46907	Percentage of blocks with LS greater than THreshold: 30.2309
+avg_cycle_livescore: 1.41566	Percentage of blocks with LS greater than THreshold: 31.2212
+avg_cycle_livescore: 1.37705	Percentage of blocks with LS greater than THreshold: 31.6573
+avg_cycle_livescore: 1.30969	Percentage of blocks with LS greater than THreshold: 29.6129
+avg_cycle_livescore: 1.47406	Percentage of blocks with LS greater than THreshold: 33.1036
+avg_cycle_livescore: 1.48036	Percentage of blocks with LS greater than THreshold: 35.3196
+avg_cycle_livescore: 1.39113	Percentage of blocks with LS greater than THreshold: 33.9984
+avg_cycle_livescore: 0.607324	Percentage of blocks with LS greater than THreshold: 20.913
+avg_cycle_livescore: 0.746025	Percentage of blocks with LS greater than THreshold: 31.3866
+avg_cycle_livescore: 1.40028	Percentage of blocks with LS greater than THreshold: 41.2728
+avg_cycle_livescore: 1.50123	Percentage of blocks with LS greater than THreshold: 35.1248
+avg_cycle_livescore: 1.55315	Percentage of blocks with LS greater than THreshold: 36.5445
+avg_cycle_livescore: 1.23282	Percentage of blocks with LS greater than THreshold: 28.0939
+avg_cycle_livescore: 1.37452	Percentage of blocks with LS greater than THreshold: 29.6843
+avg_cycle_livescore: 1.5905	Percentage of blocks with LS greater than THreshold: 38.384
+avg_cycle_livescore: 1.46881	Percentage of blocks with LS greater than THreshold: 33.7583
+avg_cycle_livescore: 1.33233	Percentage of blocks with LS greater than THreshold: 29.2405
+avg_cycle_livescore: 1.4256	Percentage of blocks with LS greater than THreshold: 31.049
+avg_cycle_livescore: 1.47337	Percentage of blocks with LS greater than THreshold: 32.5612
+avg_cycle_livescore: 1.46326	Percentage of blocks with LS greater than THreshold: 33.7746
+avg_cycle_livescore: 1.4108	Percentage of blocks with LS greater than THreshold: 35.1266
+avg_cycle_livescore: 1.44671	Percentage of blocks with LS greater than THreshold: 35.2142
+avg_cycle_livescore: 1.4722	Percentage of blocks with LS greater than THreshold: 32.0356
+avg_cycle_livescore: 1.39867	Percentage of blocks with LS greater than THreshold: 31.8204
+Heartbeat CPU 3 instructions: 10000000 cycles: 37128692 heartbeat IPC: 0.269333 cumulative IPC: 0.246368 (Simulation time: 0 hr 2 min 15 sec) 
+avg_cycle_livescore: 1.41396	Percentage of blocks with LS greater than THreshold: 32.6441
+avg_cycle_livescore: 1.45049	Percentage of blocks with LS greater than THreshold: 36.2948
+avg_cycle_livescore: 1.45932	Percentage of blocks with LS greater than THreshold: 33.5513
+avg_cycle_livescore: 1.45678	Percentage of blocks with LS greater than THreshold: 33.0553
+avg_cycle_livescore: 1.35584	Percentage of blocks with LS greater than THreshold: 32.4872
+avg_cycle_livescore: 1.403	Percentage of blocks with LS greater than THreshold: 34.8641
+avg_cycle_livescore: 1.47002	Percentage of blocks with LS greater than THreshold: 36.6583
+avg_cycle_livescore: 1.47623	Percentage of blocks with LS greater than THreshold: 37.3326
+avg_cycle_livescore: 1.45766	Percentage of blocks with LS greater than THreshold: 36.2556
+avg_cycle_livescore: 1.47734	Percentage of blocks with LS greater than THreshold: 36.3062
+avg_cycle_livescore: 1.36403	Percentage of blocks with LS greater than THreshold: 33.014
+avg_cycle_livescore: 1.41862	Percentage of blocks with LS greater than THreshold: 34.7055
+avg_cycle_livescore: 1.51897	Percentage of blocks with LS greater than THreshold: 34.8022
+avg_cycle_livescore: 1.45312	Percentage of blocks with LS greater than THreshold: 34.927
+avg_cycle_livescore: 1.45102	Percentage of blocks with LS greater than THreshold: 38.274
+avg_cycle_livescore: 1.47876	Percentage of blocks with LS greater than THreshold: 35.7286
+avg_cycle_livescore: 1.42219	Percentage of blocks with LS greater than THreshold: 34.6307
+avg_cycle_livescore: 1.39514	Percentage of blocks with LS greater than THreshold: 33.9636
+avg_cycle_livescore: 1.39096	Percentage of blocks with LS greater than THreshold: 33.8324
+avg_cycle_livescore: 1.28547	Percentage of blocks with LS greater than THreshold: 28.3993
+avg_cycle_livescore: 1.44898	Percentage of blocks with LS greater than THreshold: 38.4992
+avg_cycle_livescore: 1.59199	Percentage of blocks with LS greater than THreshold: 44.2465
+avg_cycle_livescore: 1.611	Percentage of blocks with LS greater than THreshold: 44.9405
+avg_cycle_livescore: 1.55003	Percentage of blocks with LS greater than THreshold: 41.3382
+avg_cycle_livescore: 1.71816	Percentage of blocks with LS greater than THreshold: 49.0115
+avg_cycle_livescore: 1.66866	Percentage of blocks with LS greater than THreshold: 46.9773
+avg_cycle_livescore: 1.69543	Percentage of blocks with LS greater than THreshold: 47.5041
+avg_cycle_livescore: 1.59391	Percentage of blocks with LS greater than THreshold: 41.7658
+avg_cycle_livescore: 1.52409	Percentage of blocks with LS greater than THreshold: 40.3896
+avg_cycle_livescore: 1.68424	Percentage of blocks with LS greater than THreshold: 49.2143
+avg_cycle_livescore: 1.68492	Percentage of blocks with LS greater than THreshold: 48.6204
+avg_cycle_livescore: 1.6217	Percentage of blocks with LS greater than THreshold: 43.6491
+avg_cycle_livescore: 1.58218	Percentage of blocks with LS greater than THreshold: 41.3117
+Heartbeat CPU 0 instructions: 20000001 cycles: 40371518 heartbeat IPC: 0.406704 cumulative IPC: 0.469532 (Simulation time: 0 hr 2 min 25 sec) 
+avg_cycle_livescore: 1.65099	Percentage of blocks with LS greater than THreshold: 46.7312
+avg_cycle_livescore: 1.66297	Percentage of blocks with LS greater than THreshold: 46.3865
+avg_cycle_livescore: 1.65577	Percentage of blocks with LS greater than THreshold: 46.7688
+avg_cycle_livescore: 1.6238	Percentage of blocks with LS greater than THreshold: 44.4766
+avg_cycle_livescore: 1.52174	Percentage of blocks with LS greater than THreshold: 39.5633
+avg_cycle_livescore: 1.57799	Percentage of blocks with LS greater than THreshold: 43.1218
+avg_cycle_livescore: 1.5615	Percentage of blocks with LS greater than THreshold: 42.4014
+avg_cycle_livescore: 1.70812	Percentage of blocks with LS greater than THreshold: 48.8452
+avg_cycle_livescore: 1.52771	Percentage of blocks with LS greater than THreshold: 41.2798
+avg_cycle_livescore: 1.59188	Percentage of blocks with LS greater than THreshold: 43.54
+avg_cycle_livescore: 2.251	Percentage of blocks with LS greater than THreshold: 38.3557
+avg_cycle_livescore: 2.30022	Percentage of blocks with LS greater than THreshold: 38.6273
+avg_cycle_livescore: 2.20923	Percentage of blocks with LS greater than THreshold: 37.5633
+avg_cycle_livescore: 2.0903	Percentage of blocks with LS greater than THreshold: 33.5394
+avg_cycle_livescore: 2.07395	Percentage of blocks with LS greater than THreshold: 33.0454
+avg_cycle_livescore: 2.06213	Percentage of blocks with LS greater than THreshold: 33.5553
+avg_cycle_livescore: 1.87436	Percentage of blocks with LS greater than THreshold: 32.6334
+Finished CPU 3 instructions: 10000002 cycles: 41880603 cumulative IPC: 0.238774 (Simulation time: 0 hr 2 min 32 sec) 
+avg_cycle_livescore: 1.73115	Percentage of blocks with LS greater than THreshold: 31.3577
+avg_cycle_livescore: 1.29656	Percentage of blocks with LS greater than THreshold: 31.0889
+avg_cycle_livescore: 1.29683	Percentage of blocks with LS greater than THreshold: 29.0243
+avg_cycle_livescore: 1.28121	Percentage of blocks with LS greater than THreshold: 31.7001
+avg_cycle_livescore: 1.37052	Percentage of blocks with LS greater than THreshold: 30.1
+avg_cycle_livescore: 1.48039	Percentage of blocks with LS greater than THreshold: 37.8918
+avg_cycle_livescore: 1.38727	Percentage of blocks with LS greater than THreshold: 34.287
+avg_cycle_livescore: 1.22358	Percentage of blocks with LS greater than THreshold: 29.0002
+avg_cycle_livescore: 1.35256	Percentage of blocks with LS greater than THreshold: 34.9063
+avg_cycle_livescore: 1.42918	Percentage of blocks with LS greater than THreshold: 32.2601
+avg_cycle_livescore: 1.13351	Percentage of blocks with LS greater than THreshold: 24.7722
+avg_cycle_livescore: 1.42824	Percentage of blocks with LS greater than THreshold: 39.5178
+avg_cycle_livescore: 1.41104	Percentage of blocks with LS greater than THreshold: 38.3085
+avg_cycle_livescore: 1.37693	Percentage of blocks with LS greater than THreshold: 37.5739
+avg_cycle_livescore: 1.44058	Percentage of blocks with LS greater than THreshold: 38.1078
+avg_cycle_livescore: 1.48267	Percentage of blocks with LS greater than THreshold: 41.1149
+Heartbeat CPU 2 instructions: 20000002 cycles: 43804611 heartbeat IPC: 0.390316 cumulative IPC: 0.42859 (Simulation time: 0 hr 2 min 36 sec) 
+avg_cycle_livescore: 1.39	Percentage of blocks with LS greater than THreshold: 38.2071
+avg_cycle_livescore: 1.51343	Percentage of blocks with LS greater than THreshold: 42.3958
+avg_cycle_livescore: 1.47023	Percentage of blocks with LS greater than THreshold: 43.0767
+avg_cycle_livescore: 1.44084	Percentage of blocks with LS greater than THreshold: 40.478
+avg_cycle_livescore: 1.50757	Percentage of blocks with LS greater than THreshold: 42.1993
+avg_cycle_livescore: 0.823401	Percentage of blocks with LS greater than THreshold: 33.7501
+avg_cycle_livescore: 1.51591	Percentage of blocks with LS greater than THreshold: 48.7253
+avg_cycle_livescore: 1.58619	Percentage of blocks with LS greater than THreshold: 47.0352
+avg_cycle_livescore: 1.53857	Percentage of blocks with LS greater than THreshold: 41.1926
+avg_cycle_livescore: 1.49026	Percentage of blocks with LS greater than THreshold: 40.2283
+avg_cycle_livescore: 1.53088	Percentage of blocks with LS greater than THreshold: 39.9524
+avg_cycle_livescore: 1.35735	Percentage of blocks with LS greater than THreshold: 36.9563
+avg_cycle_livescore: 1.52611	Percentage of blocks with LS greater than THreshold: 40.55
+avg_cycle_livescore: 1.46045	Percentage of blocks with LS greater than THreshold: 41.0954
+avg_cycle_livescore: 1.42641	Percentage of blocks with LS greater than THreshold: 38.86
+avg_cycle_livescore: 1.46568	Percentage of blocks with LS greater than THreshold: 37.2609
+avg_cycle_livescore: 1.99986	Percentage of blocks with LS greater than THreshold: 41.6659
+avg_cycle_livescore: 2.11723	Percentage of blocks with LS greater than THreshold: 32.3121
+avg_cycle_livescore: 2.02359	Percentage of blocks with LS greater than THreshold: 21.0174
+avg_cycle_livescore: 2.0101	Percentage of blocks with LS greater than THreshold: 20.9699
+avg_cycle_livescore: 1.90528	Percentage of blocks with LS greater than THreshold: 16.9603
+avg_cycle_livescore: 1.82522	Percentage of blocks with LS greater than THreshold: 27.3753
+avg_cycle_livescore: 1.78247	Percentage of blocks with LS greater than THreshold: 27.961
+avg_cycle_livescore: 1.44767	Percentage of blocks with LS greater than THreshold: 36.5566
+avg_cycle_livescore: 1.34845	Percentage of blocks with LS greater than THreshold: 35.42
+avg_cycle_livescore: 1.39699	Percentage of blocks with LS greater than THreshold: 35.8385
+avg_cycle_livescore: 1.43483	Percentage of blocks with LS greater than THreshold: 35.4719
+avg_cycle_livescore: 1.50431	Percentage of blocks with LS greater than THreshold: 40.4622
+avg_cycle_livescore: 1.37523	Percentage of blocks with LS greater than THreshold: 31.0369
+avg_cycle_livescore: 1.56329	Percentage of blocks with LS greater than THreshold: 44.2218
+avg_cycle_livescore: 1.45835	Percentage of blocks with LS greater than THreshold: 37.3768
+avg_cycle_livescore: 1.44179	Percentage of blocks with LS greater than THreshold: 36.9574
+avg_cycle_livescore: 1.37959	Percentage of blocks with LS greater than THreshold: 30.5213
+avg_cycle_livescore: 1.47797	Percentage of blocks with LS greater than THreshold: 41.8329
+avg_cycle_livescore: 1.48798	Percentage of blocks with LS greater than THreshold: 36.801
+avg_cycle_livescore: 1.47904	Percentage of blocks with LS greater than THreshold: 31.598
+avg_cycle_livescore: 1.43455	Percentage of blocks with LS greater than THreshold: 36.637
+avg_cycle_livescore: 1.37485	Percentage of blocks with LS greater than THreshold: 36.3924
+avg_cycle_livescore: 1.53276	Percentage of blocks with LS greater than THreshold: 37.4752
+avg_cycle_livescore: 1.5659	Percentage of blocks with LS greater than THreshold: 43.8879
+avg_cycle_livescore: 1.36207	Percentage of blocks with LS greater than THreshold: 36.4261
+avg_cycle_livescore: 1.54423	Percentage of blocks with LS greater than THreshold: 39.0493
+avg_cycle_livescore: 1.4777	Percentage of blocks with LS greater than THreshold: 33.6454
+avg_cycle_livescore: 1.45627	Percentage of blocks with LS greater than THreshold: 40.4255
+avg_cycle_livescore: 1.40059	Percentage of blocks with LS greater than THreshold: 38.8463
+avg_cycle_livescore: 1.43155	Percentage of blocks with LS greater than THreshold: 31.356
+avg_cycle_livescore: 1.49332	Percentage of blocks with LS greater than THreshold: 41.3268
+avg_cycle_livescore: 1.54743	Percentage of blocks with LS greater than THreshold: 41.2577
+avg_cycle_livescore: 1.35692	Percentage of blocks with LS greater than THreshold: 38.3407
+avg_cycle_livescore: 1.48382	Percentage of blocks with LS greater than THreshold: 36.5337
+avg_cycle_livescore: 1.52158	Percentage of blocks with LS greater than THreshold: 41.4375
+avg_cycle_livescore: 1.40366	Percentage of blocks with LS greater than THreshold: 36.4418
+avg_cycle_livescore: 1.42212	Percentage of blocks with LS greater than THreshold: 37.1052
+avg_cycle_livescore: 1.43609	Percentage of blocks with LS greater than THreshold: 31.3069
+avg_cycle_livescore: 1.56418	Percentage of blocks with LS greater than THreshold: 42.2066
+avg_cycle_livescore: 1.37091	Percentage of blocks with LS greater than THreshold: 35.687
+avg_cycle_livescore: 1.47787	Percentage of blocks with LS greater than THreshold: 39.068
+avg_cycle_livescore: 1.64421	Percentage of blocks with LS greater than THreshold: 42.4345
+avg_cycle_livescore: 1.57712	Percentage of blocks with LS greater than THreshold: 47.5871
+avg_cycle_livescore: 1.48781	Percentage of blocks with LS greater than THreshold: 44.2565
+avg_cycle_livescore: 1.61114	Percentage of blocks with LS greater than THreshold: 46.9558
+avg_cycle_livescore: 1.55676	Percentage of blocks with LS greater than THreshold: 41.7516
+avg_cycle_livescore: 1.54807	Percentage of blocks with LS greater than THreshold: 43.1386
+avg_cycle_livescore: 1.52771	Percentage of blocks with LS greater than THreshold: 41.9674
+avg_cycle_livescore: 1.53729	Percentage of blocks with LS greater than THreshold: 47.1697
+avg_cycle_livescore: 1.59447	Percentage of blocks with LS greater than THreshold: 45.3944
+avg_cycle_livescore: 1.54004	Percentage of blocks with LS greater than THreshold: 43.9794
+avg_cycle_livescore: 1.55398	Percentage of blocks with LS greater than THreshold: 44.517
+avg_cycle_livescore: 1.55897	Percentage of blocks with LS greater than THreshold: 42.8127
+avg_cycle_livescore: 1.5104	Percentage of blocks with LS greater than THreshold: 41.3314
+avg_cycle_livescore: 1.47261	Percentage of blocks with LS greater than THreshold: 40.2796
+avg_cycle_livescore: 1.50428	Percentage of blocks with LS greater than THreshold: 42.6843
+avg_cycle_livescore: 1.53356	Percentage of blocks with LS greater than THreshold: 39.5197
+avg_cycle_livescore: 1.56262	Percentage of blocks with LS greater than THreshold: 41.1867
+avg_cycle_livescore: 1.42946	Percentage of blocks with LS greater than THreshold: 36.1635
+avg_cycle_livescore: 1.48236	Percentage of blocks with LS greater than THreshold: 37.7211
+avg_cycle_livescore: 1.44861	Percentage of blocks with LS greater than THreshold: 35.8231
+avg_cycle_livescore: 1.49039	Percentage of blocks with LS greater than THreshold: 42.4672
+avg_cycle_livescore: 1.56125	Percentage of blocks with LS greater than THreshold: 44.0277
+avg_cycle_livescore: 1.56397	Percentage of blocks with LS greater than THreshold: 42.6216
+avg_cycle_livescore: 1.55616	Percentage of blocks with LS greater than THreshold: 41.1581
+avg_cycle_livescore: 1.53736	Percentage of blocks with LS greater than THreshold: 39.604
+avg_cycle_livescore: 1.48763	Percentage of blocks with LS greater than THreshold: 34.8135
+avg_cycle_livescore: 1.49241	Percentage of blocks with LS greater than THreshold: 39.7834
+avg_cycle_livescore: 1.47935	Percentage of blocks with LS greater than THreshold: 38.2412
+avg_cycle_livescore: 1.4375	Percentage of blocks with LS greater than THreshold: 37.2002
+avg_cycle_livescore: 1.79676	Percentage of blocks with LS greater than THreshold: 37.6361
+avg_cycle_livescore: 2.27721	Percentage of blocks with LS greater than THreshold: 36.9768
+avg_cycle_livescore: 2.22973	Percentage of blocks with LS greater than THreshold: 24.8608
+avg_cycle_livescore: 2.13491	Percentage of blocks with LS greater than THreshold: 24.6384
+avg_cycle_livescore: 2.07543	Percentage of blocks with LS greater than THreshold: 22.3613
+avg_cycle_livescore: 2.03925	Percentage of blocks with LS greater than THreshold: 20.5087
+avg_cycle_livescore: 1.9805	Percentage of blocks with LS greater than THreshold: 21.0985
+avg_cycle_livescore: 1.8818	Percentage of blocks with LS greater than THreshold: 26.6141
+avg_cycle_livescore: 1.95205	Percentage of blocks with LS greater than THreshold: 30.6685
+avg_cycle_livescore: 1.82111	Percentage of blocks with LS greater than THreshold: 30.0324
+avg_cycle_livescore: 1.63361	Percentage of blocks with LS greater than THreshold: 30.2375
+avg_cycle_livescore: 1.49037	Percentage of blocks with LS greater than THreshold: 33.8827
+avg_cycle_livescore: 1.05317	Percentage of blocks with LS greater than THreshold: 28.211
+avg_cycle_livescore: 0.946613	Percentage of blocks with LS greater than THreshold: 31.3346
+avg_cycle_livescore: 1.27655	Percentage of blocks with LS greater than THreshold: 37.286
+avg_cycle_livescore: 1.44905	Percentage of blocks with LS greater than THreshold: 41.3963
+avg_cycle_livescore: 1.45748	Percentage of blocks with LS greater than THreshold: 40.2224
+avg_cycle_livescore: 1.51176	Percentage of blocks with LS greater than THreshold: 45.1414
+avg_cycle_livescore: 1.51047	Percentage of blocks with LS greater than THreshold: 42.9683
+avg_cycle_livescore: 1.44795	Percentage of blocks with LS greater than THreshold: 41.7464
+avg_cycle_livescore: 1.52778	Percentage of blocks with LS greater than THreshold: 42.9775
+avg_cycle_livescore: 1.50793	Percentage of blocks with LS greater than THreshold: 41.9391
+avg_cycle_livescore: 1.55138	Percentage of blocks with LS greater than THreshold: 43.4668
+avg_cycle_livescore: 1.56979	Percentage of blocks with LS greater than THreshold: 45.2015
+avg_cycle_livescore: 1.61032	Percentage of blocks with LS greater than THreshold: 44.6045
+avg_cycle_livescore: 1.64027	Percentage of blocks with LS greater than THreshold: 48.1782
+avg_cycle_livescore: 1.76132	Percentage of blocks with LS greater than THreshold: 49.8159
+avg_cycle_livescore: 1.73784	Percentage of blocks with LS greater than THreshold: 49.5845
+avg_cycle_livescore: 1.80153	Percentage of blocks with LS greater than THreshold: 48.7572
+avg_cycle_livescore: 1.73412	Percentage of blocks with LS greater than THreshold: 45.1944
+avg_cycle_livescore: 1.7494	Percentage of blocks with LS greater than THreshold: 44.9234
+avg_cycle_livescore: 1.77183	Percentage of blocks with LS greater than THreshold: 49.4381
+avg_cycle_livescore: 1.83682	Percentage of blocks with LS greater than THreshold: 54.6902
+avg_cycle_livescore: 1.7962	Percentage of blocks with LS greater than THreshold: 52.3921
+avg_cycle_livescore: 1.79096	Percentage of blocks with LS greater than THreshold: 49.4462
+avg_cycle_livescore: 1.85972	Percentage of blocks with LS greater than THreshold: 51.8289
+avg_cycle_livescore: 1.97567	Percentage of blocks with LS greater than THreshold: 55.4256
+avg_cycle_livescore: 1.89083	Percentage of blocks with LS greater than THreshold: 53.5488
+avg_cycle_livescore: 1.90388	Percentage of blocks with LS greater than THreshold: 54.6577
+avg_cycle_livescore: 1.86471	Percentage of blocks with LS greater than THreshold: 48.8704
+avg_cycle_livescore: 1.61904	Percentage of blocks with LS greater than THreshold: 41.117
+avg_cycle_livescore: 1.47694	Percentage of blocks with LS greater than THreshold: 38.2427
+avg_cycle_livescore: 1.57062	Percentage of blocks with LS greater than THreshold: 39.5853
+avg_cycle_livescore: 1.60357	Percentage of blocks with LS greater than THreshold: 42.4798
+avg_cycle_livescore: 1.51647	Percentage of blocks with LS greater than THreshold: 39.5711
+avg_cycle_livescore: 1.5716	Percentage of blocks with LS greater than THreshold: 39.7952
+avg_cycle_livescore: 1.46648	Percentage of blocks with LS greater than THreshold: 36.2554
+avg_cycle_livescore: 1.58123	Percentage of blocks with LS greater than THreshold: 42.1891
+avg_cycle_livescore: 1.56189	Percentage of blocks with LS greater than THreshold: 42.0178
+avg_cycle_livescore: 1.55933	Percentage of blocks with LS greater than THreshold: 42.7675
+avg_cycle_livescore: 1.66128	Percentage of blocks with LS greater than THreshold: 47.3433
+avg_cycle_livescore: 1.60342	Percentage of blocks with LS greater than THreshold: 43.3787
+avg_cycle_livescore: 1.67409	Percentage of blocks with LS greater than THreshold: 47.8645
+avg_cycle_livescore: 1.57947	Percentage of blocks with LS greater than THreshold: 43.1421
+avg_cycle_livescore: 1.59145	Percentage of blocks with LS greater than THreshold: 43.453
+avg_cycle_livescore: 1.57986	Percentage of blocks with LS greater than THreshold: 43.2247
+avg_cycle_livescore: 1.55796	Percentage of blocks with LS greater than THreshold: 44.2687
+avg_cycle_livescore: 1.43459	Percentage of blocks with LS greater than THreshold: 35.8744
+avg_cycle_livescore: 1.37957	Percentage of blocks with LS greater than THreshold: 36.7658
+avg_cycle_livescore: 1.41154	Percentage of blocks with LS greater than THreshold: 39.7962
+avg_cycle_livescore: 1.43158	Percentage of blocks with LS greater than THreshold: 40.8499
+avg_cycle_livescore: 1.46824	Percentage of blocks with LS greater than THreshold: 42.5779
+avg_cycle_livescore: 1.41739	Percentage of blocks with LS greater than THreshold: 36.5099
+avg_cycle_livescore: 1.45656	Percentage of blocks with LS greater than THreshold: 41.3984
+avg_cycle_livescore: 1.44934	Percentage of blocks with LS greater than THreshold: 41.1518
+avg_cycle_livescore: 1.45624	Percentage of blocks with LS greater than THreshold: 39.2716
+avg_cycle_livescore: 1.50814	Percentage of blocks with LS greater than THreshold: 41.107
+avg_cycle_livescore: 1.53563	Percentage of blocks with LS greater than THreshold: 40.4154
+avg_cycle_livescore: 1.46885	Percentage of blocks with LS greater than THreshold: 41.109
+avg_cycle_livescore: 1.54848	Percentage of blocks with LS greater than THreshold: 40.9378
+avg_cycle_livescore: 1.50466	Percentage of blocks with LS greater than THreshold: 43.0067
+avg_cycle_livescore: 1.46977	Percentage of blocks with LS greater than THreshold: 39.9277
+avg_cycle_livescore: 1.47038	Percentage of blocks with LS greater than THreshold: 41.4469
+avg_cycle_livescore: 1.52537	Percentage of blocks with LS greater than THreshold: 42.2374
+avg_cycle_livescore: 1.47116	Percentage of blocks with LS greater than THreshold: 39.5687
+avg_cycle_livescore: 1.52194	Percentage of blocks with LS greater than THreshold: 41.484
+avg_cycle_livescore: 1.50362	Percentage of blocks with LS greater than THreshold: 41.1597
+avg_cycle_livescore: 1.55175	Percentage of blocks with LS greater than THreshold: 42.8502
+avg_cycle_livescore: 1.5544	Percentage of blocks with LS greater than THreshold: 43.8716
+avg_cycle_livescore: 1.52831	Percentage of blocks with LS greater than THreshold: 42.5001
+avg_cycle_livescore: 1.53986	Percentage of blocks with LS greater than THreshold: 42.6381
+avg_cycle_livescore: 1.47439	Percentage of blocks with LS greater than THreshold: 43.3448
+avg_cycle_livescore: 1.55667	Percentage of blocks with LS greater than THreshold: 43.3636
+avg_cycle_livescore: 1.72342	Percentage of blocks with LS greater than THreshold: 52.7596
+avg_cycle_livescore: 1.60086	Percentage of blocks with LS greater than THreshold: 45.5177
+avg_cycle_livescore: 1.78195	Percentage of blocks with LS greater than THreshold: 50.0848
+avg_cycle_livescore: 1.56311	Percentage of blocks with LS greater than THreshold: 31.9118
+avg_cycle_livescore: 1.25957	Percentage of blocks with LS greater than THreshold: 32.4973
+avg_cycle_livescore: 1.3255	Percentage of blocks with LS greater than THreshold: 33.0719
+avg_cycle_livescore: 1.34377	Percentage of blocks with LS greater than THreshold: 32.0541
+avg_cycle_livescore: 1.28562	Percentage of blocks with LS greater than THreshold: 33.0465
+avg_cycle_livescore: 1.37709	Percentage of blocks with LS greater than THreshold: 34.5428
+avg_cycle_livescore: 1.34725	Percentage of blocks with LS greater than THreshold: 32.7915
+avg_cycle_livescore: 1.2984	Percentage of blocks with LS greater than THreshold: 32.1173
+avg_cycle_livescore: 1.39622	Percentage of blocks with LS greater than THreshold: 36.3197
+avg_cycle_livescore: 1.33259	Percentage of blocks with LS greater than THreshold: 31.7695
+avg_cycle_livescore: 1.39013	Percentage of blocks with LS greater than THreshold: 33.5521
+avg_cycle_livescore: 1.44465	Percentage of blocks with LS greater than THreshold: 34.4638
+avg_cycle_livescore: 1.4099	Percentage of blocks with LS greater than THreshold: 31.3622
+avg_cycle_livescore: 1.41992	Percentage of blocks with LS greater than THreshold: 33.8285
+avg_cycle_livescore: 0.884967	Percentage of blocks with LS greater than THreshold: 24.4988
+avg_cycle_livescore: 1.28612	Percentage of blocks with LS greater than THreshold: 45.8013
+avg_cycle_livescore: 1.42526	Percentage of blocks with LS greater than THreshold: 36.2995
+avg_cycle_livescore: 1.46102	Percentage of blocks with LS greater than THreshold: 35.7141
+avg_cycle_livescore: 1.44898	Percentage of blocks with LS greater than THreshold: 33.045
+avg_cycle_livescore: 1.47566	Percentage of blocks with LS greater than THreshold: 44.6908
+avg_cycle_livescore: 1.51793	Percentage of blocks with LS greater than THreshold: 44.4701
+avg_cycle_livescore: 1.54949	Percentage of blocks with LS greater than THreshold: 42.7164
+avg_cycle_livescore: 1.51898	Percentage of blocks with LS greater than THreshold: 45.202
+avg_cycle_livescore: 1.59438	Percentage of blocks with LS greater than THreshold: 47.512
+avg_cycle_livescore: 1.56145	Percentage of blocks with LS greater than THreshold: 44.0193
+avg_cycle_livescore: 1.49902	Percentage of blocks with LS greater than THreshold: 44.2833
+avg_cycle_livescore: 1.57968	Percentage of blocks with LS greater than THreshold: 47.0476
+avg_cycle_livescore: 1.55784	Percentage of blocks with LS greater than THreshold: 41.8549
+avg_cycle_livescore: 1.60669	Percentage of blocks with LS greater than THreshold: 42.5679
+avg_cycle_livescore: 1.65713	Percentage of blocks with LS greater than THreshold: 48.1175
+avg_cycle_livescore: 1.56611	Percentage of blocks with LS greater than THreshold: 39.4883
+avg_cycle_livescore: 1.64204	Percentage of blocks with LS greater than THreshold: 46.0807
+avg_cycle_livescore: 1.50476	Percentage of blocks with LS greater than THreshold: 41.8338
+avg_cycle_livescore: 1.53994	Percentage of blocks with LS greater than THreshold: 36.5811
+avg_cycle_livescore: 1.6972	Percentage of blocks with LS greater than THreshold: 45.8967
+avg_cycle_livescore: 1.63094	Percentage of blocks with LS greater than THreshold: 46.4006
+avg_cycle_livescore: 1.55757	Percentage of blocks with LS greater than THreshold: 42.4236
+avg_cycle_livescore: 1.63489	Percentage of blocks with LS greater than THreshold: 44.6732
+avg_cycle_livescore: 1.58469	Percentage of blocks with LS greater than THreshold: 42.4999
+avg_cycle_livescore: 1.64516	Percentage of blocks with LS greater than THreshold: 45.9814
+avg_cycle_livescore: 1.68378	Percentage of blocks with LS greater than THreshold: 45.6026
+avg_cycle_livescore: 1.68185	Percentage of blocks with LS greater than THreshold: 46.2691
+avg_cycle_livescore: 1.63628	Percentage of blocks with LS greater than THreshold: 44.2551
+avg_cycle_livescore: 1.71357	Percentage of blocks with LS greater than THreshold: 46.8206
+avg_cycle_livescore: 1.65144	Percentage of blocks with LS greater than THreshold: 46.6476
+avg_cycle_livescore: 1.62761	Percentage of blocks with LS greater than THreshold: 44.569
+avg_cycle_livescore: 1.63236	Percentage of blocks with LS greater than THreshold: 43.0944
+avg_cycle_livescore: 1.67181	Percentage of blocks with LS greater than THreshold: 46.0058
+avg_cycle_livescore: 1.67421	Percentage of blocks with LS greater than THreshold: 47.1836
+avg_cycle_livescore: 1.66381	Percentage of blocks with LS greater than THreshold: 44.6028
+avg_cycle_livescore: 1.59576	Percentage of blocks with LS greater than THreshold: 43.009
+avg_cycle_livescore: 1.68245	Percentage of blocks with LS greater than THreshold: 47.4345
+avg_cycle_livescore: 1.66674	Percentage of blocks with LS greater than THreshold: 44.5137
+avg_cycle_livescore: 1.61259	Percentage of blocks with LS greater than THreshold: 42.0621
+avg_cycle_livescore: 1.7037	Percentage of blocks with LS greater than THreshold: 47.6934
+avg_cycle_livescore: 1.64879	Percentage of blocks with LS greater than THreshold: 44.1199
+avg_cycle_livescore: 1.59435	Percentage of blocks with LS greater than THreshold: 43.6189
+avg_cycle_livescore: 1.69366	Percentage of blocks with LS greater than THreshold: 46.2698
+avg_cycle_livescore: 1.60821	Percentage of blocks with LS greater than THreshold: 44.618
+avg_cycle_livescore: 1.70702	Percentage of blocks with LS greater than THreshold: 47.8689
+avg_cycle_livescore: 1.69977	Percentage of blocks with LS greater than THreshold: 46.671
+avg_cycle_livescore: 1.64654	Percentage of blocks with LS greater than THreshold: 45.5202
+avg_cycle_livescore: 1.70239	Percentage of blocks with LS greater than THreshold: 46.2498
+avg_cycle_livescore: 1.72545	Percentage of blocks with LS greater than THreshold: 47.084
+avg_cycle_livescore: 1.61352	Percentage of blocks with LS greater than THreshold: 44.4205
+avg_cycle_livescore: 1.64286	Percentage of blocks with LS greater than THreshold: 45.376
+avg_cycle_livescore: 1.67626	Percentage of blocks with LS greater than THreshold: 46.8675
+avg_cycle_livescore: 1.66045	Percentage of blocks with LS greater than THreshold: 45.0478
+avg_cycle_livescore: 1.68647	Percentage of blocks with LS greater than THreshold: 46.1034
+avg_cycle_livescore: 1.66451	Percentage of blocks with LS greater than THreshold: 45.5711
+avg_cycle_livescore: 1.6494	Percentage of blocks with LS greater than THreshold: 44.1838
+avg_cycle_livescore: 1.72146	Percentage of blocks with LS greater than THreshold: 45.0925
+avg_cycle_livescore: 1.63138	Percentage of blocks with LS greater than THreshold: 45.0613
+avg_cycle_livescore: 1.70166	Percentage of blocks with LS greater than THreshold: 48.0951
+avg_cycle_livescore: 1.65261	Percentage of blocks with LS greater than THreshold: 45.5942
+avg_cycle_livescore: 1.65009	Percentage of blocks with LS greater than THreshold: 46.3283
+avg_cycle_livescore: 1.70541	Percentage of blocks with LS greater than THreshold: 47.4613
+avg_cycle_livescore: 1.65703	Percentage of blocks with LS greater than THreshold: 43.6852
+avg_cycle_livescore: 1.63896	Percentage of blocks with LS greater than THreshold: 44.9152
+avg_cycle_livescore: 1.72761	Percentage of blocks with LS greater than THreshold: 49.135
+avg_cycle_livescore: 1.68884	Percentage of blocks with LS greater than THreshold: 44.8409
+avg_cycle_livescore: 1.6455	Percentage of blocks with LS greater than THreshold: 43.8303
+avg_cycle_livescore: 1.67533	Percentage of blocks with LS greater than THreshold: 43.4088
+avg_cycle_livescore: 1.66133	Percentage of blocks with LS greater than THreshold: 45.0918
+avg_cycle_livescore: 1.65338	Percentage of blocks with LS greater than THreshold: 44.4366
+avg_cycle_livescore: 1.66801	Percentage of blocks with LS greater than THreshold: 44.8849
+avg_cycle_livescore: 1.66947	Percentage of blocks with LS greater than THreshold: 45.4456
+avg_cycle_livescore: 1.62651	Percentage of blocks with LS greater than THreshold: 45.3431
+avg_cycle_livescore: 1.66912	Percentage of blocks with LS greater than THreshold: 44.0712
+Heartbeat CPU 2 instructions: 30000002 cycles: 68708433 heartbeat IPC: 0.401545 cumulative IPC: 0.418701 (Simulation time: 0 hr 3 min 59 sec) 
+avg_cycle_livescore: 1.63343	Percentage of blocks with LS greater than THreshold: 43.9246
+avg_cycle_livescore: 1.66577	Percentage of blocks with LS greater than THreshold: 45.3442
+avg_cycle_livescore: 1.70913	Percentage of blocks with LS greater than THreshold: 46.0867
+avg_cycle_livescore: 1.60818	Percentage of blocks with LS greater than THreshold: 43.2541
+avg_cycle_livescore: 1.7391	Percentage of blocks with LS greater than THreshold: 46.8765
+Heartbeat CPU 0 instructions: 30000001 cycles: 69100927 heartbeat IPC: 0.348075 cumulative IPC: 0.418594 (Simulation time: 0 hr 4 min 1 sec) 
+avg_cycle_livescore: 1.70193	Percentage of blocks with LS greater than THreshold: 47.7692
+avg_cycle_livescore: 1.66371	Percentage of blocks with LS greater than THreshold: 44.8842
+avg_cycle_livescore: 1.72211	Percentage of blocks with LS greater than THreshold: 48.1158
+avg_cycle_livescore: 1.28742	Percentage of blocks with LS greater than THreshold: 28.8684
+avg_cycle_livescore: 0.910492	Percentage of blocks with LS greater than THreshold: 23.9684
+avg_cycle_livescore: 1.29479	Percentage of blocks with LS greater than THreshold: 32.6114
+avg_cycle_livescore: 1.26293	Percentage of blocks with LS greater than THreshold: 30.3576
+avg_cycle_livescore: 1.34128	Percentage of blocks with LS greater than THreshold: 29.7203
+avg_cycle_livescore: 1.38694	Percentage of blocks with LS greater than THreshold: 27.5435
+avg_cycle_livescore: 1.45842	Percentage of blocks with LS greater than THreshold: 32.7823
+avg_cycle_livescore: 1.41504	Percentage of blocks with LS greater than THreshold: 31.3002
+avg_cycle_livescore: 1.61881	Percentage of blocks with LS greater than THreshold: 52.2805
+avg_cycle_livescore: 1.51848	Percentage of blocks with LS greater than THreshold: 45.5059
+avg_cycle_livescore: 1.56164	Percentage of blocks with LS greater than THreshold: 45.7963
+avg_cycle_livescore: 1.65129	Percentage of blocks with LS greater than THreshold: 46.6957
+avg_cycle_livescore: 1.67629	Percentage of blocks with LS greater than THreshold: 48.111
+avg_cycle_livescore: 1.63806	Percentage of blocks with LS greater than THreshold: 46.004
+avg_cycle_livescore: 1.67915	Percentage of blocks with LS greater than THreshold: 46.0455
+avg_cycle_livescore: 1.6676	Percentage of blocks with LS greater than THreshold: 48.1808
+avg_cycle_livescore: 1.66725	Percentage of blocks with LS greater than THreshold: 49.0895
+avg_cycle_livescore: 1.71662	Percentage of blocks with LS greater than THreshold: 48.4298
+avg_cycle_livescore: 1.63924	Percentage of blocks with LS greater than THreshold: 47.1849
+avg_cycle_livescore: 1.62624	Percentage of blocks with LS greater than THreshold: 45.1398
+avg_cycle_livescore: 1.48282	Percentage of blocks with LS greater than THreshold: 38.9177
+avg_cycle_livescore: 1.58464	Percentage of blocks with LS greater than THreshold: 45.0103
+avg_cycle_livescore: 1.5316	Percentage of blocks with LS greater than THreshold: 41.3015
+avg_cycle_livescore: 1.50233	Percentage of blocks with LS greater than THreshold: 41.241
+avg_cycle_livescore: 1.56168	Percentage of blocks with LS greater than THreshold: 40.918
+avg_cycle_livescore: 1.56599	Percentage of blocks with LS greater than THreshold: 41.6196
+avg_cycle_livescore: 1.41259	Percentage of blocks with LS greater than THreshold: 37.6891
+avg_cycle_livescore: 1.4541	Percentage of blocks with LS greater than THreshold: 37.8604
+avg_cycle_livescore: 1.56762	Percentage of blocks with LS greater than THreshold: 41.0721
+avg_cycle_livescore: 1.5231	Percentage of blocks with LS greater than THreshold: 42.1908
+avg_cycle_livescore: 1.46815	Percentage of blocks with LS greater than THreshold: 35.8809
+avg_cycle_livescore: 1.59341	Percentage of blocks with LS greater than THreshold: 42.8526
+avg_cycle_livescore: 1.60501	Percentage of blocks with LS greater than THreshold: 42.9019
+avg_cycle_livescore: 1.54045	Percentage of blocks with LS greater than THreshold: 41.1192
+avg_cycle_livescore: 1.60197	Percentage of blocks with LS greater than THreshold: 42.7012
+avg_cycle_livescore: 1.52031	Percentage of blocks with LS greater than THreshold: 39.3876
+avg_cycle_livescore: 1.4892	Percentage of blocks with LS greater than THreshold: 41.1038
+avg_cycle_livescore: 1.5885	Percentage of blocks with LS greater than THreshold: 43.6599
+avg_cycle_livescore: 1.56468	Percentage of blocks with LS greater than THreshold: 37.0933
+avg_cycle_livescore: 1.48847	Percentage of blocks with LS greater than THreshold: 39.6016
+avg_cycle_livescore: 1.45658	Percentage of blocks with LS greater than THreshold: 39.001
+avg_cycle_livescore: 1.53864	Percentage of blocks with LS greater than THreshold: 41.0798
+avg_cycle_livescore: 1.55198	Percentage of blocks with LS greater than THreshold: 37.6885
+avg_cycle_livescore: 1.47027	Percentage of blocks with LS greater than THreshold: 38.3144
+avg_cycle_livescore: 1.56488	Percentage of blocks with LS greater than THreshold: 42.3508
+avg_cycle_livescore: 1.60518	Percentage of blocks with LS greater than THreshold: 44.5237
+avg_cycle_livescore: 1.61536	Percentage of blocks with LS greater than THreshold: 44.4162
+avg_cycle_livescore: 1.61076	Percentage of blocks with LS greater than THreshold: 44.3348
+avg_cycle_livescore: 1.62733	Percentage of blocks with LS greater than THreshold: 43.33
+avg_cycle_livescore: 1.52748	Percentage of blocks with LS greater than THreshold: 40.6697
+avg_cycle_livescore: 1.50061	Percentage of blocks with LS greater than THreshold: 39.1341
+avg_cycle_livescore: 1.54862	Percentage of blocks with LS greater than THreshold: 40.0963
+avg_cycle_livescore: 1.53249	Percentage of blocks with LS greater than THreshold: 37.4113
+avg_cycle_livescore: 1.46419	Percentage of blocks with LS greater than THreshold: 37.9382
+avg_cycle_livescore: 1.50205	Percentage of blocks with LS greater than THreshold: 38.2753
+avg_cycle_livescore: 1.54846	Percentage of blocks with LS greater than THreshold: 38.5827
+avg_cycle_livescore: 1.51399	Percentage of blocks with LS greater than THreshold: 38.2651
+avg_cycle_livescore: 1.55263	Percentage of blocks with LS greater than THreshold: 39.8322
+avg_cycle_livescore: 1.58082	Percentage of blocks with LS greater than THreshold: 40.6106
+avg_cycle_livescore: 1.51934	Percentage of blocks with LS greater than THreshold: 38.4359
+avg_cycle_livescore: 1.54458	Percentage of blocks with LS greater than THreshold: 38.7363
+avg_cycle_livescore: 1.55418	Percentage of blocks with LS greater than THreshold: 38.2969
+avg_cycle_livescore: 1.49377	Percentage of blocks with LS greater than THreshold: 40.1365
+avg_cycle_livescore: 1.52891	Percentage of blocks with LS greater than THreshold: 37.8344
+avg_cycle_livescore: 1.55158	Percentage of blocks with LS greater than THreshold: 39.5213
+avg_cycle_livescore: 1.47861	Percentage of blocks with LS greater than THreshold: 35.7224
+avg_cycle_livescore: 1.53317	Percentage of blocks with LS greater than THreshold: 39.6525
+avg_cycle_livescore: 1.57678	Percentage of blocks with LS greater than THreshold: 39.4004
+avg_cycle_livescore: 1.50327	Percentage of blocks with LS greater than THreshold: 37.422
+avg_cycle_livescore: 1.55782	Percentage of blocks with LS greater than THreshold: 40.2786
+avg_cycle_livescore: 1.60675	Percentage of blocks with LS greater than THreshold: 44.4717
+avg_cycle_livescore: 1.53846	Percentage of blocks with LS greater than THreshold: 42.7786
+avg_cycle_livescore: 1.66031	Percentage of blocks with LS greater than THreshold: 44.3392
+avg_cycle_livescore: 1.56009	Percentage of blocks with LS greater than THreshold: 43.099
+avg_cycle_livescore: 1.5035	Percentage of blocks with LS greater than THreshold: 40.4856
+avg_cycle_livescore: 1.59023	Percentage of blocks with LS greater than THreshold: 44.5511
+avg_cycle_livescore: 1.59966	Percentage of blocks with LS greater than THreshold: 43.5832
+avg_cycle_livescore: 1.5646	Percentage of blocks with LS greater than THreshold: 42.7814
+avg_cycle_livescore: 1.6019	Percentage of blocks with LS greater than THreshold: 44.2977
+avg_cycle_livescore: 1.58851	Percentage of blocks with LS greater than THreshold: 42.7741
+avg_cycle_livescore: 1.58527	Percentage of blocks with LS greater than THreshold: 43.9521
+avg_cycle_livescore: 1.58987	Percentage of blocks with LS greater than THreshold: 44.0801
+avg_cycle_livescore: 1.61025	Percentage of blocks with LS greater than THreshold: 43.5616
+avg_cycle_livescore: 1.49814	Percentage of blocks with LS greater than THreshold: 41.7074
+avg_cycle_livescore: 1.03879	Percentage of blocks with LS greater than THreshold: 32.5515
+avg_cycle_livescore: 1.56789	Percentage of blocks with LS greater than THreshold: 44.4356
+avg_cycle_livescore: 1.62835	Percentage of blocks with LS greater than THreshold: 42.2845
+avg_cycle_livescore: 1.54158	Percentage of blocks with LS greater than THreshold: 41.6703
+avg_cycle_livescore: 1.66726	Percentage of blocks with LS greater than THreshold: 45.7382
+avg_cycle_livescore: 1.61763	Percentage of blocks with LS greater than THreshold: 42.8602
+avg_cycle_livescore: 1.62705	Percentage of blocks with LS greater than THreshold: 44.2416
+avg_cycle_livescore: 1.69474	Percentage of blocks with LS greater than THreshold: 48.0003
+avg_cycle_livescore: 1.6603	Percentage of blocks with LS greater than THreshold: 44.8044
+avg_cycle_livescore: 1.67046	Percentage of blocks with LS greater than THreshold: 46.0883
+avg_cycle_livescore: 1.67589	Percentage of blocks with LS greater than THreshold: 46.002
+avg_cycle_livescore: 1.64973	Percentage of blocks with LS greater than THreshold: 45.5387
+avg_cycle_livescore: 1.64657	Percentage of blocks with LS greater than THreshold: 46.9088
+avg_cycle_livescore: 1.66086	Percentage of blocks with LS greater than THreshold: 47.126
+avg_cycle_livescore: 1.65519	Percentage of blocks with LS greater than THreshold: 42.9734
+avg_cycle_livescore: 1.60611	Percentage of blocks with LS greater than THreshold: 43.6003
+avg_cycle_livescore: 1.62963	Percentage of blocks with LS greater than THreshold: 40.3522
+avg_cycle_livescore: 1.66507	Percentage of blocks with LS greater than THreshold: 44.2098
+avg_cycle_livescore: 1.6455	Percentage of blocks with LS greater than THreshold: 45.362
+avg_cycle_livescore: 1.64939	Percentage of blocks with LS greater than THreshold: 46.3966
+avg_cycle_livescore: 1.61504	Percentage of blocks with LS greater than THreshold: 39.5174
+avg_cycle_livescore: 1.599	Percentage of blocks with LS greater than THreshold: 43.5404
+avg_cycle_livescore: 1.60479	Percentage of blocks with LS greater than THreshold: 44.2139
+avg_cycle_livescore: 1.72006	Percentage of blocks with LS greater than THreshold: 47.7757
+avg_cycle_livescore: 1.61215	Percentage of blocks with LS greater than THreshold: 41.9835
+avg_cycle_livescore: 1.54139	Percentage of blocks with LS greater than THreshold: 36.9411
+avg_cycle_livescore: 1.71796	Percentage of blocks with LS greater than THreshold: 45.3836
+avg_cycle_livescore: 1.65284	Percentage of blocks with LS greater than THreshold: 43.1546
+avg_cycle_livescore: 1.65342	Percentage of blocks with LS greater than THreshold: 45.1261
+avg_cycle_livescore: 1.65363	Percentage of blocks with LS greater than THreshold: 43.7166
+avg_cycle_livescore: 1.66308	Percentage of blocks with LS greater than THreshold: 44.8995
+avg_cycle_livescore: 1.58048	Percentage of blocks with LS greater than THreshold: 41.2508
+avg_cycle_livescore: 1.64076	Percentage of blocks with LS greater than THreshold: 44.2671
+Heartbeat CPU 3 instructions: 20000002 cycles: 80354069 heartbeat IPC: 0.231346 cumulative IPC: 0.238226 (Simulation time: 0 hr 4 min 38 sec) 
+avg_cycle_livescore: 1.64513	Percentage of blocks with LS greater than THreshold: 44.8381
+avg_cycle_livescore: 1.6399	Percentage of blocks with LS greater than THreshold: 41.6253
+avg_cycle_livescore: 1.57742	Percentage of blocks with LS greater than THreshold: 42.7596
+avg_cycle_livescore: 1.63844	Percentage of blocks with LS greater than THreshold: 42.4166
+avg_cycle_livescore: 1.63295	Percentage of blocks with LS greater than THreshold: 45.9984
+avg_cycle_livescore: 1.68892	Percentage of blocks with LS greater than THreshold: 44.3842
+avg_cycle_livescore: 1.67555	Percentage of blocks with LS greater than THreshold: 46.0204
+avg_cycle_livescore: 1.61913	Percentage of blocks with LS greater than THreshold: 44.0538
+avg_cycle_livescore: 1.56268	Percentage of blocks with LS greater than THreshold: 41.7519
+avg_cycle_livescore: 1.59291	Percentage of blocks with LS greater than THreshold: 38.7805
+avg_cycle_livescore: 1.61876	Percentage of blocks with LS greater than THreshold: 40.9895
+avg_cycle_livescore: 1.58464	Percentage of blocks with LS greater than THreshold: 42.2929
+avg_cycle_livescore: 1.63435	Percentage of blocks with LS greater than THreshold: 44.2537
+avg_cycle_livescore: 1.59201	Percentage of blocks with LS greater than THreshold: 42.1909
+avg_cycle_livescore: 1.60279	Percentage of blocks with LS greater than THreshold: 45.6926
+avg_cycle_livescore: 1.64239	Percentage of blocks with LS greater than THreshold: 43.5946
+avg_cycle_livescore: 1.66014	Percentage of blocks with LS greater than THreshold: 43.0668
+avg_cycle_livescore: 1.65877	Percentage of blocks with LS greater than THreshold: 43.4879
+avg_cycle_livescore: 1.56287	Percentage of blocks with LS greater than THreshold: 39.008
+avg_cycle_livescore: 1.64763	Percentage of blocks with LS greater than THreshold: 44.9843
+avg_cycle_livescore: 1.63371	Percentage of blocks with LS greater than THreshold: 44.9755
+avg_cycle_livescore: 1.48381	Percentage of blocks with LS greater than THreshold: 38.8682
+avg_cycle_livescore: 1.59828	Percentage of blocks with LS greater than THreshold: 41.7055
+avg_cycle_livescore: 1.64795	Percentage of blocks with LS greater than THreshold: 41.6973
+avg_cycle_livescore: 1.56715	Percentage of blocks with LS greater than THreshold: 41.0594
+avg_cycle_livescore: 1.6297	Percentage of blocks with LS greater than THreshold: 41.2055
+avg_cycle_livescore: 1.65147	Percentage of blocks with LS greater than THreshold: 44.9958
+avg_cycle_livescore: 1.65549	Percentage of blocks with LS greater than THreshold: 43.5895
+avg_cycle_livescore: 1.55985	Percentage of blocks with LS greater than THreshold: 40.1095
+avg_cycle_livescore: 1.61369	Percentage of blocks with LS greater than THreshold: 39.6479
+avg_cycle_livescore: 1.68267	Percentage of blocks with LS greater than THreshold: 44.7978
+avg_cycle_livescore: 1.53181	Percentage of blocks with LS greater than THreshold: 40.8332
+avg_cycle_livescore: 1.57679	Percentage of blocks with LS greater than THreshold: 41.2859
+avg_cycle_livescore: 1.61244	Percentage of blocks with LS greater than THreshold: 43.7709
+avg_cycle_livescore: 1.68749	Percentage of blocks with LS greater than THreshold: 46.0089
+avg_cycle_livescore: 1.68312	Percentage of blocks with LS greater than THreshold: 44.6861
+avg_cycle_livescore: 1.58033	Percentage of blocks with LS greater than THreshold: 41.8758
+avg_cycle_livescore: 1.644	Percentage of blocks with LS greater than THreshold: 42.9534
+avg_cycle_livescore: 1.55643	Percentage of blocks with LS greater than THreshold: 38.2525
+avg_cycle_livescore: 1.51831	Percentage of blocks with LS greater than THreshold: 38.6082
+avg_cycle_livescore: 1.65076	Percentage of blocks with LS greater than THreshold: 44.1925
+avg_cycle_livescore: 1.6489	Percentage of blocks with LS greater than THreshold: 46.5849
+avg_cycle_livescore: 1.61009	Percentage of blocks with LS greater than THreshold: 43.359
+avg_cycle_livescore: 1.63766	Percentage of blocks with LS greater than THreshold: 44.3972
+avg_cycle_livescore: 1.67894	Percentage of blocks with LS greater than THreshold: 44.8022
+avg_cycle_livescore: 1.60047	Percentage of blocks with LS greater than THreshold: 41.5272
+avg_cycle_livescore: 1.6296	Percentage of blocks with LS greater than THreshold: 43.9458
+avg_cycle_livescore: 1.59645	Percentage of blocks with LS greater than THreshold: 44.1595
+avg_cycle_livescore: 1.60635	Percentage of blocks with LS greater than THreshold: 44.6703
+avg_cycle_livescore: 1.67555	Percentage of blocks with LS greater than THreshold: 46.8427
+avg_cycle_livescore: 1.57856	Percentage of blocks with LS greater than THreshold: 43.8095
+avg_cycle_livescore: 1.58682	Percentage of blocks with LS greater than THreshold: 38.809
+avg_cycle_livescore: 1.58918	Percentage of blocks with LS greater than THreshold: 41.45
+avg_cycle_livescore: 1.5874	Percentage of blocks with LS greater than THreshold: 43.5714
+avg_cycle_livescore: 1.54871	Percentage of blocks with LS greater than THreshold: 42.9281
+avg_cycle_livescore: 1.61553	Percentage of blocks with LS greater than THreshold: 44.0713
+avg_cycle_livescore: 1.65624	Percentage of blocks with LS greater than THreshold: 45.2109
+avg_cycle_livescore: 1.63859	Percentage of blocks with LS greater than THreshold: 45.0151
+avg_cycle_livescore: 1.62901	Percentage of blocks with LS greater than THreshold: 42.7975
+avg_cycle_livescore: 1.59285	Percentage of blocks with LS greater than THreshold: 42.6365
+avg_cycle_livescore: 0.998064	Percentage of blocks with LS greater than THreshold: 32.7045
+avg_cycle_livescore: 1.6023	Percentage of blocks with LS greater than THreshold: 44.0262
+avg_cycle_livescore: 1.6827	Percentage of blocks with LS greater than THreshold: 45.2713
+avg_cycle_livescore: 1.58053	Percentage of blocks with LS greater than THreshold: 41.5075
+avg_cycle_livescore: 1.53834	Percentage of blocks with LS greater than THreshold: 39.7775
+avg_cycle_livescore: 1.50044	Percentage of blocks with LS greater than THreshold: 37.4583
+avg_cycle_livescore: 1.34118	Percentage of blocks with LS greater than THreshold: 31.354
+avg_cycle_livescore: 1.4752	Percentage of blocks with LS greater than THreshold: 34.9588
+avg_cycle_livescore: 1.54287	Percentage of blocks with LS greater than THreshold: 41.1445
+avg_cycle_livescore: 1.47826	Percentage of blocks with LS greater than THreshold: 40.2752
+avg_cycle_livescore: 1.55938	Percentage of blocks with LS greater than THreshold: 40.1374
+avg_cycle_livescore: 1.54278	Percentage of blocks with LS greater than THreshold: 42.1902
+avg_cycle_livescore: 1.49657	Percentage of blocks with LS greater than THreshold: 38.8184
+avg_cycle_livescore: 1.65211	Percentage of blocks with LS greater than THreshold: 45.2198
+avg_cycle_livescore: 1.54367	Percentage of blocks with LS greater than THreshold: 42.7058
+avg_cycle_livescore: 1.53593	Percentage of blocks with LS greater than THreshold: 41.5763
+avg_cycle_livescore: 1.51923	Percentage of blocks with LS greater than THreshold: 40.5283
+avg_cycle_livescore: 1.58283	Percentage of blocks with LS greater than THreshold: 42.2968
+avg_cycle_livescore: 1.63243	Percentage of blocks with LS greater than THreshold: 47.1729
+avg_cycle_livescore: 1.59847	Percentage of blocks with LS greater than THreshold: 40.8011
+avg_cycle_livescore: 1.60506	Percentage of blocks with LS greater than THreshold: 43.7403
+avg_cycle_livescore: 1.59395	Percentage of blocks with LS greater than THreshold: 45.416
+avg_cycle_livescore: 1.55238	Percentage of blocks with LS greater than THreshold: 41.815
+avg_cycle_livescore: 1.61496	Percentage of blocks with LS greater than THreshold: 45.6928
+avg_cycle_livescore: 1.57805	Percentage of blocks with LS greater than THreshold: 42.7144
+avg_cycle_livescore: 1.52198	Percentage of blocks with LS greater than THreshold: 42.168
+avg_cycle_livescore: 1.54193	Percentage of blocks with LS greater than THreshold: 40.3046
+avg_cycle_livescore: 1.63164	Percentage of blocks with LS greater than THreshold: 43.8843
+avg_cycle_livescore: 1.66988	Percentage of blocks with LS greater than THreshold: 46.469
+avg_cycle_livescore: 1.56762	Percentage of blocks with LS greater than THreshold: 44.2537
+avg_cycle_livescore: 1.69914	Percentage of blocks with LS greater than THreshold: 46.6928
+avg_cycle_livescore: 1.61468	Percentage of blocks with LS greater than THreshold: 47.5203
+avg_cycle_livescore: 1.53719	Percentage of blocks with LS greater than THreshold: 41.4173
+avg_cycle_livescore: 1.68496	Percentage of blocks with LS greater than THreshold: 47.0902
+avg_cycle_livescore: 1.59684	Percentage of blocks with LS greater than THreshold: 44.2614
+avg_cycle_livescore: 1.56252	Percentage of blocks with LS greater than THreshold: 45.0914
+avg_cycle_livescore: 1.72192	Percentage of blocks with LS greater than THreshold: 47.6617
+avg_cycle_livescore: 1.70664	Percentage of blocks with LS greater than THreshold: 48.7636
+avg_cycle_livescore: 1.67699	Percentage of blocks with LS greater than THreshold: 46.6194
+avg_cycle_livescore: 1.7007	Percentage of blocks with LS greater than THreshold: 48.3749
+avg_cycle_livescore: 1.7156	Percentage of blocks with LS greater than THreshold: 48.5366
+avg_cycle_livescore: 1.6912	Percentage of blocks with LS greater than THreshold: 45.1021
+avg_cycle_livescore: 1.71089	Percentage of blocks with LS greater than THreshold: 48.9455
+avg_cycle_livescore: 1.70984	Percentage of blocks with LS greater than THreshold: 48.9105
+avg_cycle_livescore: 1.70289	Percentage of blocks with LS greater than THreshold: 46.912
+avg_cycle_livescore: 1.73003	Percentage of blocks with LS greater than THreshold: 49.7612
+avg_cycle_livescore: 1.73451	Percentage of blocks with LS greater than THreshold: 49.7473
+avg_cycle_livescore: 1.6505	Percentage of blocks with LS greater than THreshold: 47.8761
+avg_cycle_livescore: 1.757	Percentage of blocks with LS greater than THreshold: 50.0808
+avg_cycle_livescore: 1.65071	Percentage of blocks with LS greater than THreshold: 47.1844
+avg_cycle_livescore: 1.67398	Percentage of blocks with LS greater than THreshold: 46.8071
+avg_cycle_livescore: 1.77254	Percentage of blocks with LS greater than THreshold: 52.0867
+avg_cycle_livescore: 1.74545	Percentage of blocks with LS greater than THreshold: 49.8966
+avg_cycle_livescore: 1.63263	Percentage of blocks with LS greater than THreshold: 46.8301
+avg_cycle_livescore: 1.7576	Percentage of blocks with LS greater than THreshold: 49.6398
+avg_cycle_livescore: 1.7077	Percentage of blocks with LS greater than THreshold: 44.5357
+avg_cycle_livescore: 1.74675	Percentage of blocks with LS greater than THreshold: 51.0627
+avg_cycle_livescore: 1.73041	Percentage of blocks with LS greater than THreshold: 49.1374
+avg_cycle_livescore: 1.76175	Percentage of blocks with LS greater than THreshold: 49.5896
+avg_cycle_livescore: 1.78718	Percentage of blocks with LS greater than THreshold: 51.441
+avg_cycle_livescore: 1.77512	Percentage of blocks with LS greater than THreshold: 49.2907
+avg_cycle_livescore: 1.74655	Percentage of blocks with LS greater than THreshold: 49.7367
+avg_cycle_livescore: 1.82044	Percentage of blocks with LS greater than THreshold: 51.5058
+avg_cycle_livescore: 1.74716	Percentage of blocks with LS greater than THreshold: 49.8414
+avg_cycle_livescore: 1.71566	Percentage of blocks with LS greater than THreshold: 49.0373
+avg_cycle_livescore: 1.76844	Percentage of blocks with LS greater than THreshold: 49.6503
+avg_cycle_livescore: 1.78284	Percentage of blocks with LS greater than THreshold: 52.2031
+avg_cycle_livescore: 1.74213	Percentage of blocks with LS greater than THreshold: 49.1114
+avg_cycle_livescore: 1.81127	Percentage of blocks with LS greater than THreshold: 52.8878
+avg_cycle_livescore: 1.75526	Percentage of blocks with LS greater than THreshold: 50.0958
+avg_cycle_livescore: 1.81551	Percentage of blocks with LS greater than THreshold: 52.4883
+avg_cycle_livescore: 1.81426	Percentage of blocks with LS greater than THreshold: 51.4891
+avg_cycle_livescore: 1.84278	Percentage of blocks with LS greater than THreshold: 51.7441
+avg_cycle_livescore: 1.73031	Percentage of blocks with LS greater than THreshold: 50.7053
+avg_cycle_livescore: 1.80365	Percentage of blocks with LS greater than THreshold: 52.8846
+avg_cycle_livescore: 1.84169	Percentage of blocks with LS greater than THreshold: 52.7045
+avg_cycle_livescore: 1.74128	Percentage of blocks with LS greater than THreshold: 48.7755
+avg_cycle_livescore: 1.74995	Percentage of blocks with LS greater than THreshold: 50.5843
+avg_cycle_livescore: 1.79297	Percentage of blocks with LS greater than THreshold: 51.8978
+avg_cycle_livescore: 1.74969	Percentage of blocks with LS greater than THreshold: 50.6336
+avg_cycle_livescore: 1.78832	Percentage of blocks with LS greater than THreshold: 49.0846
+avg_cycle_livescore: 1.79603	Percentage of blocks with LS greater than THreshold: 49.2645
+avg_cycle_livescore: 1.81528	Percentage of blocks with LS greater than THreshold: 51.0801
+avg_cycle_livescore: 1.7557	Percentage of blocks with LS greater than THreshold: 50.6897
+Heartbeat CPU 2 instructions: 40000003 cycles: 91666468 heartbeat IPC: 0.435577 cumulative IPC: 0.422955 (Simulation time: 0 hr 5 min 18 sec) 
+avg_cycle_livescore: 1.81973	Percentage of blocks with LS greater than THreshold: 52.8513
+avg_cycle_livescore: 1.77606	Percentage of blocks with LS greater than THreshold: 49.3379
+avg_cycle_livescore: 1.72559	Percentage of blocks with LS greater than THreshold: 45.4096
+avg_cycle_livescore: 1.78548	Percentage of blocks with LS greater than THreshold: 51.4548
+avg_cycle_livescore: 1.81169	Percentage of blocks with LS greater than THreshold: 51.8428
+avg_cycle_livescore: 1.77773	Percentage of blocks with LS greater than THreshold: 50.4488
+avg_cycle_livescore: 1.7875	Percentage of blocks with LS greater than THreshold: 51.0846
+avg_cycle_livescore: 1.77617	Percentage of blocks with LS greater than THreshold: 47.3357
+avg_cycle_livescore: 1.81185	Percentage of blocks with LS greater than THreshold: 52.5297
+avg_cycle_livescore: 1.80548	Percentage of blocks with LS greater than THreshold: 51.0234
+avg_cycle_livescore: 1.9309	Percentage of blocks with LS greater than THreshold: 58.1877
+avg_cycle_livescore: 1.81998	Percentage of blocks with LS greater than THreshold: 53.279
+avg_cycle_livescore: 1.76726	Percentage of blocks with LS greater than THreshold: 49.6861
+avg_cycle_livescore: 1.77835	Percentage of blocks with LS greater than THreshold: 51.5145
+avg_cycle_livescore: 1.78974	Percentage of blocks with LS greater than THreshold: 50.872
+avg_cycle_livescore: 1.30254	Percentage of blocks with LS greater than THreshold: 42.5978
+avg_cycle_livescore: 1.79257	Percentage of blocks with LS greater than THreshold: 53.4368
+avg_cycle_livescore: 1.79266	Percentage of blocks with LS greater than THreshold: 52.8499
+avg_cycle_livescore: 1.82979	Percentage of blocks with LS greater than THreshold: 51.6391
+avg_cycle_livescore: 1.78519	Percentage of blocks with LS greater than THreshold: 52.173
+avg_cycle_livescore: 1.77214	Percentage of blocks with LS greater than THreshold: 48.451
+avg_cycle_livescore: 1.7922	Percentage of blocks with LS greater than THreshold: 51.2697
+avg_cycle_livescore: 1.80522	Percentage of blocks with LS greater than THreshold: 53.1771
+avg_cycle_livescore: 1.75487	Percentage of blocks with LS greater than THreshold: 48.927
+avg_cycle_livescore: 1.79371	Percentage of blocks with LS greater than THreshold: 52.8083
+avg_cycle_livescore: 1.79126	Percentage of blocks with LS greater than THreshold: 49.0202
+Heartbeat CPU 0 instructions: 40000002 cycles: 93955674 heartbeat IPC: 0.402338 cumulative IPC: 0.414266 (Simulation time: 0 hr 5 min 27 sec) 
+avg_cycle_livescore: 1.77548	Percentage of blocks with LS greater than THreshold: 50.0939
+avg_cycle_livescore: 1.78853	Percentage of blocks with LS greater than THreshold: 52.491
+avg_cycle_livescore: 1.78924	Percentage of blocks with LS greater than THreshold: 51.0443
+avg_cycle_livescore: 1.78336	Percentage of blocks with LS greater than THreshold: 52.7019
+avg_cycle_livescore: 1.77674	Percentage of blocks with LS greater than THreshold: 48.3893
+avg_cycle_livescore: 1.83454	Percentage of blocks with LS greater than THreshold: 52.6643
+avg_cycle_livescore: 1.86235	Percentage of blocks with LS greater than THreshold: 54.2752
+avg_cycle_livescore: 1.77894	Percentage of blocks with LS greater than THreshold: 51.0815
+avg_cycle_livescore: 1.76191	Percentage of blocks with LS greater than THreshold: 49.0082
+avg_cycle_livescore: 1.76556	Percentage of blocks with LS greater than THreshold: 49.4431
+avg_cycle_livescore: 1.78717	Percentage of blocks with LS greater than THreshold: 52.0736
+avg_cycle_livescore: 1.75084	Percentage of blocks with LS greater than THreshold: 49.6401
+avg_cycle_livescore: 1.78815	Percentage of blocks with LS greater than THreshold: 51.669
+avg_cycle_livescore: 1.78541	Percentage of blocks with LS greater than THreshold: 52.1863
+avg_cycle_livescore: 1.80011	Percentage of blocks with LS greater than THreshold: 49.8123
+avg_cycle_livescore: 1.83321	Percentage of blocks with LS greater than THreshold: 52.634
+avg_cycle_livescore: 1.76557	Percentage of blocks with LS greater than THreshold: 51.0036
+avg_cycle_livescore: 1.72429	Percentage of blocks with LS greater than THreshold: 50
+avg_cycle_livescore: 1.80138	Percentage of blocks with LS greater than THreshold: 51.1742
+avg_cycle_livescore: 1.73607	Percentage of blocks with LS greater than THreshold: 48.0678
+avg_cycle_livescore: 1.76167	Percentage of blocks with LS greater than THreshold: 49.7963
+avg_cycle_livescore: 1.83269	Percentage of blocks with LS greater than THreshold: 52.3057
+avg_cycle_livescore: 1.79917	Percentage of blocks with LS greater than THreshold: 52.7375
+avg_cycle_livescore: 1.82633	Percentage of blocks with LS greater than THreshold: 52.3857
+avg_cycle_livescore: 1.81847	Percentage of blocks with LS greater than THreshold: 52.1681
+avg_cycle_livescore: 1.82515	Percentage of blocks with LS greater than THreshold: 52.4211
+avg_cycle_livescore: 1.77986	Percentage of blocks with LS greater than THreshold: 51.5271
+avg_cycle_livescore: 1.79698	Percentage of blocks with LS greater than THreshold: 51.2874
+avg_cycle_livescore: 1.79441	Percentage of blocks with LS greater than THreshold: 50.0008
+avg_cycle_livescore: 1.80074	Percentage of blocks with LS greater than THreshold: 51.5789
+avg_cycle_livescore: 1.80991	Percentage of blocks with LS greater than THreshold: 52.6184
+avg_cycle_livescore: 1.81172	Percentage of blocks with LS greater than THreshold: 51.88
+avg_cycle_livescore: 1.76826	Percentage of blocks with LS greater than THreshold: 51.5576
+avg_cycle_livescore: 1.76271	Percentage of blocks with LS greater than THreshold: 49.5026
+avg_cycle_livescore: 1.85308	Percentage of blocks with LS greater than THreshold: 52.0217
+avg_cycle_livescore: 1.87071	Percentage of blocks with LS greater than THreshold: 55.8422
+avg_cycle_livescore: 1.78941	Percentage of blocks with LS greater than THreshold: 52.7388
+avg_cycle_livescore: 1.82381	Percentage of blocks with LS greater than THreshold: 51.9838
+avg_cycle_livescore: 1.77706	Percentage of blocks with LS greater than THreshold: 50.1044
+avg_cycle_livescore: 1.79217	Percentage of blocks with LS greater than THreshold: 50.6849
+avg_cycle_livescore: 1.79396	Percentage of blocks with LS greater than THreshold: 52.6181
+avg_cycle_livescore: 1.88964	Percentage of blocks with LS greater than THreshold: 54.7018
+avg_cycle_livescore: 1.79617	Percentage of blocks with LS greater than THreshold: 53.3152
+avg_cycle_livescore: 1.87418	Percentage of blocks with LS greater than THreshold: 53.8477
+avg_cycle_livescore: 1.81412	Percentage of blocks with LS greater than THreshold: 52.8688
+avg_cycle_livescore: 1.75507	Percentage of blocks with LS greater than THreshold: 48.4419
+avg_cycle_livescore: 1.7633	Percentage of blocks with LS greater than THreshold: 48.3463
+avg_cycle_livescore: 1.83803	Percentage of blocks with LS greater than THreshold: 52.5771
+avg_cycle_livescore: 1.81419	Percentage of blocks with LS greater than THreshold: 52.3052
+avg_cycle_livescore: 1.81664	Percentage of blocks with LS greater than THreshold: 53.1414
+avg_cycle_livescore: 1.81137	Percentage of blocks with LS greater than THreshold: 51.0048
+avg_cycle_livescore: 1.79869	Percentage of blocks with LS greater than THreshold: 52.5496
+avg_cycle_livescore: 1.74472	Percentage of blocks with LS greater than THreshold: 48.732
+avg_cycle_livescore: 1.75893	Percentage of blocks with LS greater than THreshold: 49.1489
+avg_cycle_livescore: 1.83216	Percentage of blocks with LS greater than THreshold: 54.4895
+avg_cycle_livescore: 1.82425	Percentage of blocks with LS greater than THreshold: 51.3316
+avg_cycle_livescore: 1.79136	Percentage of blocks with LS greater than THreshold: 51.254
+avg_cycle_livescore: 1.79218	Percentage of blocks with LS greater than THreshold: 51.383
+avg_cycle_livescore: 1.80625	Percentage of blocks with LS greater than THreshold: 51.5886
+avg_cycle_livescore: 1.82611	Percentage of blocks with LS greater than THreshold: 51.5086
+avg_cycle_livescore: 1.76462	Percentage of blocks with LS greater than THreshold: 48.6017
+avg_cycle_livescore: 1.78053	Percentage of blocks with LS greater than THreshold: 50.2949
+avg_cycle_livescore: 1.80115	Percentage of blocks with LS greater than THreshold: 51.9678
+avg_cycle_livescore: 1.85104	Percentage of blocks with LS greater than THreshold: 54.5358
+avg_cycle_livescore: 1.83409	Percentage of blocks with LS greater than THreshold: 53.1303
+avg_cycle_livescore: 1.76557	Percentage of blocks with LS greater than THreshold: 49.9709
+avg_cycle_livescore: 1.83264	Percentage of blocks with LS greater than THreshold: 52.4246
+avg_cycle_livescore: 1.77209	Percentage of blocks with LS greater than THreshold: 49.702
+avg_cycle_livescore: 1.78503	Percentage of blocks with LS greater than THreshold: 50.5497
+avg_cycle_livescore: 1.81407	Percentage of blocks with LS greater than THreshold: 51.6397
+avg_cycle_livescore: 1.7269	Percentage of blocks with LS greater than THreshold: 48.6773
+avg_cycle_livescore: 1.76519	Percentage of blocks with LS greater than THreshold: 51.2281
+Heartbeat CPU 1 instructions: 10000002 cycles: 99285608 heartbeat IPC: 0.10072 cumulative IPC: 0.08814 (Simulation time: 0 hr 5 min 48 sec) 
+avg_cycle_livescore: 1.83512	Percentage of blocks with LS greater than THreshold: 52.7741
+avg_cycle_livescore: 1.79719	Percentage of blocks with LS greater than THreshold: 52.0774
+avg_cycle_livescore: 1.82979	Percentage of blocks with LS greater than THreshold: 51.9975
+avg_cycle_livescore: 1.84212	Percentage of blocks with LS greater than THreshold: 51.9815
+avg_cycle_livescore: 1.61169	Percentage of blocks with LS greater than THreshold: 44.3311
+avg_cycle_livescore: 1.71617	Percentage of blocks with LS greater than THreshold: 48.3705
+avg_cycle_livescore: 1.76748	Percentage of blocks with LS greater than THreshold: 49.7438
+avg_cycle_livescore: 1.73827	Percentage of blocks with LS greater than THreshold: 51.7182
+avg_cycle_livescore: 1.76273	Percentage of blocks with LS greater than THreshold: 52.044
+avg_cycle_livescore: 1.79974	Percentage of blocks with LS greater than THreshold: 52.4932
+avg_cycle_livescore: 1.29681	Percentage of blocks with LS greater than THreshold: 40.8189
+avg_cycle_livescore: 1.51139	Percentage of blocks with LS greater than THreshold: 45.947
+avg_cycle_livescore: 1.69045	Percentage of blocks with LS greater than THreshold: 48.4505
+avg_cycle_livescore: 1.72631	Percentage of blocks with LS greater than THreshold: 50.6606
+avg_cycle_livescore: 1.77821	Percentage of blocks with LS greater than THreshold: 51.9092
+avg_cycle_livescore: 1.74983	Percentage of blocks with LS greater than THreshold: 51.5471
+avg_cycle_livescore: 1.7217	Percentage of blocks with LS greater than THreshold: 48.738
+avg_cycle_livescore: 1.76355	Percentage of blocks with LS greater than THreshold: 49.61
+avg_cycle_livescore: 1.83441	Percentage of blocks with LS greater than THreshold: 53.108
+avg_cycle_livescore: 1.75389	Percentage of blocks with LS greater than THreshold: 53.1549
+avg_cycle_livescore: 1.80823	Percentage of blocks with LS greater than THreshold: 52.6608
+avg_cycle_livescore: 1.75124	Percentage of blocks with LS greater than THreshold: 49.938
+avg_cycle_livescore: 1.83362	Percentage of blocks with LS greater than THreshold: 54.3382
+avg_cycle_livescore: 1.71535	Percentage of blocks with LS greater than THreshold: 48.0064
+avg_cycle_livescore: 1.79176	Percentage of blocks with LS greater than THreshold: 53.5588
+avg_cycle_livescore: 1.74934	Percentage of blocks with LS greater than THreshold: 46.999
+avg_cycle_livescore: 1.69972	Percentage of blocks with LS greater than THreshold: 50.1254
+avg_cycle_livescore: 1.77702	Percentage of blocks with LS greater than THreshold: 51.7752
+avg_cycle_livescore: 1.74454	Percentage of blocks with LS greater than THreshold: 51.4899
+avg_cycle_livescore: 1.77915	Percentage of blocks with LS greater than THreshold: 52.3019
+avg_cycle_livescore: 1.78479	Percentage of blocks with LS greater than THreshold: 52.2206
+avg_cycle_livescore: 1.80028	Percentage of blocks with LS greater than THreshold: 50.3574
+avg_cycle_livescore: 1.80569	Percentage of blocks with LS greater than THreshold: 50.7006
+avg_cycle_livescore: 1.72787	Percentage of blocks with LS greater than THreshold: 50.8479
+avg_cycle_livescore: 1.77917	Percentage of blocks with LS greater than THreshold: 50.2409
+avg_cycle_livescore: 1.84711	Percentage of blocks with LS greater than THreshold: 52.9487
+avg_cycle_livescore: 1.76319	Percentage of blocks with LS greater than THreshold: 50.0817
+avg_cycle_livescore: 1.80172	Percentage of blocks with LS greater than THreshold: 52.446
+avg_cycle_livescore: 1.82519	Percentage of blocks with LS greater than THreshold: 52.5203
+avg_cycle_livescore: 1.77818	Percentage of blocks with LS greater than THreshold: 51.7978
+avg_cycle_livescore: 1.78946	Percentage of blocks with LS greater than THreshold: 51.9982
+avg_cycle_livescore: 1.70603	Percentage of blocks with LS greater than THreshold: 47.1156
+avg_cycle_livescore: 1.7843	Percentage of blocks with LS greater than THreshold: 49.4819
+avg_cycle_livescore: 1.81525	Percentage of blocks with LS greater than THreshold: 54.8327
+avg_cycle_livescore: 1.79524	Percentage of blocks with LS greater than THreshold: 51.0514
+avg_cycle_livescore: 1.83038	Percentage of blocks with LS greater than THreshold: 53.8381
+avg_cycle_livescore: 1.82338	Percentage of blocks with LS greater than THreshold: 54.9837
+avg_cycle_livescore: 1.78857	Percentage of blocks with LS greater than THreshold: 52.8013
+avg_cycle_livescore: 1.80118	Percentage of blocks with LS greater than THreshold: 53.4233
+avg_cycle_livescore: 1.81922	Percentage of blocks with LS greater than THreshold: 52.6685
+avg_cycle_livescore: 1.8077	Percentage of blocks with LS greater than THreshold: 53.0953
+avg_cycle_livescore: 1.84371	Percentage of blocks with LS greater than THreshold: 53.3947
+avg_cycle_livescore: 1.75444	Percentage of blocks with LS greater than THreshold: 50.2251
+avg_cycle_livescore: 1.84415	Percentage of blocks with LS greater than THreshold: 53.1785
+avg_cycle_livescore: 1.81239	Percentage of blocks with LS greater than THreshold: 53.4544
+avg_cycle_livescore: 1.82467	Percentage of blocks with LS greater than THreshold: 53.1348
+avg_cycle_livescore: 1.84637	Percentage of blocks with LS greater than THreshold: 53.4195
+avg_cycle_livescore: 1.90531	Percentage of blocks with LS greater than THreshold: 56.4927
+avg_cycle_livescore: 1.82261	Percentage of blocks with LS greater than THreshold: 52.5591
+avg_cycle_livescore: 1.8687	Percentage of blocks with LS greater than THreshold: 55.3001
+avg_cycle_livescore: 1.82431	Percentage of blocks with LS greater than THreshold: 54.8914
+avg_cycle_livescore: 1.8049	Percentage of blocks with LS greater than THreshold: 51.8672
+avg_cycle_livescore: 1.75272	Percentage of blocks with LS greater than THreshold: 46.5983
+avg_cycle_livescore: 1.77376	Percentage of blocks with LS greater than THreshold: 49.9645
+avg_cycle_livescore: 1.75012	Percentage of blocks with LS greater than THreshold: 50.3037
+avg_cycle_livescore: 1.81378	Percentage of blocks with LS greater than THreshold: 51.8016
+avg_cycle_livescore: 1.80448	Percentage of blocks with LS greater than THreshold: 51.938
+avg_cycle_livescore: 1.69357	Percentage of blocks with LS greater than THreshold: 47.7295
+avg_cycle_livescore: 1.81455	Percentage of blocks with LS greater than THreshold: 50.9547
+avg_cycle_livescore: 1.80314	Percentage of blocks with LS greater than THreshold: 53.8139
+avg_cycle_livescore: 1.79311	Percentage of blocks with LS greater than THreshold: 51.2171
+avg_cycle_livescore: 1.71716	Percentage of blocks with LS greater than THreshold: 45.2625
+avg_cycle_livescore: 1.87177	Percentage of blocks with LS greater than THreshold: 54.9401
+avg_cycle_livescore: 1.82615	Percentage of blocks with LS greater than THreshold: 53.6683
+avg_cycle_livescore: 1.82358	Percentage of blocks with LS greater than THreshold: 53.0473
+avg_cycle_livescore: 1.79053	Percentage of blocks with LS greater than THreshold: 48.9283
+avg_cycle_livescore: 1.87992	Percentage of blocks with LS greater than THreshold: 54.4412
+avg_cycle_livescore: 1.80605	Percentage of blocks with LS greater than THreshold: 51.8381
+avg_cycle_livescore: 1.84815	Percentage of blocks with LS greater than THreshold: 52.7095
+avg_cycle_livescore: 1.81713	Percentage of blocks with LS greater than THreshold: 52.3137
+avg_cycle_livescore: 1.83352	Percentage of blocks with LS greater than THreshold: 54.2147
+avg_cycle_livescore: 1.81147	Percentage of blocks with LS greater than THreshold: 52.6309
+avg_cycle_livescore: 1.85577	Percentage of blocks with LS greater than THreshold: 51.3608
+avg_cycle_livescore: 1.86366	Percentage of blocks with LS greater than THreshold: 56.3516
+avg_cycle_livescore: 1.71826	Percentage of blocks with LS greater than THreshold: 49.1973
+avg_cycle_livescore: 1.77511	Percentage of blocks with LS greater than THreshold: 50.6151
+avg_cycle_livescore: 1.81505	Percentage of blocks with LS greater than THreshold: 50.8325
+avg_cycle_livescore: 1.83544	Percentage of blocks with LS greater than THreshold: 53.4188
+avg_cycle_livescore: 1.72607	Percentage of blocks with LS greater than THreshold: 50.2256
+Finished CPU 1 instructions: 10000000 cycles: 105718165 cumulative IPC: 0.0945911 (Simulation time: 0 hr 6 min 15 sec) 
+
+ChampSim completed all CPUs
+
+Total Simulation Statistics (not including warmup)
+
+CPU 0 cumulative IPC: 0.412704 instructions: 43630312 cycles: 105718165
+L1D TOTAL     ACCESS:    9110926  HIT:    7881123  MISS:    1229803
+L1D LOAD      ACCESS:    6191335  HIT:    5176444  MISS:    1014891
+L1D RFO       ACCESS:    2919591  HIT:    2704679  MISS:     214912
+L1D PREFETCH  ACCESS:          0  HIT:          0  MISS:          0
+L1D WRITEBACK ACCESS:          0  HIT:          0  MISS:          0
+L1I TOTAL     ACCESS:    8385513  HIT:    8385456  MISS:         57
+L1I LOAD      ACCESS:    8385513  HIT:    8385456  MISS:         57
+L1I RFO       ACCESS:          0  HIT:          0  MISS:          0
+L1I PREFETCH  ACCESS:          0  HIT:          0  MISS:          0
+L1I WRITEBACK ACCESS:          0  HIT:          0  MISS:          0
+L2C TOTAL     ACCESS:    1459250  HIT:     807430  MISS:     651820
+L2C LOAD      ACCESS:    1014946  HIT:     524895  MISS:     490051
+L2C RFO       ACCESS:     214905  HIT:      53192  MISS:     161713
+L2C PREFETCH  ACCESS:          0  HIT:          0  MISS:          0
+L2C WRITEBACK ACCESS:     229399  HIT:     229343  MISS:         56
+LLC TOTAL     ACCESS:     818384  HIT:     517242  MISS:     301142
+LLC LOAD      ACCESS:     490048  HIT:     315007  MISS:     175041
+LLC RFO       ACCESS:     161691  HIT:      55840  MISS:     105851
+LLC PREFETCH  ACCESS:          0  HIT:          0  MISS:          0
+LLC WRITEBACK ACCESS:     166645  HIT:     146395  MISS:      20250
+
+CPU 1 cumulative IPC: 0.0945911 instructions: 10000000 cycles: 105718165
+L1D TOTAL     ACCESS:     800514  HIT:     536460  MISS:     264054
+L1D LOAD      ACCESS:     553336  HIT:     289286  MISS:     264050
+L1D RFO       ACCESS:     247178  HIT:     247174  MISS:          4
+L1D PREFETCH  ACCESS:          0  HIT:          0  MISS:          0
+L1D WRITEBACK ACCESS:          0  HIT:          0  MISS:          0
+L1I TOTAL     ACCESS:    1548312  HIT:    1548300  MISS:         12
+L1I LOAD      ACCESS:    1548312  HIT:    1548300  MISS:         12
+L1I RFO       ACCESS:          0  HIT:          0  MISS:          0
+L1I PREFETCH  ACCESS:          0  HIT:          0  MISS:          0
+L1I WRITEBACK ACCESS:          0  HIT:          0  MISS:          0
+L2C TOTAL     ACCESS:     387654  HIT:     123588  MISS:     264066
+L2C LOAD      ACCESS:     264062  HIT:          0  MISS:     264062
+L2C RFO       ACCESS:          4  HIT:          0  MISS:          4
+L2C PREFETCH  ACCESS:          0  HIT:          0  MISS:          0
+L2C WRITEBACK ACCESS:     123588  HIT:     123588  MISS:          0
+LLC TOTAL     ACCESS:     387654  HIT:      81651  MISS:     306003
+LLC LOAD      ACCESS:     264062  HIT:          0  MISS:     264062
+LLC RFO       ACCESS:          4  HIT:          0  MISS:          4
+LLC PREFETCH  ACCESS:          0  HIT:          0  MISS:          0
+LLC WRITEBACK ACCESS:     123588  HIT:      81651  MISS:      41937
+
+CPU 2 cumulative IPC: 0.427522 instructions: 45196841 cycles: 105718165
+L1D TOTAL     ACCESS:    7012100  HIT:    4806471  MISS:    2205629
+L1D LOAD      ACCESS:    2428184  HIT:    2093971  MISS:     334213
+L1D RFO       ACCESS:    4583916  HIT:    2712500  MISS:    1871416
+L1D PREFETCH  ACCESS:          0  HIT:          0  MISS:          0
+L1D WRITEBACK ACCESS:          0  HIT:          0  MISS:          0
+L1I TOTAL     ACCESS:    6793626  HIT:    6793626  MISS:          0
+L1I LOAD      ACCESS:    6793626  HIT:    6793626  MISS:          0
+L1I RFO       ACCESS:          0  HIT:          0  MISS:          0
+L1I PREFETCH  ACCESS:          0  HIT:          0  MISS:          0
+L1I WRITEBACK ACCESS:          0  HIT:          0  MISS:          0
+L2C TOTAL     ACCESS:    4077044  HIT:    2740220  MISS:    1336824
+L2C LOAD      ACCESS:     334213  HIT:          0  MISS:     334213
+L2C RFO       ACCESS:    1871416  HIT:     868844  MISS:    1002572
+L2C PREFETCH  ACCESS:          0  HIT:          0  MISS:          0
+L2C WRITEBACK ACCESS:    1871415  HIT:    1871376  MISS:         39
+LLC TOTAL     ACCESS:    2339503  HIT:     967011  MISS:    1372492
+LLC LOAD      ACCESS:     334213  HIT:          0  MISS:     334213
+LLC RFO       ACCESS:    1002572  HIT:       9800  MISS:     992772
+LLC PREFETCH  ACCESS:          0  HIT:          0  MISS:          0
+LLC WRITEBACK ACCESS:    1002718  HIT:     957211  MISS:      45507
+
+CPU 3 cumulative IPC: 0.239006 instructions: 25267293 cycles: 105718165
+L1D TOTAL     ACCESS:    7929890  HIT:    7144737  MISS:     785153
+L1D LOAD      ACCESS:    5242194  HIT:    4577676  MISS:     664518
+L1D RFO       ACCESS:    2687696  HIT:    2567061  MISS:     120635
+L1D PREFETCH  ACCESS:          0  HIT:          0  MISS:          0
+L1D WRITEBACK ACCESS:          0  HIT:          0  MISS:          0
+L1I TOTAL     ACCESS:    4360837  HIT:    4360837  MISS:          0
+L1I LOAD      ACCESS:    4360837  HIT:    4360837  MISS:          0
+L1I RFO       ACCESS:          0  HIT:          0  MISS:          0
+L1I PREFETCH  ACCESS:          0  HIT:          0  MISS:          0
+L1I WRITEBACK ACCESS:          0  HIT:          0  MISS:          0
+L2C TOTAL     ACCESS:    1012718  HIT:     441643  MISS:     571075
+L2C LOAD      ACCESS:     664497  HIT:     161908  MISS:     502589
+L2C RFO       ACCESS:     120602  HIT:      52147  MISS:      68455
+L2C PREFETCH  ACCESS:          0  HIT:          0  MISS:          0
+L2C WRITEBACK ACCESS:     227619  HIT:     227588  MISS:         31
+LLC TOTAL     ACCESS:     708426  HIT:     168395  MISS:     540031
+LLC LOAD      ACCESS:     502589  HIT:      20435  MISS:     482154
+LLC RFO       ACCESS:      68455  HIT:      23727  MISS:      44728
+LLC PREFETCH  ACCESS:          0  HIT:          0  MISS:          0
+LLC WRITEBACK ACCESS:     137382  HIT:     124233  MISS:      13149
+
+Region of Interest Statistics
+
+CPU 0 cumulative IPC: 0.563011 instructions: 10000000 cycles: 17761654
+L1D TOTAL     ACCESS:    2265775  HIT:    2088147  MISS:     177628
+L1D LOAD      ACCESS:    1638835  HIT:    1487540  MISS:     151295
+L1D RFO       ACCESS:     626940  HIT:     600607  MISS:      26333
+L1D PREFETCH  ACCESS:          0  HIT:          0  MISS:          0
+L1D WRITEBACK ACCESS:          0  HIT:          0  MISS:          0
+L1D PREFETCH  REQUESTED:          0  ISSUED:          0  USEFUL:          0  USELESS:          0
+L1D AVERAGE MISS LATENCY: 1416.13 cycles
+L1I TOTAL     ACCESS:    1768354  HIT:    1768342  MISS:         12
+L1I LOAD      ACCESS:    1768354  HIT:    1768342  MISS:         12
+L1I RFO       ACCESS:          0  HIT:          0  MISS:          0
+L1I PREFETCH  ACCESS:          0  HIT:          0  MISS:          0
+L1I WRITEBACK ACCESS:          0  HIT:          0  MISS:          0
+L1I PREFETCH  REQUESTED:          0  ISSUED:          0  USEFUL:          0  USELESS:          0
+L1I AVERAGE MISS LATENCY: 2324.92 cycles
+L2C TOTAL     ACCESS:     211111  HIT:     148805  MISS:      62306
+L2C LOAD      ACCESS:     151306  HIT:     110499  MISS:      40807
+L2C RFO       ACCESS:      26333  HIT:       4839  MISS:      21494
+L2C PREFETCH  ACCESS:          0  HIT:          0  MISS:          0
+L2C WRITEBACK ACCESS:      33472  HIT:      33467  MISS:          5
+L2C PREFETCH  REQUESTED:          0  ISSUED:          0  USEFUL:          0  USELESS:          0
+L2C AVERAGE MISS LATENCY: 3739.06 cycles
+LLC TOTAL     ACCESS:      85037  HIT:      35600  MISS:      49437
+LLC LOAD      ACCESS:      40807  HIT:      14130  MISS:      26677
+LLC RFO       ACCESS:      21489  HIT:       3105  MISS:      18384
+LLC PREFETCH  ACCESS:          0  HIT:          0  MISS:          0
+LLC WRITEBACK ACCESS:      22741  HIT:      18365  MISS:       4376
+LLC PREFETCH  REQUESTED:          0  ISSUED:          0  USEFUL:          0  USELESS:          0
+LLC AVERAGE MISS LATENCY: 30462.5 cycles
+Major fault: 0 Minor fault: 1331
+
+CPU 1 cumulative IPC: 0.0945911 instructions: 10000000 cycles: 105718165
+L1D TOTAL     ACCESS:     800514  HIT:     536460  MISS:     264054
+L1D LOAD      ACCESS:     553336  HIT:     289286  MISS:     264050
+L1D RFO       ACCESS:     247178  HIT:     247174  MISS:          4
+L1D PREFETCH  ACCESS:          0  HIT:          0  MISS:          0
+L1D WRITEBACK ACCESS:          0  HIT:          0  MISS:          0
+L1D PREFETCH  REQUESTED:          0  ISSUED:          0  USEFUL:          0  USELESS:          0
+L1D AVERAGE MISS LATENCY: 545.886 cycles
+L1I TOTAL     ACCESS:    1548312  HIT:    1548300  MISS:         12
+L1I LOAD      ACCESS:    1548312  HIT:    1548300  MISS:         12
+L1I RFO       ACCESS:          0  HIT:          0  MISS:          0
+L1I PREFETCH  ACCESS:          0  HIT:          0  MISS:          0
+L1I WRITEBACK ACCESS:          0  HIT:          0  MISS:          0
+L1I PREFETCH  REQUESTED:          0  ISSUED:          0  USEFUL:          0  USELESS:          0
+L1I AVERAGE MISS LATENCY: 543.75 cycles
+L2C TOTAL     ACCESS:     387654  HIT:     123588  MISS:     264066
+L2C LOAD      ACCESS:     264062  HIT:          0  MISS:     264062
+L2C RFO       ACCESS:          4  HIT:          0  MISS:          4
+L2C PREFETCH  ACCESS:          0  HIT:          0  MISS:          0
+L2C WRITEBACK ACCESS:     123588  HIT:     123588  MISS:          0
+L2C PREFETCH  REQUESTED:          0  ISSUED:          0  USEFUL:          0  USELESS:          0
+L2C AVERAGE MISS LATENCY: 530.651 cycles
+LLC TOTAL     ACCESS:     387654  HIT:      81651  MISS:     306003
+LLC LOAD      ACCESS:     264062  HIT:          0  MISS:     264062
+LLC RFO       ACCESS:          4  HIT:          0  MISS:          4
+LLC PREFETCH  ACCESS:          0  HIT:          0  MISS:          0
+LLC WRITEBACK ACCESS:     123588  HIT:      81651  MISS:      41937
+LLC PREFETCH  REQUESTED:          0  ISSUED:          0  USEFUL:          0  USELESS:          0
+LLC AVERAGE MISS LATENCY: 4921.43 cycles
+Major fault: 0 Minor fault: 4701
+
+CPU 2 cumulative IPC: 0.465711 instructions: 10000000 cycles: 21472523
+L1D TOTAL     ACCESS:    1552380  HIT:    1064028  MISS:     488352
+L1D LOAD      ACCESS:     537361  HIT:     463362  MISS:      73999
+L1D RFO       ACCESS:    1015019  HIT:     600666  MISS:     414353
+L1D PREFETCH  ACCESS:          0  HIT:          0  MISS:          0
+L1D WRITEBACK ACCESS:          0  HIT:          0  MISS:          0
+L1D PREFETCH  REQUESTED:          0  ISSUED:          0  USEFUL:          0  USELESS:          0
+L1D AVERAGE MISS LATENCY: 1868.44 cycles
+L1I TOTAL     ACCESS:    1504089  HIT:    1504089  MISS:          0
+L1I LOAD      ACCESS:    1504089  HIT:    1504089  MISS:          0
+L1I RFO       ACCESS:          0  HIT:          0  MISS:          0
+L1I PREFETCH  ACCESS:          0  HIT:          0  MISS:          0
+L1I WRITEBACK ACCESS:          0  HIT:          0  MISS:          0
+L1I PREFETCH  REQUESTED:          0  ISSUED:          0  USEFUL:          0  USELESS:          0
+L1I AVERAGE MISS LATENCY: -nan cycles
+L2C TOTAL     ACCESS:     902704  HIT:     606702  MISS:     296002
+L2C LOAD      ACCESS:      73999  HIT:          0  MISS:      73999
+L2C RFO       ACCESS:     414353  HIT:     192359  MISS:     221994
+L2C PREFETCH  ACCESS:          0  HIT:          0  MISS:          0
+L2C WRITEBACK ACCESS:     414352  HIT:     414343  MISS:          9
+L2C PREFETCH  REQUESTED:          0  ISSUED:          0  USEFUL:          0  USELESS:          0
+L2C AVERAGE MISS LATENCY: 2959.72 cycles
+LLC TOTAL     ACCESS:     517925  HIT:     211276  MISS:     306649
+LLC LOAD      ACCESS:      73999  HIT:          0  MISS:      73999
+LLC RFO       ACCESS:     221994  HIT:       4290  MISS:     217704
+LLC PREFETCH  ACCESS:          0  HIT:          0  MISS:          0
+LLC WRITEBACK ACCESS:     221932  HIT:     206986  MISS:      14946
+LLC PREFETCH  REQUESTED:          0  ISSUED:          0  USEFUL:          0  USELESS:          0
+LLC AVERAGE MISS LATENCY: 4911.06 cycles
+Major fault: 0 Minor fault: 11574
+
+CPU 3 cumulative IPC: 0.238774 instructions: 10000002 cycles: 41880603
+L1D TOTAL     ACCESS:    3125732  HIT:    2814629  MISS:     311103
+L1D LOAD      ACCESS:    2065715  HIT:    1801522  MISS:     264193
+L1D RFO       ACCESS:    1060017  HIT:    1013107  MISS:      46910
+L1D PREFETCH  ACCESS:          0  HIT:          0  MISS:          0
+L1D WRITEBACK ACCESS:          0  HIT:          0  MISS:          0
+L1D PREFETCH  REQUESTED:          0  ISSUED:          0  USEFUL:          0  USELESS:          0
+L1D AVERAGE MISS LATENCY: 1141.06 cycles
+L1I TOTAL     ACCESS:    1725800  HIT:    1725800  MISS:          0
+L1I LOAD      ACCESS:    1725800  HIT:    1725800  MISS:          0
+L1I RFO       ACCESS:          0  HIT:          0  MISS:          0
+L1I PREFETCH  ACCESS:          0  HIT:          0  MISS:          0
+L1I WRITEBACK ACCESS:          0  HIT:          0  MISS:          0
+L1I PREFETCH  REQUESTED:          0  ISSUED:          0  USEFUL:          0  USELESS:          0
+L1I AVERAGE MISS LATENCY: -nan cycles
+L2C TOTAL     ACCESS:     402098  HIT:     174697  MISS:     227401
+L2C LOAD      ACCESS:     264183  HIT:      63556  MISS:     200627
+L2C RFO       ACCESS:      46897  HIT:      20133  MISS:      26764
+L2C PREFETCH  ACCESS:          0  HIT:          0  MISS:          0
+L2C WRITEBACK ACCESS:      91018  HIT:      91008  MISS:         10
+L2C PREFETCH  REQUESTED:          0  ISSUED:          0  USEFUL:          0  USELESS:          0
+L2C AVERAGE MISS LATENCY: 1508.19 cycles
+LLC TOTAL     ACCESS:     281475  HIT:      65099  MISS:     216376
+LLC LOAD      ACCESS:     200627  HIT:       8908  MISS:     191719
+LLC RFO       ACCESS:      26764  HIT:       9076  MISS:      17688
+LLC PREFETCH  ACCESS:          0  HIT:          0  MISS:          0
+LLC WRITEBACK ACCESS:      54084  HIT:      47115  MISS:       6969
+LLC PREFETCH  REQUESTED:          0  ISSUED:          0  USEFUL:          0  USELESS:          0
+LLC AVERAGE MISS LATENCY: 6959.98 cycles
+Major fault: 0 Minor fault: 5097
+
+Run Ahead: 0	Run Ahead done: 0
+
+
+Run Ahead: 0	Run Ahead done: 0
+
+
+Run Ahead: 0	Run Ahead done: 0
+
+
+Run Ahead: 0	Run Ahead done: 0
+
+
+Run Ahead correct prediction: 0
+
+
+DRAM Statistics
+ CHANNEL 0
+ RQ ROW_BUFFER_HIT:     445587  ROW_BUFFER_MISS:    1953144
+ DBUS_CONGESTED:    1921705
+ WQ ROW_BUFFER_HIT:     188255  ROW_BUFFER_MISS:    1143325  FULL:          0
+
+ AVG_CONGESTED_CYCLE: 6
+
+CPU 0 Branch Prediction Accuracy: 91.8862% MPKI: 13.954 Average ROB Occupancy at Mispredict: 26.1422
+
+Branch types
+NOT_BRANCH: 36071067 82.6743%
+BRANCH_DIRECT_JUMP: 666835 1.52838%
+BRANCH_INDIRECT: 0 0%
+BRANCH_CONDITIONAL: 6556884 15.0283%
+BRANCH_DIRECT_CALL: 167820 0.384641%
+BRANCH_INDIRECT_CALL: 0 0%
+BRANCH_RETURN: 167822 0.384645%
+BRANCH_OTHER: 0 0%
+
+
+CPU 1 Branch Prediction Accuracy: 86.5254% MPKI: 27.6298 Average ROB Occupancy at Mispredict: 3.83171
+
+Branch types
+NOT_BRANCH: 7887609 78.8761%
+BRANCH_DIRECT_JUMP: 1 1e-05%
+BRANCH_INDIRECT: 0 0%
+BRANCH_CONDITIONAL: 2112351 21.1235%
+BRANCH_DIRECT_CALL: 5 5e-05%
+BRANCH_INDIRECT_CALL: 0 0%
+BRANCH_RETURN: 5 5e-05%
+BRANCH_OTHER: 0 0%
+
+
+CPU 2 Branch Prediction Accuracy: 99.2473% MPKI: 0.0863856 Average ROB Occupancy at Mispredict: 161.999
+
+Branch types
+NOT_BRANCH: 44672606 98.8401%
+BRANCH_DIRECT_JUMP: 128448 0.284197%
+BRANCH_INDIRECT: 0 0%
+BRANCH_CONDITIONAL: 395787 0.875696%
+BRANCH_DIRECT_CALL: 0 0%
+BRANCH_INDIRECT_CALL: 0 0%
+BRANCH_RETURN: 0 0%
+BRANCH_OTHER: 0 0%
+
+
+CPU 3 Branch Prediction Accuracy: 98.3241% MPKI: 0.710048 Average ROB Occupancy at Mispredict: 300.129
+
+Branch types
+NOT_BRANCH: 24196737 95.7631%
+BRANCH_DIRECT_JUMP: 29190 0.115525%
+BRANCH_INDIRECT: 0 0%
+BRANCH_CONDITIONAL: 1039546 4.1142%
+BRANCH_DIRECT_CALL: 912 0.00360941%
+BRANCH_INDIRECT_CALL: 0 0%
+BRANCH_RETURN: 912 0.00360941%
+BRANCH_OTHER: 0 0%
+

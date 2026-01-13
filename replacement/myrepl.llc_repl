@@ -1,0 +1,107 @@
+#include "cache.h"
+#include "uncore.h"
+// initialize replacement state
+int prediction_acc=0, brbit=0;
+void CACHE::llc_initialize_replacement()
+{
+	cout<<"LLC_WRITE_OVERHEAD "<<LLC_WRITE_OVERHEAD<<endl;
+	cout<<"READ_MISS_BYPASS "<<READ_MISS_BYPASS<<endl;
+	cout<<"RUN_AHEAD "<<RUN_AHEAD<<endl;
+	cout<<"L2C_WRITE_MERGE "<<L2C_WRITE_MERGE<<endl;
+	cout<<"WRITE_BYPASS "<<WRITE_BYPASS<<endl;
+	cout<<"LLC_BANK "<<LLC_BANK<<endl;
+	cout<<"WRITE_THR "<<WRITE_THR<<endl;
+	cout<<"LIVE_WRITE_THR "<<LIVE_WRITE_THR<<endl;
+	cout<<"DRAM_RQ_OPTIMIZATION "<<DRAM_RQ_OPTIMIZATION<<endl;
+}
+
+bool write_congestion(){
+	int rq_occupancy = 0;
+	for(int i=0;i<uncore.LLC.MSHR.occupancy;i++){
+		if(uncore.LLC.MSHR.entry[i].type==LOAD) rq_occupancy++;
+	}
+	int wq_occupancy = uncore.LLC.WQ.occupancy;
+	if((rq_occupancy + wq_occupancy) < WRITE_THR) return true;
+	
+	return false;
+}
+
+// find replacement victim
+uint32_t CACHE::llc_find_victim(uint32_t cpu, uint64_t instr_id, uint32_t set, const BLOCK *current_set, PACKET *pack, uint64_t full_addr, uint32_t type)
+{
+    // baseline LRU
+    
+    if((pack->carry_indicator == 1 && type == LOAD) || (write_congestion() && type == WRITEBACK && pack->is_bypass)) {
+    	//if(pack->run_ahead) brbit++;
+    	return LLC_WAY; 
+    }
+    //else if(type == WRITEBACK) return 0;
+    else return lru_victim(cpu, instr_id, set, current_set, pack->ip, full_addr, type); ;
+}
+
+// called on every cache hit and cache fill
+void CACHE::llc_update_replacement_state(uint32_t cpu, uint32_t set, uint32_t way, uint64_t full_addr, PACKET *pack, uint64_t victim_addr, uint32_t type, uint8_t hit)
+{
+    string TYPE_NAME;
+    if (type == LOAD)
+        TYPE_NAME = "LOAD";
+    else if (type == RFO)
+        TYPE_NAME = "RFO";
+    else if (type == PREFETCH)
+        TYPE_NAME = "PF";
+    else if (type == WRITEBACK)
+        TYPE_NAME = "WB";
+    else
+        assert(0);
+
+    if (hit)
+        TYPE_NAME += "_HIT";
+    else
+        TYPE_NAME += "_MISS";
+
+    if ((type == WRITEBACK) && pack->ip)
+        assert(0);
+        
+        if((type == LOAD || type == RFO) && !hit){
+        	/*if(lower_level->RQ.check_queue(&pack) != -1){
+        		
+        		lower_level->RQ.remove_queue(&pack);
+        	}*/
+        	//pack.event_cycle -= 1000;//(tRP + tRCD + tCAS);
+        	//if(!full_addr && pack->run_ahead && warmup_complete[cpu]) prediction_acc++;
+        	if(READ_MISS_BYPASS) pack->carry_indicator =1;  // TODO
+        }
+        
+        if(!victim_addr && full_addr) int tmp = invalidate_entry(full_addr);//block[set][way].valid =0;
+
+	/*if ((!hit || type==WRITEBACK) && victim_addr)  {
+		current_core_cycle[cpu] += LLC_WRITE_OVERHEAD;
+		
+	}*/
+    // uncomment this line to see the LLC accesses
+    // cout << "CPU: " << cpu << "  LLC " << setw(9) << TYPE_NAME << " set: " << setw(5) << set << " way: " << setw(2) << way;
+    // cout << hex << " paddr: " << setw(12) << paddr << " ip: " << setw(8) << ip << " victim_addr: " << victim_addr << dec << endl;
+
+    // baseline LRU
+    if (hit && (type == WRITEBACK)) {// writeback hit does not update LRU state
+        if(pack->is_bypass) pack->l2c_wm = 1;
+        return;
+    }
+
+    if(way == LLC_WAY) return;
+    else return lru_update(set, way);
+}
+
+void CACHE::llc_replacement_final_stats()
+{
+
+	//cout<<"\nRun Ahead correct prediction: "<<prediction_acc<<"\nBypas and Runahead: "<<brbit<<endl<<endl;
+	cout<<"\nTotal Run Ahead Done: "<<uncore.LLC.tRa<<"\tCorrect Prediction: "<<uncore.LLC.cRa<<endl<<endl;
+	
+	
+		cout<<"LOAD STALL: "<<uncore.LLC.STALL[0]<<endl;
+		cout<<"RFO STALL: "<<uncore.LLC.STALL[1]<<endl;
+		cout<<"PREFETCH STALL: "<<uncore.LLC.STALL[2]<<endl;
+		cout<<"WRITEBACK STALL: "<<uncore.LLC.STALL[3]<<endl;
+	cout<<endl;
+}
