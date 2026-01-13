@@ -11,10 +11,10 @@ Off-chip DRAM Size: 4096 MB Channels: 1 Width: 64-bit Data Rate: 3200 MT/s
 CPU 0 runs /home/kritin/Scratch/personal/CACHE/ChampSim/dpc3_traces/602.gcc-s0.trace.xz
 CPU 0 Bimodal branch predictor
 
-Warmup complete CPU 0 instructions: 1000001 cycles: 764601 (Simulation time: 0 hr 0 min 2 sec) 
+Warmup complete CPU 0 instructions: 1000001 cycles: 764601 (Simulation time: 0 hr 0 min 4 sec) 
 
-Heartbeat CPU 0 instructions: 10000002 cycles: 35771550 heartbeat IPC: 0.279552 cumulative IPC: 0.257092 (Simulation time: 0 hr 0 min 12 sec) 
-Finished CPU 0 instructions: 10000000 cycles: 38906479 cumulative IPC: 0.257027 (Simulation time: 0 hr 0 min 13 sec) 
+Heartbeat CPU 0 instructions: 10000002 cycles: 35771550 heartbeat IPC: 0.279552 cumulative IPC: 0.257092 (Simulation time: 0 hr 0 min 18 sec) 
+Finished CPU 0 instructions: 10000000 cycles: 38906479 cumulative IPC: 0.257027 (Simulation time: 0 hr 0 min 20 sec) 
 
 ChampSim completed all CPUs
 
@@ -50,6 +50,12 @@ LLC WRITEBACK ACCESS:        281  HIT:        281  MISS:          0
 LLC PREFETCH  REQUESTED:          0  ISSUED:          0  USEFUL:          0  USELESS:          0
 LLC AVERAGE MISS LATENCY: 95.9765 cycles
 Major fault: 0 Minor fault: 3401
+
+LLC Bottom-Up Write Bypass Statistics (Phase 1)
+Total LLC fills: 195892
+Write fills: 0
+Write fills bypassed to L2: 0
+Write fills allocated in LLC: 0
 
 DRAM Statistics
  CHANNEL 0

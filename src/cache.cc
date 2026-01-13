@@ -90,6 +90,91 @@ void CACHE::handle_fill()
         }
 //#endif
 
+        // ========================================================================
+        // BOTTOM-UP WRITE BYPASSING FOR NVM LLC — PHASE 1
+        // ========================================================================
+        // Intercept write fills coming from DRAM to LLC
+        // Decision point: should this write fill allocate in LLC or bypass to L2?
+        //
+        // Current heuristic (phase 1): treat all write fills as first-time writes
+        // and bypass them to reduce NVM degradation
+        //
+        // Future enhancement hooks:
+        // - Add PC-based predictor to identify true first-time writes
+        // - Add liveness/reuse prediction
+        // - Add write intensity tracking per block
+        // ========================================================================
+        
+        if (cache_type == IS_LLC) {
+            llc_total_fills++;
+            
+            // Check if this is a write fill (WRITEBACK type)
+            if (MSHR.entry[mshr_index].type == WRITEBACK) {
+                llc_write_fills++;
+                
+                // Phase 1 heuristic: bypass all write fills from DRAM
+                // This assumes write fills from DRAM are first-time writebacks
+                // that would cause NVM degradation if allocated in LLC
+                
+                bool should_bypass = true;  // Simple heuristic for phase 1
+                
+                // FUTURE PREDICTOR HOOK:
+                // should_bypass = predict_first_time_write(MSHR.entry[mshr_index].ip, 
+                //                                          MSHR.entry[mshr_index].full_addr);
+                
+                if (should_bypass) {
+                    llc_write_fills_bypassed++;
+                    
+                    // Debug print for validation
+                    if (warmup_complete[fill_cpu]) {
+                        cout << "[LLC_BOTTOM_UP_BYPASS] Write fill bypassed: addr=" << hex 
+                             << MSHR.entry[mshr_index].full_addr << dec 
+                             << " instr_id=" << MSHR.entry[mshr_index].instr_id << endl;
+                    }
+                    
+                    // Forward directly to L2 (upper level) without allocating in LLC
+                    // This makes the cache effectively exclusive for this block
+                    if (MSHR.entry[mshr_index].fill_level < fill_level) {
+                        if(fill_level == FILL_L2) {
+                            if(MSHR.entry[mshr_index].fill_l1i) {
+                                upper_level_icache[fill_cpu]->return_data(&MSHR.entry[mshr_index]);
+                            }
+                            if(MSHR.entry[mshr_index].fill_l1d) {
+                                upper_level_dcache[fill_cpu]->return_data(&MSHR.entry[mshr_index]);
+                            }
+                        } else {
+                            if (MSHR.entry[mshr_index].instruction)
+                                upper_level_icache[fill_cpu]->return_data(&MSHR.entry[mshr_index]);
+                            if (MSHR.entry[mshr_index].is_data)
+                                upper_level_dcache[fill_cpu]->return_data(&MSHR.entry[mshr_index]);
+                        }
+                    }
+                    
+                    // Update stats but do NOT allocate in LLC
+                    sim_miss[fill_cpu][MSHR.entry[mshr_index].type]++;
+                    sim_access[fill_cpu][MSHR.entry[mshr_index].type]++;
+                    
+                    // Track latency
+                    if(warmup_complete[fill_cpu] && (MSHR.entry[mshr_index].cycle_enqueued != 0)) {
+                        uint64_t current_miss_latency = (current_core_cycle[fill_cpu] - MSHR.entry[mshr_index].cycle_enqueued);
+                        total_miss_latency += current_miss_latency;
+                    }
+                    
+                    // Remove from MSHR and return - bypass complete
+                    MSHR.remove_queue(&MSHR.entry[mshr_index]);
+                    MSHR.num_returned--;
+                    update_fill_cycle();
+                    
+                    return;  // Exit early - write fill bypassed to L2
+                }
+                // If not bypassing, fall through to normal allocation
+                llc_write_fills_allocated++;
+            }
+        }
+        // ========================================================================
+        // END BOTTOM-UP WRITE BYPASS LOGIC
+        // ========================================================================
+
         uint8_t  do_fill = 1;
 
         // is this dirty?

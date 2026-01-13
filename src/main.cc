@@ -965,6 +965,17 @@ int main(int argc, char** argv)
             ooo_cpu[0].L2C.l2c_replacement_final_stats();                                                  
     //}                                                                         
     uncore.LLC.llc_replacement_final_stats();
+    
+    // Bottom-up write bypassing statistics for NVM LLC
+    cout << endl << "LLC Bottom-Up Write Bypass Statistics (Phase 1)" << endl;
+    cout << "Total LLC fills: " << uncore.LLC.llc_total_fills << endl;
+    cout << "Write fills: " << uncore.LLC.llc_write_fills << endl;
+    cout << "Write fills bypassed to L2: " << uncore.LLC.llc_write_fills_bypassed << endl;
+    cout << "Write fills allocated in LLC: " << uncore.LLC.llc_write_fills_allocated << endl;
+    if (uncore.LLC.llc_write_fills > 0) {
+        cout << "Bypass rate: " << (100.0 * uncore.LLC.llc_write_fills_bypassed / uncore.LLC.llc_write_fills) << "%" << endl;
+    }
+    
     print_dram_stats();
     print_branch_stats();
 #endif
