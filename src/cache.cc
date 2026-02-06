@@ -312,6 +312,24 @@ void CACHE::handle_fill()
                     PROCESSED.add_queue(&MSHR.entry[mshr_index]);
             }
 
+#ifdef LLC_EXCLUSIVE
+            // ================================================================
+            // EXCLUSIVE LLC: After filling LLC and forwarding data to L2,
+            // invalidate the LLC copy so the block only exists in L2.
+            // This ensures that when L2 evicts a dirty block, it will MISS
+            // in LLC, creating a writeback fill that the bottom-up bypass
+            // can intercept.
+            // ================================================================
+            if ((cache_type == IS_LLC) && (MSHR.entry[mshr_index].fill_level < fill_level)) {
+                // Data was forwarded to L2 — now invalidate the LLC copy
+                block[set][way].valid = 0;
+                block[set][way].dirty = 0;
+                block[set][way].prefetch = 0;
+                block[set][way].used = 0;
+                llc_exclusive_invalidations++;
+            }
+#endif
+
 	    if(warmup_complete[fill_cpu] && (MSHR.entry[mshr_index].cycle_enqueued != 0))
 	      {
 		uint64_t current_miss_latency = (current_core_cycle[fill_cpu] - MSHR.entry[mshr_index].cycle_enqueued);
@@ -557,6 +575,55 @@ void CACHE::handle_writeback()
 
             }
             else {
+
+                // ================================================================
+                // BOTTOM-UP WRITE BYPASS FOR WRITEBACK MISSES (handle_writeback)
+                // In exclusive LLC mode, L2 dirty evictions miss in LLC.
+                // Instead of allocating them in LLC (causing NVM writes),
+                // bypass them directly to DRAM.
+                // ================================================================
+                if (cache_type == IS_LLC) {
+                    llc_total_fills++;
+                    llc_write_fills++;  // all writeback misses are write fills
+                    
+                    bool should_bypass = true;  // Phase 1: bypass all writeback misses
+                    
+                    if (should_bypass) {
+                        llc_write_fills_bypassed++;
+                        
+                        // Send directly to DRAM (lower level WQ) without LLC allocation
+                        if (lower_level) {
+                            if (lower_level->get_occupancy(2, WQ.entry[index].address) == lower_level->get_size(2, WQ.entry[index].address)) {
+                                // DRAM WQ is full, cannot bypass right now — stall
+                                lower_level->increment_WQ_FULL(WQ.entry[index].address);
+                                STALL[WQ.entry[index].type]++;
+                                // Undo counters since we didn't actually bypass
+                                llc_total_fills--;
+                                llc_write_fills--;
+                                llc_write_fills_bypassed--;
+                                return;
+                            }
+                            lower_level->add_wq(&WQ.entry[index]);
+                        }
+                        
+                        // COLLECT STATS
+                        sim_miss[writeback_cpu][WQ.entry[index].type]++;
+                        sim_access[writeback_cpu][WQ.entry[index].type]++;
+                        
+                        MISS[WQ.entry[index].type]++;
+                        ACCESS[WQ.entry[index].type]++;
+                        
+                        // remove this entry from WQ
+                        WQ.remove_queue(&WQ.entry[index]);
+                        return;
+                    }
+                    // If not bypassing, fall through to normal allocation
+                    llc_write_fills_allocated++;
+                }
+                // ================================================================
+                // END BOTTOM-UP WRITE BYPASS FOR WRITEBACK MISSES
+                // ================================================================
+
                 // find victim
                 uint32_t set = get_set(WQ.entry[index].address), way;
                 if (cache_type == IS_LLC) {
@@ -804,6 +871,18 @@ void CACHE::handle_read()
                     block[set][way].prefetch = 0;
                 }
                 block[set][way].used = 1;
+
+#ifdef LLC_EXCLUSIVE
+                // EXCLUSIVE LLC: On read hit, after forwarding data to L2,
+                // invalidate the LLC copy so block only exists in L2.
+                if ((cache_type == IS_LLC) && (RQ.entry[index].fill_level < fill_level)) {
+                    block[set][way].valid = 0;
+                    block[set][way].dirty = 0;
+                    block[set][way].prefetch = 0;
+                    block[set][way].used = 0;
+                    llc_exclusive_invalidations++;
+                }
+#endif
 
                 HIT[RQ.entry[index].type]++;
                 ACCESS[RQ.entry[index].type]++;

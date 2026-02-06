@@ -136,6 +136,9 @@ class CACHE : public MEMORY {
     uint64_t llc_write_fills_bypassed;
     uint64_t llc_write_fills_allocated;
     
+    // Exclusive LLC counters
+    uint64_t llc_exclusive_invalidations;  // blocks invalidated from LLC after sending to L2
+    
     // constructor
     CACHE(string v1, uint32_t v2, int v3, uint32_t v4, uint32_t v5, uint32_t v6, uint32_t v7, uint32_t v8) 
         : NAME(v1), NUM_SET(v2), NUM_WAY(v3), NUM_LINE(v4), WQ_SIZE(v5), RQ_SIZE(v6), PQ_SIZE(v7), MSHR_SIZE(v8) {
@@ -175,6 +178,7 @@ class CACHE : public MEMORY {
         llc_write_fills = 0;
         llc_write_fills_bypassed = 0;
         llc_write_fills_allocated = 0;
+        llc_exclusive_invalidations = 0;
 
         lower_level = NULL;
         extra_interface = NULL;

@@ -975,6 +975,10 @@ int main(int argc, char** argv)
     if (uncore.LLC.llc_write_fills > 0) {
         cout << "Bypass rate: " << (100.0 * uncore.LLC.llc_write_fills_bypassed / uncore.LLC.llc_write_fills) << "%" << endl;
     }
+#ifdef LLC_EXCLUSIVE
+    cout << endl << "LLC Exclusive Mode Statistics" << endl;
+    cout << "LLC blocks invalidated (sent to L2): " << uncore.LLC.llc_exclusive_invalidations << endl;
+#endif
     
     print_dram_stats();
     print_branch_stats();
