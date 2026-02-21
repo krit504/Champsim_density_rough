@@ -25,6 +25,7 @@
 #define SANITY_CHECK
 #define LLC_BYPASS
 #define LLC_EXCLUSIVE  // Make LLC exclusive: blocks sent to L2 are invalidated from LLC
+#define BYPASS_RATE_PERCENT 50
 #define DRC_BYPASS
 #define NO_CRC2_COMPILE
 

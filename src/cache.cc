@@ -116,21 +116,11 @@ void CACHE::handle_fill()
                 // This assumes write fills from DRAM are first-time writebacks
                 // that would cause NVM degradation if allocated in LLC
                 
-                bool should_bypass = true;  // Simple heuristic for phase 1
-                
-                // FUTURE PREDICTOR HOOK:
-                // should_bypass = predict_first_time_write(MSHR.entry[mshr_index].ip, 
-                //                                          MSHR.entry[mshr_index].full_addr);
+                // Bypass based on configured percentage
+                bool should_bypass = ((llc_write_fills % 100) < BYPASS_RATE_PERCENT);
                 
                 if (should_bypass) {
                     llc_write_fills_bypassed++;
-                    
-                    // Debug print for validation
-                    if (warmup_complete[fill_cpu]) {
-                        cout << "[LLC_BOTTOM_UP_BYPASS] Write fill bypassed: addr=" << hex 
-                             << MSHR.entry[mshr_index].full_addr << dec 
-                             << " instr_id=" << MSHR.entry[mshr_index].instr_id << endl;
-                    }
                     
                     // Forward directly to L2 (upper level) without allocating in LLC
                     // This makes the cache effectively exclusive for this block
@@ -586,7 +576,8 @@ void CACHE::handle_writeback()
                     llc_total_fills++;
                     llc_write_fills++;  // all writeback misses are write fills
                     
-                    bool should_bypass = true;  // Phase 1: bypass all writeback misses
+                    // Bypass based on configured percentage
+                    bool should_bypass = ((llc_write_fills % 100) < BYPASS_RATE_PERCENT);
                     
                     if (should_bypass) {
                         llc_write_fills_bypassed++;
