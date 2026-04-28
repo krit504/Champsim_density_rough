@@ -939,6 +939,40 @@ int main(int argc, char** argv)
                 run_simulation = 0;
         }
 
+        // Epoch boundary check for section-based write bypassing (Write Hammer research)
+        if (all_warmup_complete > NUM_CPUS) {
+            uint64_t sim_instr = 0;
+            for (int i = 0; i < NUM_CPUS; i++)
+                sim_instr += (ooo_cpu[i].num_retired - ooo_cpu[i].begin_sim_instr);
+
+            static uint64_t last_epoch_instr = 0;
+            if (sim_instr - last_epoch_instr >= EPOCH_INSTRUCTIONS) {
+                last_epoch_instr = sim_instr;
+
+                uint32_t sps = LLC_SET / uncore.LLC.num_sections;
+                cout << "\n=== EPOCH " << uncore.LLC.current_epoch
+                     << " | Blocked: section " << uncore.LLC.current_blocked_section
+                     << " [sets " << uncore.LLC.current_blocked_section * sps
+                     << "-" << (uncore.LLC.current_blocked_section + 1) * sps - 1
+                     << "] | Sim instr: " << sim_instr << " ===" << endl;
+
+                for (uint32_t s = 0; s < uncore.LLC.num_sections; s++) {
+                    cout << "  Sec " << setw(2) << s
+                         << " [sets " << setw(5) << s * sps
+                         << "-" << setw(5) << (s + 1) * sps - 1 << "]"
+                         << "  epoch=" << setw(8) << uncore.LLC.section_write_count[s]
+                         << "  total=" << setw(10) << uncore.LLC.section_write_total[s];
+                    if (s == uncore.LLC.current_blocked_section) cout << "  [BLOCKED]";
+                    cout << "\n";
+                    uncore.LLC.section_write_count[s] = 0;
+                }
+
+                uncore.LLC.current_blocked_section =
+                    (uncore.LLC.current_blocked_section + 1) % uncore.LLC.num_sections;
+                uncore.LLC.current_epoch++;
+            }
+        }
+
         // TODO: should it be backward?
         uncore.DRAM.operate();
         uncore.LLC.operate();
@@ -995,6 +1029,19 @@ int main(int argc, char** argv)
     print_dram_stats();
     print_branch_stats();
 #endif
+
+    // Final section write totals (Write Hammer research)
+    {
+        uint32_t sps = LLC_SET / uncore.LLC.num_sections;
+        cout << "\n=== FINAL SECTION WRITE TOTALS (all epochs) ===" << endl;
+        for (uint32_t s = 0; s < uncore.LLC.num_sections; s++) {
+            cout << "  Section " << setw(2) << s
+                 << " [sets " << setw(5) << s * sps
+                 << "-" << setw(5) << (s + 1) * sps - 1 << "]"
+                 << "  total_writes=" << uncore.LLC.section_write_total[s] << "\n";
+        }
+        cout << "  Total bypassed_writes (section bypass): " << uncore.LLC.bypassed_writes << "\n";
+    }
 
     return 0;
 }

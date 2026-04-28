@@ -421,18 +421,46 @@ void CACHE::handle_writeback()
             else {
                 // find victim
                 uint32_t set = get_set(WQ.entry[index].address), way;
+
+#ifdef LLC_BYPASS
+                // Section-based bypass: check BEFORE find_victim so we never select
+                // a victim we won't use (early return would orphan a dirty victim otherwise).
+                if (cache_type == IS_LLC) {
+                    uint32_t sps = LLC_SET / num_sections;
+                    uint32_t section = set / sps;
+                    if (section >= num_sections) section = num_sections - 1;
+
+                    if (section == current_blocked_section) {
+                        if (lower_level &&
+                            lower_level->get_occupancy(2, WQ.entry[index].address) <
+                            lower_level->get_size(2, WQ.entry[index].address)) {
+                            // DRAM WQ has room — count once here (not before the check,
+                            // to avoid double-counting on stall retries) then bypass
+                            section_write_count[section]++;
+                            section_write_total[section]++;
+                            bypassed_writes++;
+                            lower_level->add_wq(&WQ.entry[index]);
+                            WQ.remove_queue(&WQ.entry[index]);
+                            return;
+                        } else {
+                            // DRAM WQ full — stall without consuming WQ entry; no counting
+                            STALL[WQ.entry[index].type]++;
+                            if (all_warmup_complete > NUM_CPUS) llc_bypass_stalls++;
+                            return;
+                        }
+                    } else {
+                        // Non-blocked section — count and fall through to normal victim selection
+                        section_write_count[section]++;
+                        section_write_total[section]++;
+                    }
+                }
+#endif
+
                 if (cache_type == IS_LLC) {
                     way = llc_find_victim(writeback_cpu, WQ.entry[index].instr_id, set, block[set], WQ.entry[index].ip, WQ.entry[index].full_addr, WQ.entry[index].type);
                 }
                 else
                     way = find_victim(writeback_cpu, WQ.entry[index].instr_id, set, block[set], WQ.entry[index].ip, WQ.entry[index].full_addr, WQ.entry[index].type);
-
-#ifdef LLC_BYPASS
-                if ((cache_type == IS_LLC) && (way == LLC_WAY)) {
-                    cerr << "LLC bypassing for writebacks is not allowed!" << endl;
-                    assert(0);
-                }
-#endif
 
                 uint8_t  do_fill = 1;
 

@@ -26,6 +26,10 @@
 #define DRC_BYPASS
 #define NO_CRC2_COMPILE
 
+// Section-based write bypassing (Write Hammer research)
+#define NUM_SECTIONS 10               // configurable: 10-20
+#define EPOCH_INSTRUCTIONS 10000000   // 10M instructions per epoch
+
 #ifdef DEBUG_PRINT
 #define DP(x) x
 #else
