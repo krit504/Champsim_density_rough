@@ -421,6 +421,7 @@ void CACHE::handle_writeback()
             else {
                 // find victim
                 uint32_t set = get_set(WQ.entry[index].address), way;
+                uint32_t wb_section = UINT32_MAX; // deferred section counter for non-blocked LLC writes
 
 #ifdef LLC_BYPASS
                 // Section-based bypass: check BEFORE find_victim so we never select
@@ -434,8 +435,7 @@ void CACHE::handle_writeback()
                         if (lower_level &&
                             lower_level->get_occupancy(2, WQ.entry[index].address) <
                             lower_level->get_size(2, WQ.entry[index].address)) {
-                            // DRAM WQ has room — count once here (not before the check,
-                            // to avoid double-counting on stall retries) then bypass
+                            // Blocked section, DRAM WQ has room — count and bypass
                             section_write_count[section]++;
                             section_write_total[section]++;
                             bypassed_writes++;
@@ -449,9 +449,9 @@ void CACHE::handle_writeback()
                             return;
                         }
                     } else {
-                        // Non-blocked section — count and fall through to normal victim selection
-                        section_write_count[section]++;
-                        section_write_total[section]++;
+                        // Non-blocked section — defer count to after do_fill succeeds to
+                        // avoid double-counting entries that stall on dirty victim eviction.
+                        wb_section = section;
                     }
                 }
 #endif
@@ -543,6 +543,15 @@ void CACHE::handle_writeback()
                     sim_access[writeback_cpu][WQ.entry[index].type]++;
 
                     fill_cache(set, way, &WQ.entry[index]);
+
+#ifdef LLC_BYPASS
+                    // Count non-blocked LLC write here (after fill) to avoid double-counting
+                    // entries that stall on dirty victim eviction and re-enter next cycle.
+                    if (wb_section != UINT32_MAX) {
+                        section_write_count[wb_section]++;
+                        section_write_total[wb_section]++;
+                    }
+#endif
 
                     // mark dirty
                     block[set][way].dirty = 1; 

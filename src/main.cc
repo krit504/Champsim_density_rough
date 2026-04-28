@@ -4,6 +4,7 @@
 #include "ooo_cpu.h"
 #include "uncore.h"
 #include <fstream>
+#include <cmath>
 
 uint8_t warmup_complete[NUM_CPUS], 
         simulation_complete[NUM_CPUS], 
@@ -1041,6 +1042,37 @@ int main(int argc, char** argv)
                  << "  total_writes=" << uncore.LLC.section_write_total[s] << "\n";
         }
         cout << "  Total bypassed_writes (section bypass): " << uncore.LLC.bypassed_writes << "\n";
+
+        // Lifetime metrics from writes_set[LLC_SET][LLC_WAY]
+        uint64_t total_writes = 0;
+        uint32_t max_write_count = 0;
+        // per-set sum for inter-set variation
+        double set_sum[LLC_SET] = {};
+        for (int s = 0; s < LLC_SET; s++) {
+            for (int w = 0; w < LLC_WAY; w++) {
+                total_writes += writes_set[s][w];
+                if (writes_set[s][w] > max_write_count)
+                    max_write_count = writes_set[s][w];
+                set_sum[s] += writes_set[s][w];
+            }
+        }
+        double avg_write_count = (double)total_writes / ((double)LLC_SET * LLC_WAY);
+        double mean_set = (double)total_writes / LLC_SET;
+        double var = 0.0;
+        for (int s = 0; s < LLC_SET; s++) {
+            double diff = set_sum[s] - mean_set;
+            var += diff * diff;
+        }
+        var /= LLC_SET;
+        double interV_coeff = (mean_set > 0.0) ? (sqrt(var) / mean_set) : 0.0;
+        double lifetime_norm = (max_write_count > 0) ? (1.0 / max_write_count) : 0.0;
+
+        cout << fixed << setprecision(5);
+        cout << "LIFETIME METRIC: max_writes=" << max_write_count
+             << "  avg_writes=" << avg_write_count
+             << "  interV_coeff=" << interV_coeff
+             << "  lifetime_norm=" << lifetime_norm << "\n";
+        cout.unsetf(ios::fixed);
     }
 
     return 0;

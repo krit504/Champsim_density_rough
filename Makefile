@@ -28,6 +28,8 @@ CFlags += -c $(debug) $(inc) $(libDir) $(libs)
 sources := $(shell find $(srcDir) -name '*.$(srcExt)')
 srcDirs := $(shell find . -name '*.$(srcExt)' -exec dirname {} \; | uniq)
 objects := $(patsubst %.$(srcExt),$(objDir)/%.o,$(sources))
+.DEFAULT_GOAL := all
+-include $(objects:.o=.d)
 
 ifeq ($(srcExt),cc)
 	CC = $(CXX)
