@@ -1,0 +1,35 @@
+================================================================
+STATIC vs DYNAMIC WRITE BYPASS COMPARISON
+Trace: v3 (attack) | 1-core | warmup=1M | sim=10M
+================================================================
+
+METRIC                                  STATIC         DYNAMIC
+----------------------------------------------------------------
+IPC                                    0.52922        0.527031
+bypassed_writes                          1,006           1,722
+max section writes                       1,836           1,836
+min section writes                         549             549
+max/min skew ratio                        3.34x            3.34x
+max_writes (per cell)                       58              59
+lifetime_norm                          0.01724         0.01695
+
+SECTION      STATIC total  epochs blocked   DYNAMIC total  epochs blocked
+-------------------------------------------------------------------------
+  Sec 0             1,836             10           1,836              43
+  Sec 1             1,129             10           1,129               3
+  Sec 2             1,264             10           1,264               0
+  Sec 3             1,115             10           1,115               1
+  Sec 4               774             10             774               5
+  Sec 5             1,189             10           1,189              33
+  Sec 6               549             10             549               0
+  Sec 7             1,291             10           1,291               1
+  Sec 8             1,437             10           1,437              13
+  Sec 9               852              9             852               0
+
+KEY FINDING:
+- Dynamic bypass intercepts 71% more writes (1,722 vs 1,006)
+- Static wastes epochs blocking cold sections (Sec 2,6,9: 0 writes
+  bypassed in dynamic vs 30 combined epochs in static)
+- Dynamic locks onto section 0 (hottest, 1,836 writes) for 43 epochs
+  vs only 10 in static rotation
+================================================================

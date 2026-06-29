@@ -250,6 +250,38 @@ void CACHE::handle_writeback()
         if (way >= 0) { // writeback hit (or RFO hit for L1D)
 
             if (cache_type == IS_LLC) {
+                // Section tracking always active — bypass logic conditionally compiled
+                uint32_t sps = LLC_SET / num_sections;
+                uint32_t section = set / sps;
+                if (section >= num_sections) section = num_sections - 1;
+
+#ifdef LLC_BYPASS
+                if (section == current_blocked_section) {
+                    if (lower_level &&
+                        lower_level->get_occupancy(2, WQ.entry[index].address) <
+                        lower_level->get_size(2, WQ.entry[index].address)) {
+                        // Blocked section HIT bypass: send write to DRAM,
+                        // invalidate LLC block so future reads go to DRAM.
+                        section_write_count[section]++;
+                        section_write_total[section]++;
+                        bypassed_writes++;
+                        lower_level->add_wq(&WQ.entry[index]);
+                        block[set][way].valid = 0;
+                        block[set][way].dirty = 0;
+                        WQ.remove_queue(&WQ.entry[index]);
+                        return;
+                    } else {
+                        // DRAM WQ full — stall without counting (avoid double-count on retry)
+                        STALL[WQ.entry[index].type]++;
+                        if (all_warmup_complete > NUM_CPUS) llc_bypass_stalls++;
+                        return;
+                    }
+                }
+#endif
+                // Non-blocked section (or bypass disabled) — count and proceed normally
+                section_write_count[section]++;
+                section_write_total[section]++;
+
                 llc_update_replacement_state(writeback_cpu, set, way, block[set][way].full_addr, WQ.entry[index].ip, 0, WQ.entry[index].type, 1);
                 writes_set[set][way]++;   //guru
             }
@@ -421,16 +453,16 @@ void CACHE::handle_writeback()
             else {
                 // find victim
                 uint32_t set = get_set(WQ.entry[index].address), way;
-                uint32_t wb_section = UINT32_MAX; // deferred section counter for non-blocked LLC writes
+                uint32_t wb_section = UINT32_MAX; // deferred section counter (non-blocked LLC writes)
 
-#ifdef LLC_BYPASS
-                // Section-based bypass: check BEFORE find_victim so we never select
-                // a victim we won't use (early return would orphan a dirty victim otherwise).
+                // Section computation always active for LLC
                 if (cache_type == IS_LLC) {
                     uint32_t sps = LLC_SET / num_sections;
                     uint32_t section = set / sps;
                     if (section >= num_sections) section = num_sections - 1;
 
+#ifdef LLC_BYPASS
+                    // Bypass check BEFORE find_victim — early return avoids orphaning dirty victim
                     if (section == current_blocked_section) {
                         if (lower_level &&
                             lower_level->get_occupancy(2, WQ.entry[index].address) <
@@ -443,18 +475,16 @@ void CACHE::handle_writeback()
                             WQ.remove_queue(&WQ.entry[index]);
                             return;
                         } else {
-                            // DRAM WQ full — stall without consuming WQ entry; no counting
+                            // DRAM WQ full — stall without counting (avoid double-count on retry)
                             STALL[WQ.entry[index].type]++;
                             if (all_warmup_complete > NUM_CPUS) llc_bypass_stalls++;
                             return;
                         }
-                    } else {
-                        // Non-blocked section — defer count to after do_fill succeeds to
-                        // avoid double-counting entries that stall on dirty victim eviction.
-                        wb_section = section;
                     }
-                }
 #endif
+                    // Non-blocked (or bypass disabled) — defer count to after do_fill succeeds
+                    wb_section = section;
+                }
 
                 if (cache_type == IS_LLC) {
                     way = llc_find_victim(writeback_cpu, WQ.entry[index].instr_id, set, block[set], WQ.entry[index].ip, WQ.entry[index].full_addr, WQ.entry[index].type);
@@ -544,14 +574,12 @@ void CACHE::handle_writeback()
 
                     fill_cache(set, way, &WQ.entry[index]);
 
-#ifdef LLC_BYPASS
-                    // Count non-blocked LLC write here (after fill) to avoid double-counting
-                    // entries that stall on dirty victim eviction and re-enter next cycle.
+                    // Count LLC write after successful fill — deferred to avoid double-counting
+                    // on dirty-victim stall retries. Always active (bypass or not).
                     if (wb_section != UINT32_MAX) {
                         section_write_count[wb_section]++;
                         section_write_total[wb_section]++;
                     }
-#endif
 
                     // mark dirty
                     block[set][way].dirty = 1; 

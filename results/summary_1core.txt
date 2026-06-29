@@ -1,0 +1,84 @@
+========================================
+TRACE: v2 (attack) | warmup=1M sim=10M
+========================================
+Heartbeat CPU 0 instructions: 10000000 cycles: 8717766 heartbeat IPC: 1.14708 cumulative IPC: 1.08424 (Simulation time: 0 hr 0 min 10 sec) 
+Finished CPU 0 instructions: 10000001 cycles: 9160083 cumulative IPC: 1.09169 (Simulation time: 0 hr 0 min 11 sec) 
+CPU 0 cumulative IPC: 1.09169 instructions: 10000001 cycles: 9160083
+LLC TOTAL     ACCESS:      85576  HIT:      34224  MISS:      51352
+LLC WRITEBACK ACCESS:      33895  HIT:      33895  MISS:          0
+=== FINAL SECTION WRITE TOTALS (all epochs) ===
+  Section  0 [sets     0-  408]  total_writes=4116
+  Section  1 [sets   409-  817]  total_writes=4113
+  Section  2 [sets   818- 1226]  total_writes=4017
+  Section  3 [sets  1227- 1635]  total_writes=4025
+  Section  4 [sets  1636- 2044]  total_writes=3454
+  Section  5 [sets  2045- 2453]  total_writes=3542
+  Section  6 [sets  2454- 2862]  total_writes=3584
+  Section  7 [sets  2863- 3271]  total_writes=4009
+  Section  8 [sets  3272- 3680]  total_writes=4493
+  Section  9 [sets  3681- 4089]  total_writes=4521
+  Total bypassed_writes (section bypass): 5938
+LIFETIME METRIC: max_writes=4  avg_writes=1.30077  interV_coeff=1.00000  lifetime_norm=0.25000
+========================================
+TRACE: v3 (attack) | warmup=1M sim=10M
+========================================
+Heartbeat CPU 0 instructions: 10000000 cycles: 17606384 heartbeat IPC: 0.567976 cumulative IPC: 0.523713 (Simulation time: 0 hr 0 min 15 sec) 
+Finished CPU 0 instructions: 10000003 cycles: 18895736 cumulative IPC: 0.52922 (Simulation time: 0 hr 0 min 17 sec) 
+CPU 0 cumulative IPC: 0.52922 instructions: 10000003 cycles: 18895736
+LLC TOTAL     ACCESS:      34203  HIT:      13523  MISS:      20680
+LLC WRITEBACK ACCESS:      10419  HIT:      10419  MISS:          0
+=== FINAL SECTION WRITE TOTALS (all epochs) ===
+  Section  0 [sets     0-  408]  total_writes=1836
+  Section  1 [sets   409-  817]  total_writes=1129
+  Section  2 [sets   818- 1226]  total_writes=1264
+  Section  3 [sets  1227- 1635]  total_writes=1115
+  Section  4 [sets  1636- 2044]  total_writes=774
+  Section  5 [sets  2045- 2453]  total_writes=1189
+  Section  6 [sets  2454- 2862]  total_writes=549
+  Section  7 [sets  2863- 3271]  total_writes=1291
+  Section  8 [sets  3272- 3680]  total_writes=1437
+  Section  9 [sets  3681- 4089]  total_writes=852
+  Total bypassed_writes (section bypass): 1006
+LIFETIME METRIC: max_writes=58  avg_writes=0.47453  interV_coeff=1.00000  lifetime_norm=0.01724
+========================================
+TRACE: v4 (attack) | warmup=1M sim=10M
+========================================
+Heartbeat CPU 0 instructions: 10000002 cycles: 8779094 heartbeat IPC: 1.13907 cumulative IPC: 1.07624 (Simulation time: 0 hr 0 min 10 sec) 
+Finished CPU 0 instructions: 10000000 cycles: 13529515 cumulative IPC: 0.739125 (Simulation time: 0 hr 0 min 12 sec) 
+CPU 0 cumulative IPC: 0.739125 instructions: 10000000 cycles: 13529515
+LLC TOTAL     ACCESS:     122310  HIT:      58109  MISS:      64201
+LLC WRITEBACK ACCESS:      51720  HIT:      51718  MISS:          2
+=== FINAL SECTION WRITE TOTALS (all epochs) ===
+  Section  0 [sets     0-  408]  total_writes=5661
+  Section  1 [sets   409-  817]  total_writes=6386
+  Section  2 [sets   818- 1226]  total_writes=6334
+  Section  3 [sets  1227- 1635]  total_writes=5315
+  Section  4 [sets  1636- 2044]  total_writes=6352
+  Section  5 [sets  2045- 2453]  total_writes=4921
+  Section  6 [sets  2454- 2862]  total_writes=5734
+  Section  7 [sets  2863- 3271]  total_writes=5762
+  Section  8 [sets  3272- 3680]  total_writes=5134
+  Section  9 [sets  3681- 4089]  total_writes=6803
+  Total bypassed_writes (section bypass): 6654
+LIFETIME METRIC: max_writes=6  avg_writes=1.76878  interV_coeff=1.00000  lifetime_norm=0.16667
+========================================
+TRACE: bc-12 (normal/benign) | warmup=1M sim=10M
+========================================
+Heartbeat CPU 0 instructions: 10000001 cycles: 83899260 heartbeat IPC: 0.119191 cumulative IPC: 0.108008 (Simulation time: 0 hr 0 min 26 sec) 
+Finished CPU 0 instructions: 10000000 cycles: 91217019 cumulative IPC: 0.109629 (Simulation time: 0 hr 0 min 28 sec) 
+CPU 0 cumulative IPC: 0.109629 instructions: 10000000 cycles: 91217019
+LLC TOTAL     ACCESS:    1140072  HIT:     778642  MISS:     361430
+LLC WRITEBACK ACCESS:     424205  HIT:     424200  MISS:          5
+=== FINAL SECTION WRITE TOTALS (all epochs) ===
+  Section  0 [sets     0-  408]  total_writes=61918
+  Section  1 [sets   409-  817]  total_writes=61555
+  Section  2 [sets   818- 1226]  total_writes=61193
+  Section  3 [sets  1227- 1635]  total_writes=59658
+  Section  4 [sets  1636- 2044]  total_writes=61987
+  Section  5 [sets  2045- 2453]  total_writes=61627
+  Section  6 [sets  2454- 2862]  total_writes=58161
+  Section  7 [sets  2863- 3271]  total_writes=57453
+  Section  8 [sets  3272- 3680]  total_writes=59626
+  Section  9 [sets  3681- 4089]  total_writes=63258
+  Total bypassed_writes (section bypass): 61963
+LIFETIME METRIC: max_writes=27  avg_writes=11.98776  interV_coeff=1.00000  lifetime_norm=0.03704

@@ -91,10 +91,10 @@ class CACHE : public MEMORY {
     uint64_t llc_rq_stalls, llc_wq_stalls, llc_mshr_stalls,l2_rq_stalls,l2_wq_stalls,l2_mshr_stalls,llc_bypass_stalls,l2_bypass_stalls,bypassed_writes;
 
     // Section-based write bypassing (Write Hammer research)
-    uint64_t section_write_count[20];   // per-section writes this epoch (max 20 sections)
-    uint64_t section_write_total[20];   // per-section cumulative writes all epochs
-    uint32_t current_blocked_section;   // which section is bypassed this epoch
-    uint32_t num_sections;              // active section count (10-20)
+    uint64_t section_write_count[MAX_SECTIONS];   // per-section writes this epoch
+    uint64_t section_write_total[MAX_SECTIONS];   // per-section cumulative writes all epochs
+    uint32_t current_blocked_section;             // which section is bypassed this epoch
+    uint32_t num_sections;                        // active section count (up to MAX_SECTIONS)
     uint32_t current_epoch;             // epoch counter (0-indexed)
     uint32_t READ_LATENCY;
     uint32_t WRITE_LATENCY;    //guru
@@ -170,7 +170,7 @@ class CACHE : public MEMORY {
         current_blocked_section=0;
         num_sections=NUM_SECTIONS;
         current_epoch=0;
-        for (int s=0; s<20; s++) { section_write_count[s]=0; section_write_total[s]=0; }
+        for (int s=0; s<MAX_SECTIONS; s++) { section_write_count[s]=0; section_write_total[s]=0; }
         next_write_service_cycle=0;
            port_schedule_table.clear();
            

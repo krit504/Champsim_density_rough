@@ -27,8 +27,9 @@
 #define NO_CRC2_COMPILE
 
 // Section-based write bypassing (Write Hammer research)
-#define NUM_SECTIONS 10               // configurable: 10-20
-#define EPOCH_INSTRUCTIONS 10000000   // 10M instructions per epoch
+#define NUM_SECTIONS 10               // default active section count
+#define MAX_SECTIONS 64               // max configurable sections (array bound)
+#define EPOCH_INSTRUCTIONS 100000     // 100K instructions per epoch
 
 #ifdef DEBUG_PRINT
 #define DP(x) x
@@ -37,7 +38,7 @@
 #endif
 
 // CPU
-#define NUM_CPUS 1
+#define NUM_CPUS 4
 #define CPU_FREQ 4000
 #define DRAM_IO_FREQ 3200*2
 #define PAGE_SIZE 4096
