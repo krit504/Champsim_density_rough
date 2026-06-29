@@ -1,0 +1,105 @@
+========================================
+2-CORE | v2+v2 (both attack) | warmup=1M sim=10M
+========================================
+  CPU 0 IPC: 0.629517
+  CPU 1 IPC: 0.629502
+LLC TOTAL     ACCESS:      87237  HIT:      35864  MISS:      51373
+LLC TOTAL     ACCESS:      87235  HIT:      35859  MISS:      51376
+FINAL SECTION WRITE TOTALS (all epochs) ===
+  Section  0 [sets     0-  818]  total_writes=8068
+  Section  1 [sets   819- 1637]  total_writes=8403
+  Section  2 [sets  1638- 2456]  total_writes=8949
+  Section  3 [sets  2457- 3275]  total_writes=9120
+  Section  4 [sets  3276- 4094]  total_writes=8296
+  Section  5 [sets  4095- 4913]  total_writes=8268
+  Section  6 [sets  4914- 5732]  total_writes=7298
+  Section  7 [sets  5733- 6551]  total_writes=7012
+  Section  8 [sets  6552- 7370]  total_writes=6963
+  Section  9 [sets  7371- 8189]  total_writes=7438
+  Total bypassed_writes (section bypass): 8415
+LIFETIME METRIC: max_writes=4  avg_writes=1.32301  interV_coeff=1.00000  lifetime_norm=0.25000
+
+========================================
+2-CORE | v3+v3 (both attack) | warmup=1M sim=10M
+========================================
+  CPU 0 IPC: 0.174766
+  CPU 1 IPC: 0.186273
+LLC TOTAL     ACCESS:     513394  HIT:     465572  MISS:      47822
+LLC TOTAL     ACCESS:     460377  HIT:     417498  MISS:      42879
+FINAL SECTION WRITE TOTALS (all epochs) ===
+  Section  0 [sets     0-  818]  total_writes=31873
+  Section  1 [sets   819- 1637]  total_writes=9468
+  Section  2 [sets  1638- 2456]  total_writes=1650
+  Section  3 [sets  2457- 3275]  total_writes=32334
+  Section  4 [sets  3276- 4094]  total_writes=39980
+  Section  5 [sets  4095- 4913]  total_writes=39047
+  Section  6 [sets  4914- 5732]  total_writes=102067
+  Section  7 [sets  5733- 6551]  total_writes=134734
+  Section  8 [sets  6552- 7370]  total_writes=85260
+  Section  9 [sets  7371- 8189]  total_writes=39923
+  Total bypassed_writes (section bypass): 51821
+LIFETIME METRIC: max_writes=65  avg_writes=4.24648  interV_coeff=1.00000  lifetime_norm=0.01538
+
+========================================
+2-CORE | v4+v4 (both attack) | warmup=1M sim=10M
+========================================
+  CPU 0 IPC: 0.414413
+  CPU 1 IPC: 0.414634
+LLC TOTAL     ACCESS:     145660  HIT:      79394  MISS:      66266
+LLC TOTAL     ACCESS:     145391  HIT:      79202  MISS:      66189
+FINAL SECTION WRITE TOTALS (all epochs) ===
+  Section  0 [sets     0-  818]  total_writes=13093
+  Section  1 [sets   819- 1637]  total_writes=13133
+  Section  2 [sets  1638- 2456]  total_writes=14235
+  Section  3 [sets  2457- 3275]  total_writes=13590
+  Section  4 [sets  3276- 4094]  total_writes=14937
+  Section  5 [sets  4095- 4913]  total_writes=13319
+  Section  6 [sets  4914- 5732]  total_writes=16158
+  Section  7 [sets  5733- 6551]  total_writes=15504
+  Section  8 [sets  6552- 7370]  total_writes=14747
+  Section  9 [sets  7371- 8189]  total_writes=13399
+  Total bypassed_writes (section bypass): 17390
+LIFETIME METRIC: max_writes=6  avg_writes=1.95922  interV_coeff=1.00000  lifetime_norm=0.16667
+
+========================================
+2-CORE | v2+bc12 (attack+benign) | warmup=1M sim=10M
+========================================
+  CPU 0 IPC: 0.399217
+  CPU 1 IPC: 0.0994997
+LLC TOTAL     ACCESS:      90692  HIT:      37458  MISS:      53234
+LLC TOTAL     ACCESS:    1143754  HIT:     868227  MISS:     275527
+FINAL SECTION WRITE TOTALS (all epochs) ===
+  Section  0 [sets     0-  818]  total_writes=75473
+  Section  1 [sets   819- 1637]  total_writes=74713
+  Section  2 [sets  1638- 2456]  total_writes=77594
+  Section  3 [sets  2457- 3275]  total_writes=78221
+  Section  4 [sets  3276- 4094]  total_writes=73902
+  Section  5 [sets  4095- 4913]  total_writes=84001
+  Section  6 [sets  4914- 5732]  total_writes=87620
+  Section  7 [sets  5733- 6551]  total_writes=93127
+  Section  8 [sets  6552- 7370]  total_writes=80084
+  Section  9 [sets  7371- 8189]  total_writes=65816
+  Total bypassed_writes (section bypass): 75381
+LIFETIME METRIC: max_writes=170  avg_writes=7.37106  interV_coeff=1.00000  lifetime_norm=0.00588
+
+========================================
+2-CORE | v4+bc12 (attack+benign) | warmup=1M sim=10M
+========================================
+  CPU 0 IPC: 0.23492
+  CPU 1 IPC: 0.094177
+LLC TOTAL     ACCESS:     144688  HIT:      78619  MISS:      66069
+LLC TOTAL     ACCESS:    1142965  HIT:     864665  MISS:     278300
+FINAL SECTION WRITE TOTALS (all epochs) ===
+  Section  0 [sets     0-  818]  total_writes=77499
+  Section  1 [sets   819- 1637]  total_writes=87210
+  Section  2 [sets  1638- 2456]  total_writes=87148
+  Section  3 [sets  2457- 3275]  total_writes=98818
+  Section  4 [sets  3276- 4094]  total_writes=106992
+  Section  5 [sets  4095- 4913]  total_writes=105868
+  Section  6 [sets  4914- 5732]  total_writes=105413
+  Section  7 [sets  5733- 6551]  total_writes=101769
+  Section  8 [sets  6552- 7370]  total_writes=86166
+  Section  9 [sets  7371- 8189]  total_writes=98509
+  Total bypassed_writes (section bypass): 95757
+LIFETIME METRIC: max_writes=71  avg_writes=8.46507  interV_coeff=1.00000  lifetime_norm=0.01408
+

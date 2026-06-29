@@ -1,0 +1,83 @@
+============================================================
+4-CORE | v2+v2+v2+v2 (all attack) | warmup=10M sim=250M
+============================================================
+  CPU 0 IPC: 0.0869062
+  CPU 3 IPC: 0.0868511
+  CPU 1 IPC: 0.0865012
+  CPU 2 IPC: 0.086292
+  bypassed_writes: 3,029,506  
+
+Section write totals 
+  Section  0 [sets     0- 1637]  total_writes= 5,002,259
+  Section  1 [sets  1638- 3275]  total_writes= 4,863,953
+  Section  2 [sets  3276- 4913]  total_writes= 3,029,521
+  Section  3 [sets  4914- 6551]  total_writes= 2,491,800
+  Section  4 [sets  6552- 8189]  total_writes= 2,758,826
+  Section  5 [sets  8190- 9827]  total_writes= 2,471,260
+  Section  6 [sets  9828-11465]  total_writes= 2,480,352
+  Section  7 [sets 11466-13103]  total_writes= 2,470,906
+  Section  8 [sets 13104-14741]  total_writes= 2,476,335  [BLOCKED at last epoch]
+  Section  9 [sets 14742-16379]  total_writes= 2,610,178
+
+============================================================
+4-CORE | v3+v3+v3+v3 (all attack) | warmup=10M sim=250M
+============================================================
+  CPU 0 IPC: 0.071725
+  CPU 1 IPC: 0.0717474
+  CPU 3 IPC: 0.0717137
+  CPU 2 IPC: 0.0713049
+  bypassed_writes: 4,008,379  
+
+Section write totals 
+  Section  0 [sets     0- 1637]  total_writes= 4,911,322
+  Section  1 [sets  1638- 3275]  total_writes= 4,904,107
+  Section  2 [sets  3276- 4913]  total_writes= 4,523,623
+  Section  3 [sets  4914- 6551]  total_writes= 2,654,381
+  Section  4 [sets  6552- 8189]  total_writes= 2,972,612
+  Section  5 [sets  8190- 9827]  total_writes= 3,077,283
+  Section  6 [sets  9828-11465]  total_writes= 2,696,563
+  Section  7 [sets 11466-13103]  total_writes= 3,124,810
+  Section  8 [sets 13104-14741]  total_writes= 4,907,054  [BLOCKED at last epoch]
+  Section  9 [sets 14742-16379]  total_writes= 4,938,343
+
+============================================================
+4-CORE | v4+v4+v4+v4 (all attack) | warmup=10M sim=250M
+============================================================
+  CPU 0 IPC: 0.0836744
+  CPU 1 IPC: 0.0833048
+  CPU 3 IPC: 0.0836855
+  CPU 2 IPC: 0.0807678
+  bypassed_writes: 3,177,515  
+
+Section write totals 
+  Section  0 [sets     0- 1637]  total_writes= 2,344,324
+  Section  1 [sets  1638- 3275]  total_writes= 2,176,390
+  Section  2 [sets  3276- 4913]  total_writes= 1,974,137
+  Section  3 [sets  4914- 6551]  total_writes= 3,568,450
+  Section  4 [sets  6552- 8189]  total_writes= 3,206,849
+  Section  5 [sets  8190- 9827]  total_writes= 2,713,270
+  Section  6 [sets  9828-11465]  total_writes= 3,793,352  [BLOCKED at last epoch]
+  Section  7 [sets 11466-13103]  total_writes= 3,869,008
+  Section  8 [sets 13104-14741]  total_writes= 5,070,773
+  Section  9 [sets 14742-16379]  total_writes= 3,276,893
+
+============================================================
+4-CORE | v4+v4+v4+bc12 (3 attack + 1 benign) | warmup=10M sim=250M
+============================================================
+  CPU 0 IPC: 0.117568
+  CPU 1 IPC: 0.114564
+  CPU 2 IPC: 0.11961
+  CPU 3 IPC: 0.0762724
+  bypassed_writes: 2,501,073  
+
+Section write totals 
+  Section  0 [sets     0- 1637]  total_writes= 3,534,638
+  Section  1 [sets  1638- 3275]  total_writes= 3,350,840
+  Section  2 [sets  3276- 4913]  total_writes= 2,540,373
+  Section  3 [sets  4914- 6551]  total_writes= 2,641,713  [BLOCKED at last epoch]
+  Section  4 [sets  6552- 8189]  total_writes= 1,409,230
+  Section  5 [sets  8190- 9827]  total_writes= 2,003,897
+  Section  6 [sets  9828-11465]  total_writes= 2,078,977
+  Section  7 [sets 11466-13103]  total_writes=   909,945
+  Section  8 [sets 13104-14741]  total_writes= 1,899,028
+  Section  9 [sets 14742-16379]  total_writes= 3,826,602

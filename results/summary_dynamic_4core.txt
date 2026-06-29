@@ -1,0 +1,96 @@
+============================================================
+4-CORE DYNAMIC BYPASS | v2+v2+v2+v2 (all attack) | warmup=10M sim=250M
+============================================================
+  CPU 0 IPC: 0.0845443
+  CPU 1 IPC: 0.0844196
+  CPU 2 IPC: 0.0844631
+  CPU 3 IPC: 0.0845061
+  LLC WRITEBACK: ACCESS=6,444,662  HIT=6,444,412  MISS=250
+  bypassed_writes: 4,238,887
+  LIFETIME METRIC: max_writes=1469  avg_writes=117.76511  interV_coeff=1.00000  lifetime_norm=0.00068
+  max/min skew: 2.02x  (max=5,000,296  min=2,479,861)
+
+  Section write totals:
+    Section  0: total_writes=   5,000,296
+    Section  1: total_writes=   4,862,381
+    Section  2: total_writes=   3,027,305
+    Section  3: total_writes=   2,510,026
+    Section  4: total_writes=   2,491,234
+    Section  5: total_writes=   2,484,660
+    Section  6: total_writes=   2,493,485
+    Section  7: total_writes=   2,479,861
+    Section  8: total_writes=   2,491,736
+    Section  9: total_writes=   2,609,372
+
+============================================================
+4-CORE DYNAMIC BYPASS | v3+v3+v3+v3 (all attack) | warmup=10M sim=250M
+============================================================
+  CPU 0 IPC: 0.0758224
+  CPU 1 IPC: 0.07416
+  CPU 2 IPC: 0.0760027
+  CPU 3 IPC: 0.0759239
+  LLC WRITEBACK: ACCESS=8,543,261  HIT=8,543,257  MISS=4
+  bypassed_writes: 2,528,139
+  LIFETIME METRIC: max_writes=1498  avg_writes=142.67266  interV_coeff=1.00000  lifetime_norm=0.00067
+  max/min skew: 1.98x  (max=5,110,867  min=2,580,765)
+
+  Section write totals:
+    Section  0: total_writes=   4,994,905
+    Section  1: total_writes=   5,110,867
+    Section  2: total_writes=   4,715,081
+    Section  3: total_writes=   2,658,100
+    Section  4: total_writes=   2,629,810
+    Section  5: total_writes=   2,815,048
+    Section  6: total_writes=   2,580,765
+    Section  7: total_writes=   3,182,515
+    Section  8: total_writes=   4,988,379
+    Section  9: total_writes=   4,994,124
+
+============================================================
+4-CORE DYNAMIC BYPASS | v4+v4+v4+v4 (all attack) | warmup=10M sim=250M
+============================================================
+  CPU 0 IPC: 0.0829368
+  CPU 1 IPC: 0.0824689
+  CPU 2 IPC: 0.0817959
+  CPU 3 IPC: 0.0823231
+  LLC WRITEBACK: ACCESS=7,016,782  HIT=7,016,576  MISS=206
+  bypassed_writes: 3,520,342
+  LIFETIME METRIC: max_writes=1237  avg_writes=124.39602  interV_coeff=1.00000  lifetime_norm=0.00081
+  max/min skew: 2.64x  (max=5,178,044  min=1,960,501)
+
+  Section write totals:
+    Section  0: total_writes=   2,488,933
+    Section  1: total_writes=   2,282,132
+    Section  2: total_writes=   1,960,501
+    Section  3: total_writes=   3,574,249
+    Section  4: total_writes=   3,153,817
+    Section  5: total_writes=   2,569,356
+    Section  6: total_writes=   3,690,061
+    Section  7: total_writes=   3,833,692
+    Section  8: total_writes=   5,178,044
+    Section  9: total_writes=   3,397,327
+
+============================================================
+4-CORE DYNAMIC BYPASS | v4+v4+v4+bc12 (3atk+1benign) | warmup=10M sim=250M
+============================================================
+  CPU 0 IPC: 0.097587
+  CPU 1 IPC: 0.0967361
+  CPU 2 IPC: 0.0998707
+  CPU 3 IPC: 0.0741254
+  LLC WRITEBACK: ACCESS=6,052,875  HIT=6,052,859  MISS=16
+  bypassed_writes: 4,254,159
+  LIFETIME METRIC: max_writes=1639  avg_writes=133.93202  interV_coeff=1.00000  lifetime_norm=0.00061
+  max/min skew: 3.46x  (max=4,860,369  min=1,405,106)
+
+  Section write totals:
+    Section  0: total_writes=   4,429,118
+    Section  1: total_writes=   3,217,741
+    Section  2: total_writes=   4,568,528
+    Section  3: total_writes=   3,801,580
+    Section  4: total_writes=   2,529,598
+    Section  5: total_writes=   3,073,980
+    Section  6: total_writes=   2,634,753
+    Section  7: total_writes=   1,405,106
+    Section  8: total_writes=   3,110,903
+    Section  9: total_writes=   4,860,369
+

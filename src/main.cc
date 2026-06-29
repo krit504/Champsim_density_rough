@@ -957,6 +957,16 @@ int main(int argc, char** argv)
                      << "-" << (uncore.LLC.current_blocked_section + 1) * sps - 1
                      << "] | Sim instr: " << sim_instr << " ===" << endl;
 
+                // Find next blocked section dynamically: pick highest write count this epoch
+                uint32_t next_blocked = 0;
+                uint64_t max_writes = 0;
+                for (uint32_t s = 0; s < uncore.LLC.num_sections; s++) {
+                    if (uncore.LLC.section_write_count[s] > max_writes) {
+                        max_writes = uncore.LLC.section_write_count[s];
+                        next_blocked = s;
+                    }
+                }
+
                 for (uint32_t s = 0; s < uncore.LLC.num_sections; s++) {
                     cout << "  Sec " << setw(2) << s
                          << " [sets " << setw(5) << s * sps
@@ -964,12 +974,12 @@ int main(int argc, char** argv)
                          << "  epoch=" << setw(8) << uncore.LLC.section_write_count[s]
                          << "  total=" << setw(10) << uncore.LLC.section_write_total[s];
                     if (s == uncore.LLC.current_blocked_section) cout << "  [BLOCKED]";
+                    if (s == next_blocked) cout << "  [NEXT]";
                     cout << "\n";
                     uncore.LLC.section_write_count[s] = 0;
                 }
 
-                uncore.LLC.current_blocked_section =
-                    (uncore.LLC.current_blocked_section + 1) % uncore.LLC.num_sections;
+                uncore.LLC.current_blocked_section = next_blocked;
                 uncore.LLC.current_epoch++;
             }
         }
