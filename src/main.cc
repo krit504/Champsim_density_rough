@@ -981,6 +981,17 @@ int main(int argc, char** argv)
 
                 uncore.LLC.current_blocked_section = next_blocked;
                 uncore.LLC.current_epoch++;
+
+                // Per-core write counters
+                cout << "  --- Per-core LLC writebacks this epoch ---\n";
+                for (uint32_t c = 0; c < NUM_CPUS; c++) {
+                    cout << "  Core " << c
+                         << "  epoch=" << setw(8) << uncore.LLC.core_write_count[c]
+                         << "  total=" << setw(10) << uncore.LLC.core_write_total[c];
+                    if ((int)c == uncore.LLC.attacker_core) cout << "  [ATTACKER]";
+                    cout << "\n";
+                    uncore.LLC.core_write_count[c] = 0;
+                }
             }
         }
 
@@ -1083,6 +1094,15 @@ int main(int argc, char** argv)
              << "  interV_coeff=" << interV_coeff
              << "  lifetime_norm=" << lifetime_norm << "\n";
         cout.unsetf(ios::fixed);
+
+        // Per-core write totals
+        cout << "\n=== FINAL PER-CORE LLC WRITEBACK TOTALS ===" << endl;
+        for (uint32_t c = 0; c < NUM_CPUS; c++) {
+            cout << "  Core " << c
+                 << "  total_writes=" << uncore.LLC.core_write_total[c];
+            if ((int)c == uncore.LLC.attacker_core) cout << "  [ATTACKER]";
+            cout << "\n";
+        }
     }
 
     return 0;

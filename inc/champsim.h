@@ -22,9 +22,13 @@
 // USEFUL MACROS
 //#define DEBUG_PRINT
 #define SANITY_CHECK
-#define LLC_BYPASS
+//#define LLC_BYPASS          // section-based write bypassing (disabled on core-throttle branch — kept for paper analysis)
 #define DRC_BYPASS
 #define NO_CRC2_COMPILE
+
+// Per-core write counter + attacker starvation (Write Hammer research — phase 2)
+#define CORE_THROTTLE          // gate the starvation/throttle logic
+#define THROTTLE_RATIO 10      // allow 1 write per N from the detected attacker core
 
 // Section-based write bypassing (Write Hammer research)
 #define NUM_SECTIONS 10               // default active section count

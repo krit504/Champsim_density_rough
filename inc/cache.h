@@ -90,12 +90,18 @@ class CACHE : public MEMORY {
     
     uint64_t llc_rq_stalls, llc_wq_stalls, llc_mshr_stalls,l2_rq_stalls,l2_wq_stalls,l2_mshr_stalls,llc_bypass_stalls,l2_bypass_stalls,bypassed_writes;
 
-    // Section-based write bypassing (Write Hammer research)
+    // Section-based write bypassing (Write Hammer research — phase 1, kept for paper analysis)
     uint64_t section_write_count[MAX_SECTIONS];   // per-section writes this epoch
     uint64_t section_write_total[MAX_SECTIONS];   // per-section cumulative writes all epochs
     uint32_t current_blocked_section;             // which section is bypassed this epoch
     uint32_t num_sections;                        // active section count (up to MAX_SECTIONS)
-    uint32_t current_epoch;             // epoch counter (0-indexed)
+    uint32_t current_epoch;                       // epoch counter (0-indexed)
+
+    // Per-core write counter + attacker starvation (Write Hammer research — phase 2)
+    uint64_t core_write_count[NUM_CPUS];   // per-epoch L2->LLC writebacks per core
+    uint64_t core_write_total[NUM_CPUS];   // cumulative L2->LLC writebacks per core
+    int      attacker_core;                // detected attacker core (-1 = none)
+    uint64_t core_writes_seen[NUM_CPUS];   // 1-in-N throttle counter per core
     uint32_t READ_LATENCY;
     uint32_t WRITE_LATENCY;    //guru
     uint32_t LATENCY;
@@ -171,6 +177,8 @@ class CACHE : public MEMORY {
         num_sections=NUM_SECTIONS;
         current_epoch=0;
         for (int s=0; s<MAX_SECTIONS; s++) { section_write_count[s]=0; section_write_total[s]=0; }
+        for (uint32_t i=0; i<NUM_CPUS; i++) { core_write_count[i]=0; core_write_total[i]=0; core_writes_seen[i]=0; }
+        attacker_core = -1;
         next_write_service_cycle=0;
            port_schedule_table.clear();
            

@@ -250,6 +250,17 @@ void CACHE::handle_writeback()
         if (way >= 0) { // writeback hit (or RFO hit for L1D)
 
             if (cache_type == IS_LLC) {
+#ifdef CORE_THROTTLE
+                // Attacker starvation: throttle detected attacker core's writes 1-in-N.
+                // ACTION for skipped writes (stall vs drop) is PENDING professor confirmation.
+                // Currently: stall (leave in WQ, let attacker pipeline back up).
+                if ((int)writeback_cpu == attacker_core) {
+                    if ((core_writes_seen[writeback_cpu]++ % THROTTLE_RATIO) != 0) {
+                        STALL[WQ.entry[index].type]++;
+                        return;
+                    }
+                }
+#endif
                 // Section tracking always active — bypass logic conditionally compiled
                 uint32_t sps = LLC_SET / num_sections;
                 uint32_t section = set / sps;
@@ -281,6 +292,8 @@ void CACHE::handle_writeback()
                 // Non-blocked section (or bypass disabled) — count and proceed normally
                 section_write_count[section]++;
                 section_write_total[section]++;
+                core_write_count[writeback_cpu]++;
+                core_write_total[writeback_cpu]++;
 
                 llc_update_replacement_state(writeback_cpu, set, way, block[set][way].full_addr, WQ.entry[index].ip, 0, WQ.entry[index].type, 1);
                 writes_set[set][way]++;   //guru
@@ -455,6 +468,16 @@ void CACHE::handle_writeback()
                 uint32_t set = get_set(WQ.entry[index].address), way;
                 uint32_t wb_section = UINT32_MAX; // deferred section counter (non-blocked LLC writes)
 
+#ifdef CORE_THROTTLE
+                // Attacker starvation on MISS path (same 1-in-N gating as HIT path).
+                if (cache_type == IS_LLC && (int)writeback_cpu == attacker_core) {
+                    if ((core_writes_seen[writeback_cpu]++ % THROTTLE_RATIO) != 0) {
+                        STALL[WQ.entry[index].type]++;
+                        return;
+                    }
+                }
+#endif
+
                 // Section computation always active for LLC
                 if (cache_type == IS_LLC) {
                     uint32_t sps = LLC_SET / num_sections;
@@ -579,6 +602,8 @@ void CACHE::handle_writeback()
                     if (wb_section != UINT32_MAX) {
                         section_write_count[wb_section]++;
                         section_write_total[wb_section]++;
+                        core_write_count[writeback_cpu]++;
+                        core_write_total[writeback_cpu]++;
                     }
 
                     // mark dirty
