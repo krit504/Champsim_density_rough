@@ -983,12 +983,28 @@ int main(int argc, char** argv)
                 uncore.LLC.current_epoch++;
 
                 // Per-core write counters
+#ifdef CORE_THROTTLE
+                // One-time attacker detection: lock after DETECTION_INSTR sim instructions
+                if (uncore.LLC.attacker_core == -1 && sim_instr >= DETECTION_INSTR) {
+                    uint32_t max_core = 0;
+                    uint64_t max_total = 0;
+                    for (uint32_t c = 0; c < NUM_CPUS; c++) {
+                        if (uncore.LLC.core_write_total[c] > max_total) {
+                            max_total = uncore.LLC.core_write_total[c];
+                            max_core = c;
+                        }
+                    }
+                    uncore.LLC.attacker_core = (int)max_core;
+                    cout << "  *** ATTACKER DETECTED: Core " << max_core
+                         << " (total writes=" << max_total << ") — throttle ACTIVE ***\n";
+                }
+#endif
                 cout << "  --- Per-core LLC writebacks this epoch ---\n";
                 for (uint32_t c = 0; c < NUM_CPUS; c++) {
                     cout << "  Core " << c
                          << "  epoch=" << setw(8) << uncore.LLC.core_write_count[c]
                          << "  total=" << setw(10) << uncore.LLC.core_write_total[c];
-                    if ((int)c == uncore.LLC.attacker_core) cout << "  [ATTACKER]";
+                    if ((int)c == uncore.LLC.attacker_core) cout << "  [ATTACKER-THROTTLED]";
                     cout << "\n";
                     uncore.LLC.core_write_count[c] = 0;
                 }

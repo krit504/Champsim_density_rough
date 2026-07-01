@@ -251,13 +251,18 @@ void CACHE::handle_writeback()
 
             if (cache_type == IS_LLC) {
 #ifdef CORE_THROTTLE
-                // Attacker starvation: throttle detected attacker core's writes 1-in-N.
-                // ACTION for skipped writes (stall vs drop) is PENDING professor confirmation.
-                // Currently: stall (leave in WQ, let attacker pipeline back up).
+                // Attacker starvation: allow 1-in-THROTTLE_RATIO writes from attacker core.
                 if ((int)writeback_cpu == attacker_core) {
                     if ((core_writes_seen[writeback_cpu]++ % THROTTLE_RATIO) != 0) {
+#ifdef THROTTLE_DROP
+                        // Drop: discard write entirely — never reaches DRAM RWQ.
+                        WQ.remove_queue(&WQ.entry[index]);
+                        return;
+#else
+                        // Stall: leave in WQ, backs up attacker pipeline -> attacker IPC drops.
                         STALL[WQ.entry[index].type]++;
                         return;
+#endif
                     }
                 }
 #endif
@@ -472,8 +477,13 @@ void CACHE::handle_writeback()
                 // Attacker starvation on MISS path (same 1-in-N gating as HIT path).
                 if (cache_type == IS_LLC && (int)writeback_cpu == attacker_core) {
                     if ((core_writes_seen[writeback_cpu]++ % THROTTLE_RATIO) != 0) {
+#ifdef THROTTLE_DROP
+                        WQ.remove_queue(&WQ.entry[index]);
+                        return;
+#else
                         STALL[WQ.entry[index].type]++;
                         return;
+#endif
                     }
                 }
 #endif
