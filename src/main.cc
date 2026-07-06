@@ -995,8 +995,24 @@ int main(int argc, char** argv)
                         }
                     }
                     uncore.LLC.attacker_core = (int)max_core;
+                    uncore.LLC.attacker_threshold = 2 * max_total;
                     cout << "  *** ATTACKER DETECTED: Core " << max_core
-                         << " (total writes=" << max_total << ") — throttle ACTIVE ***\n";
+                         << " (total writes=" << max_total
+                         << ") — threshold set to " << uncore.LLC.attacker_threshold
+                         << " — throttle ACTIVE ***\n";
+                }
+
+                // Continuous second-attacker scan: flag any non-attacker core exceeding threshold
+                if (uncore.LLC.attacker_core != -1 && uncore.LLC.attacker_threshold > 0) {
+                    for (uint32_t c = 0; c < NUM_CPUS; c++) {
+                        if ((int)c != uncore.LLC.attacker_core &&
+                            uncore.LLC.core_write_total[c] > uncore.LLC.attacker_threshold) {
+                            cout << "  *** WARNING: Core " << c
+                                 << " total writes=" << uncore.LLC.core_write_total[c]
+                                 << " exceeds threshold=" << uncore.LLC.attacker_threshold
+                                 << " — POTENTIAL SECOND ATTACKER ***\n";
+                        }
+                    }
                 }
 #endif
                 cout << "  --- Per-core LLC writebacks this epoch ---\n";
@@ -1113,10 +1129,15 @@ int main(int argc, char** argv)
 
         // Per-core write totals
         cout << "\n=== FINAL PER-CORE LLC WRITEBACK TOTALS ===" << endl;
+        if (uncore.LLC.attacker_core != -1)
+            cout << "  Attacker threshold (2x detection max): " << uncore.LLC.attacker_threshold << "\n";
         for (uint32_t c = 0; c < NUM_CPUS; c++) {
             cout << "  Core " << c
                  << "  total_writes=" << uncore.LLC.core_write_total[c];
             if ((int)c == uncore.LLC.attacker_core) cout << "  [ATTACKER]";
+            else if (uncore.LLC.attacker_threshold > 0 &&
+                     uncore.LLC.core_write_total[c] > uncore.LLC.attacker_threshold)
+                cout << "  [SECOND-ATTACKER?]";
             cout << "\n";
         }
     }

@@ -29,7 +29,7 @@
 // Per-core write counter + attacker starvation (Write Hammer research — phase 2)
 #define CORE_THROTTLE              // gate the starvation/throttle logic
 #define THROTTLE_RATIO 10          // allow 1 write per N from the detected attacker core
-#define DETECTION_INSTR 1000000   // lock attacker core after this many sim instructions
+#define DETECTION_INSTR 5000000   // lock attacker core after this many sim instructions (5M per Prof. Sinha Jul 3)
 //#define THROTTLE_DROP              // if defined: drop skipped writes; else: stall them
 
 // Section-based write bypassing (Write Hammer research)

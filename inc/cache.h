@@ -101,6 +101,7 @@ class CACHE : public MEMORY {
     uint64_t core_write_count[NUM_CPUS];   // per-epoch L2->LLC writebacks per core
     uint64_t core_write_total[NUM_CPUS];   // cumulative L2->LLC writebacks per core
     int      attacker_core;                // detected attacker core (-1 = none)
+    uint64_t attacker_threshold;           // 2x max write count at detection — used to catch a second attacker
     uint64_t core_writes_seen[NUM_CPUS];   // 1-in-N throttle counter per core
     uint32_t READ_LATENCY;
     uint32_t WRITE_LATENCY;    //guru
@@ -179,6 +180,7 @@ class CACHE : public MEMORY {
         for (int s=0; s<MAX_SECTIONS; s++) { section_write_count[s]=0; section_write_total[s]=0; }
         for (uint32_t i=0; i<NUM_CPUS; i++) { core_write_count[i]=0; core_write_total[i]=0; core_writes_seen[i]=0; }
         attacker_core = -1;
+        attacker_threshold = 0;
         next_write_service_cycle=0;
            port_schedule_table.clear();
            
