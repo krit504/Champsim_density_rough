@@ -251,7 +251,23 @@ void CACHE::handle_writeback()
 
             if (cache_type == IS_LLC) {
 #ifdef CORE_THROTTLE
-                // Attacker starvation: allow 1-in-THROTTLE_RATIO writes from attacker core.
+#ifdef THROTTLE_MODE_DYNAMIC
+                // Dynamic threshold: count every incoming writeback this window (for the
+                // NEXT re-evaluation), then throttle whoever was hottest LAST window.
+                dynamic_window_count[writeback_cpu]++;
+                if ((int)writeback_cpu == dynamic_target_core) {
+                    if ((core_writes_seen[writeback_cpu]++ % THROTTLE_RATIO) != 0) {
+#ifdef THROTTLE_DROP
+                        WQ.remove_queue(&WQ.entry[index]);
+                        return;
+#else
+                        STALL[WQ.entry[index].type]++;
+                        return;
+#endif
+                    }
+                }
+#else
+                // Static threshold: allow 1-in-THROTTLE_RATIO writes from the locked attacker core.
                 if ((int)writeback_cpu == attacker_core) {
                     if ((core_writes_seen[writeback_cpu]++ % THROTTLE_RATIO) != 0) {
 #ifdef THROTTLE_DROP
@@ -265,6 +281,7 @@ void CACHE::handle_writeback()
 #endif
                     }
                 }
+#endif
 #endif
                 // Section tracking always active — bypass logic conditionally compiled
                 uint32_t sps = LLC_SET / num_sections;
@@ -474,7 +491,24 @@ void CACHE::handle_writeback()
                 uint32_t wb_section = UINT32_MAX; // deferred section counter (non-blocked LLC writes)
 
 #ifdef CORE_THROTTLE
-                // Attacker starvation on MISS path (same 1-in-N gating as HIT path).
+#ifdef THROTTLE_MODE_DYNAMIC
+                // Dynamic threshold on MISS path (same window-counting + throttle as HIT path).
+                if (cache_type == IS_LLC) {
+                    dynamic_window_count[writeback_cpu]++;
+                    if ((int)writeback_cpu == dynamic_target_core) {
+                        if ((core_writes_seen[writeback_cpu]++ % THROTTLE_RATIO) != 0) {
+#ifdef THROTTLE_DROP
+                            WQ.remove_queue(&WQ.entry[index]);
+                            return;
+#else
+                            STALL[WQ.entry[index].type]++;
+                            return;
+#endif
+                        }
+                    }
+                }
+#else
+                // Static threshold on MISS path (same 1-in-N gating as HIT path).
                 if (cache_type == IS_LLC && (int)writeback_cpu == attacker_core) {
                     if ((core_writes_seen[writeback_cpu]++ % THROTTLE_RATIO) != 0) {
 #ifdef THROTTLE_DROP
@@ -486,6 +520,7 @@ void CACHE::handle_writeback()
 #endif
                     }
                 }
+#endif
 #endif
 
                 // Section computation always active for LLC

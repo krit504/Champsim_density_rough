@@ -100,9 +100,13 @@ class CACHE : public MEMORY {
     // Per-core write counter + attacker starvation (Write Hammer research — phase 2)
     uint64_t core_write_count[NUM_CPUS];   // per-epoch L2->LLC writebacks per core
     uint64_t core_write_total[NUM_CPUS];   // cumulative L2->LLC writebacks per core
-    int      attacker_core;                // detected attacker core (-1 = none)
+    int      attacker_core;                // detected attacker core (-1 = none) — static threshold mode
     uint64_t attacker_threshold;           // 2x max write count at detection — used to catch a second attacker
     uint64_t core_writes_seen[NUM_CPUS];   // 1-in-N throttle counter per core
+
+    // Dynamic threshold (Write Hammer research — phase 2b)
+    uint64_t dynamic_window_count[NUM_CPUS]; // writes counted THIS window, used to pick NEXT window's target
+    int      dynamic_target_core;            // core throttled THIS window (-1 = none, i.e. first window)
     uint32_t READ_LATENCY;
     uint32_t WRITE_LATENCY;    //guru
     uint32_t LATENCY;
@@ -178,9 +182,10 @@ class CACHE : public MEMORY {
         num_sections=NUM_SECTIONS;
         current_epoch=0;
         for (int s=0; s<MAX_SECTIONS; s++) { section_write_count[s]=0; section_write_total[s]=0; }
-        for (uint32_t i=0; i<NUM_CPUS; i++) { core_write_count[i]=0; core_write_total[i]=0; core_writes_seen[i]=0; }
+        for (uint32_t i=0; i<NUM_CPUS; i++) { core_write_count[i]=0; core_write_total[i]=0; core_writes_seen[i]=0; dynamic_window_count[i]=0; }
         attacker_core = -1;
         attacker_threshold = 0;
+        dynamic_target_core = -1;
         next_write_service_cycle=0;
            port_schedule_table.clear();
            

@@ -984,7 +984,33 @@ int main(int argc, char** argv)
 
                 // Per-core write counters
 #ifdef CORE_THROTTLE
-                // One-time attacker detection: lock after DETECTION_INSTR sim instructions
+#ifdef THROTTLE_MODE_DYNAMIC
+                // Dynamic threshold: every DYNAMIC_WINDOW_INSTR, pick the hottest core from the
+                // window just finished as the target for the NEXT window, then reset counters.
+                static uint64_t last_dynamic_window = 0;
+                if (sim_instr - last_dynamic_window >= DYNAMIC_WINDOW_INSTR) {
+                    last_dynamic_window = sim_instr;
+
+                    uint32_t max_core = 0;
+                    uint64_t max_count = 0;
+                    for (uint32_t c = 0; c < NUM_CPUS; c++) {
+                        if (uncore.LLC.dynamic_window_count[c] > max_count) {
+                            max_count = uncore.LLC.dynamic_window_count[c];
+                            max_core = c;
+                        }
+                    }
+
+                    cout << "  *** DYNAMIC WINDOW @ sim_instr=" << sim_instr << " | writes this window: ";
+                    for (uint32_t c = 0; c < NUM_CPUS; c++)
+                        cout << "Core" << c << "=" << uncore.LLC.dynamic_window_count[c] << " ";
+                    cout << "| next target: Core " << max_core << " ***\n";
+
+                    uncore.LLC.dynamic_target_core = (int)max_core;
+                    for (uint32_t c = 0; c < NUM_CPUS; c++)
+                        uncore.LLC.dynamic_window_count[c] = 0;
+                }
+#else
+                // Static threshold: one-time attacker detection, lock after DETECTION_INSTR sim instructions
                 if (uncore.LLC.attacker_core == -1 && sim_instr >= DETECTION_INSTR) {
                     uint32_t max_core = 0;
                     uint64_t max_total = 0;
@@ -1015,12 +1041,17 @@ int main(int argc, char** argv)
                     }
                 }
 #endif
+#endif
                 cout << "  --- Per-core LLC writebacks this epoch ---\n";
                 for (uint32_t c = 0; c < NUM_CPUS; c++) {
                     cout << "  Core " << c
                          << "  epoch=" << setw(8) << uncore.LLC.core_write_count[c]
                          << "  total=" << setw(10) << uncore.LLC.core_write_total[c];
+#ifdef THROTTLE_MODE_DYNAMIC
+                    if ((int)c == uncore.LLC.dynamic_target_core) cout << "  [CURRENT-TARGET-THROTTLED]";
+#else
                     if ((int)c == uncore.LLC.attacker_core) cout << "  [ATTACKER-THROTTLED]";
+#endif
                     cout << "\n";
                     uncore.LLC.core_write_count[c] = 0;
                 }
@@ -1129,6 +1160,14 @@ int main(int argc, char** argv)
 
         // Per-core write totals
         cout << "\n=== FINAL PER-CORE LLC WRITEBACK TOTALS ===" << endl;
+#ifdef THROTTLE_MODE_DYNAMIC
+        for (uint32_t c = 0; c < NUM_CPUS; c++) {
+            cout << "  Core " << c
+                 << "  total_writes=" << uncore.LLC.core_write_total[c];
+            if ((int)c == uncore.LLC.dynamic_target_core) cout << "  [FINAL-TARGET]";
+            cout << "\n";
+        }
+#else
         if (uncore.LLC.attacker_core != -1)
             cout << "  Attacker threshold (2x detection max): " << uncore.LLC.attacker_threshold << "\n";
         for (uint32_t c = 0; c < NUM_CPUS; c++) {
@@ -1140,6 +1179,7 @@ int main(int argc, char** argv)
                 cout << "  [SECOND-ATTACKER?]";
             cout << "\n";
         }
+#endif
     }
 
     return 0;

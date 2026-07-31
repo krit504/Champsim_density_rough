@@ -29,8 +29,17 @@
 // Per-core write counter + attacker starvation (Write Hammer research — phase 2)
 #define CORE_THROTTLE              // gate the starvation/throttle logic
 #define THROTTLE_RATIO 10          // allow 1 write per N from the detected attacker core
-#define DETECTION_INSTR 10000000  // lock attacker core after this many sim instructions
 //#define THROTTLE_DROP              // if defined: drop skipped writes; else: stall them
+
+// Static threshold (Prof. Sinha Jul 24 2026): one-time lock at DETECTION_INSTR, throttle for rest of run.
+// Three variants requested — rebuild with 50000000 / 100000000 / 200000000.
+#define DETECTION_INSTR 50000000
+
+// Dynamic threshold (Prof. Sinha Jul 24 2026): re-evaluate hot core every DYNAMIC_WINDOW_INSTR.
+// First window only counts (no target yet); each subsequent window throttles whoever was
+// hottest in the PREVIOUS window, while counting writes for the NEXT decision.
+//#define THROTTLE_MODE_DYNAMIC      // if defined: dynamic re-evaluating threshold; else: static one-time lock above
+#define DYNAMIC_WINDOW_INSTR 50000000
 
 // Section-based write bypassing (Write Hammer research)
 #define NUM_SECTIONS 10               // default active section count
