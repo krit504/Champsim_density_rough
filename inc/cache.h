@@ -107,6 +107,9 @@ class CACHE : public MEMORY {
     // Dynamic threshold (Write Hammer research — phase 2b)
     uint64_t dynamic_window_count[NUM_CPUS]; // writes counted THIS window, used to pick NEXT window's target
     int      dynamic_target_core;            // core throttled THIS window (-1 = none, i.e. first window)
+
+    // Admission-time drop (Write Hammer research — phase 2c)
+    uint64_t dropped_writes[NUM_CPUS];       // writes rejected at admission (never entered WQ)
     uint32_t READ_LATENCY;
     uint32_t WRITE_LATENCY;    //guru
     uint32_t LATENCY;
@@ -182,7 +185,7 @@ class CACHE : public MEMORY {
         num_sections=NUM_SECTIONS;
         current_epoch=0;
         for (int s=0; s<MAX_SECTIONS; s++) { section_write_count[s]=0; section_write_total[s]=0; }
-        for (uint32_t i=0; i<NUM_CPUS; i++) { core_write_count[i]=0; core_write_total[i]=0; core_writes_seen[i]=0; dynamic_window_count[i]=0; }
+        for (uint32_t i=0; i<NUM_CPUS; i++) { core_write_count[i]=0; core_write_total[i]=0; core_writes_seen[i]=0; dynamic_window_count[i]=0; dropped_writes[i]=0; }
         attacker_core = -1;
         attacker_threshold = 0;
         dynamic_target_core = -1;

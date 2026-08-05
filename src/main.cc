@@ -1163,7 +1163,8 @@ int main(int argc, char** argv)
 #ifdef THROTTLE_MODE_DYNAMIC
         for (uint32_t c = 0; c < NUM_CPUS; c++) {
             cout << "  Core " << c
-                 << "  total_writes=" << uncore.LLC.core_write_total[c];
+                 << "  total_writes=" << uncore.LLC.core_write_total[c]
+                 << "  dropped=" << uncore.LLC.dropped_writes[c];
             if ((int)c == uncore.LLC.dynamic_target_core) cout << "  [FINAL-TARGET]";
             cout << "\n";
         }
@@ -1172,7 +1173,8 @@ int main(int argc, char** argv)
             cout << "  Attacker threshold (2x detection max): " << uncore.LLC.attacker_threshold << "\n";
         for (uint32_t c = 0; c < NUM_CPUS; c++) {
             cout << "  Core " << c
-                 << "  total_writes=" << uncore.LLC.core_write_total[c];
+                 << "  total_writes=" << uncore.LLC.core_write_total[c]
+                 << "  dropped=" << uncore.LLC.dropped_writes[c];
             if ((int)c == uncore.LLC.attacker_core) cout << "  [ATTACKER]";
             else if (uncore.LLC.attacker_threshold > 0 &&
                      uncore.LLC.core_write_total[c] > uncore.LLC.attacker_threshold)

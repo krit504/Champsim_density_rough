@@ -314,8 +314,7 @@ void CACHE::handle_writeback()
                 // Non-blocked section (or bypass disabled) — count and proceed normally
                 section_write_count[section]++;
                 section_write_total[section]++;
-                core_write_count[writeback_cpu]++;
-                core_write_total[writeback_cpu]++;
+                // Per-core write counter now counted at admission time in add_wq() — not here.
 
                 llc_update_replacement_state(writeback_cpu, set, way, block[set][way].full_addr, WQ.entry[index].ip, 0, WQ.entry[index].type, 1);
                 writes_set[set][way]++;   //guru
@@ -644,11 +643,10 @@ void CACHE::handle_writeback()
 
                     // Count LLC write after successful fill — deferred to avoid double-counting
                     // on dirty-victim stall retries. Always active (bypass or not).
+                    // Per-core write counter now counted at admission time in add_wq() — not here.
                     if (wb_section != UINT32_MAX) {
                         section_write_count[wb_section]++;
                         section_write_total[wb_section]++;
-                        core_write_count[writeback_cpu]++;
-                        core_write_total[writeback_cpu]++;
                     }
 
                     // mark dirty
@@ -1570,6 +1568,28 @@ else
 
 int CACHE::add_wq(PACKET *packet)
 {
+#ifdef CORE_THROTTLE
+    // Admission-time attacker throttle: count every incoming write attempt (this is what
+    // hot-core detection reads), then reject the write BEFORE it ever occupies the WQ if
+    // it belongs to the identified hot core and isn't one of the 1-in-N allowed through.
+    if (cache_type == IS_LLC) {
+        core_write_count[packet->cpu]++;
+        core_write_total[packet->cpu]++;
+#ifdef THROTTLE_MODE_DYNAMIC
+        dynamic_window_count[packet->cpu]++;
+        int throttle_target = dynamic_target_core;
+#else
+        int throttle_target = attacker_core;
+#endif
+        if ((int)packet->cpu == throttle_target) {
+            if ((core_writes_seen[packet->cpu]++ % THROTTLE_RATIO) != 0) {
+                dropped_writes[packet->cpu]++;
+                return -2; // rejected before admission — WQ never touched
+            }
+        }
+    }
+#endif
+
     // check for duplicates in the write queue
     int index = WQ.check_queue(packet);
     if (index != -1) {
